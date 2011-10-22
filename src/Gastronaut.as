@@ -13,6 +13,12 @@ package
 	public class Gastronaut extends FlxExtendedSprite 
 	{
 		[Embed(source = "../assets/graphics/gastronaut.png")] private var playerPNG:Class;
+		public var fuel:Number = 100.0;
+		private var MAXXSPEED:int = 50;
+		private var MAXYSPEED:int = 200;
+		private var XSPEED:int = 50;
+		private var YSPEED:int = 100;
+		private var outOfFuel:Boolean = false;
 		
 		public function Gastronaut() 
 		{
@@ -28,25 +34,57 @@ package
 			FlxControl.player1.setCursorControl(true, false, true, true);
 			FlxControl.player1.setGravity(0, 75);
 			
-			FlxControl.player1.setMovementSpeed(100, 100, 200, 200, 0, 0);			
+			FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);			
 		}
 		
 		override public function update():void 
 		{
 			super.update();
+			var leftPressed:Boolean = FlxG.keys.LEFT;
 			
-			if (FlxG.keys.LEFT)
+			if (FlxG.keys.LEFT )
 			{
-				facing = LEFT;
+				
+				if (FlxG.keys.RIGHT)
+				{
+					velocity.x = 0;
+				} else
+				{
+					facing = LEFT;
+				}
+				
 			} 
-			if (FlxG.keys.RIGHT)
+			if (FlxG.keys.RIGHT )
+			{	
+				
+				
+				
+				if (FlxG.keys.LEFT)
+				{
+					velocity.x = 0;
+				} else
+				{
+					facing = RIGHT;
+				}
+				
+			}
+			
+			if (FlxG.keys.UP)
 			{
-				facing = RIGHT;
+				//fuel -= 0.05;
+				fuel -= 1;
 			}
 			
 			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
 			{
 				velocity.x = 0;
+			}
+			
+			if (!outOfFuel && fuel <= 0)
+			{
+				FlxControl.player1.setCursorControl(false, false, true, true);
+				outOfFuel = true;
+				FlxControl.player1.setMovementSpeed(XSPEED, 0, MAXXSPEED, MAXYSPEED, 0, 0);				
 			}
 		}
 		
