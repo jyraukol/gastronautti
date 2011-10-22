@@ -18,6 +18,7 @@ package
 		private var MAXYSPEED:int = 200;
 		private var XSPEED:int = 50;
 		private var YSPEED:int = 100;
+		private var FUELCONSUMPTION:Number = 1;
 		private var outOfFuel:Boolean = false;
 		
 		public function Gastronaut() 
@@ -40,39 +41,32 @@ package
 		override public function update():void 
 		{
 			super.update();
-			var leftPressed:Boolean = FlxG.keys.LEFT;
 			
 			if (FlxG.keys.LEFT )
-			{
-				
+			{				
 				if (FlxG.keys.RIGHT)
 				{
 					velocity.x = 0;
 				} else
 				{
 					facing = LEFT;
-				}
-				
+				}			
 			} 
+			
 			if (FlxG.keys.RIGHT )
-			{	
-				
-				
-				
+			{					
 				if (FlxG.keys.LEFT)
 				{
 					velocity.x = 0;
 				} else
 				{
 					facing = RIGHT;
-				}
-				
+				}	
 			}
 			
 			if (FlxG.keys.UP)
-			{
-				//fuel -= 0.05;
-				fuel -= 1;
+			{				
+				fuel -= FUELCONSUMPTION;
 			}
 			
 			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
