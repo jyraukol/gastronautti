@@ -14,11 +14,13 @@ package
 	{
 		[Embed(source = "../assets/graphics/gastronaut.png")] private var playerPNG:Class;
 		public var fuel:Number = 100.0;
-		private var MAXXSPEED:int = 50;
-		private var MAXYSPEED:int = 200;
 		private var XSPEED:int = 50;
-		private var YSPEED:int = 100;
-		private var FUELCONSUMPTION:Number = 1;
+		private var MAXXSPEED:int = 50;
+		
+		private var YSPEED:int = 100;		
+		private var MAXYSPEED:int = 200;
+		
+		private var FUELCONSUMPTION:Number = 0.5;
 		private var outOfFuel:Boolean = false;
 		
 		public function Gastronaut() 
@@ -35,7 +37,7 @@ package
 			FlxControl.player1.setCursorControl(true, false, true, true);
 			FlxControl.player1.setGravity(0, 75);
 			
-			FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);			
+			FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);						
 		}
 		
 		override public function update():void 
@@ -79,6 +81,18 @@ package
 				FlxControl.player1.setCursorControl(false, false, true, true);
 				outOfFuel = true;
 				FlxControl.player1.setMovementSpeed(XSPEED, 0, MAXXSPEED, MAXYSPEED, 0, 0);				
+			}
+			
+			if (x < 0)
+			{
+				x = 0;
+				velocity.x = 0;
+			}
+			
+			if (x + width > FlxG.width)
+			{
+				x = FlxG.width - width;
+				velocity.x = 0;
 			}
 		}
 		

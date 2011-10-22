@@ -6,6 +6,7 @@ package
  
 	public class PlayState extends FlxState
 	{
+		[Embed(source = "../assets/graphics/spaceship.png")] private var spaceshipPNG:Class;
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
 		private var platform:FlxTileblock;
@@ -15,7 +16,8 @@ package
 		private var foodNum:int = 1;
 		
 		private var spaceHouse:SpaceHouse;
-		
+		private var spaceShip:FlxSprite;
+				
 		override public function create():void
 		{
 			FlxG.bgColor = 0xff144954;
@@ -31,12 +33,15 @@ package
 			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
 			
 			spaceHouse = new SpaceHouse(116, 50 -30);
+			spaceShip = new FlxSprite(FlxG.width - 62, 180, spaceshipPNG);
 			add(spaceHouse);
+			add(spaceShip);
 			add(player);
 			add(floor);
 			add(platform);			
 			add(fuelBar);
 			add(foodText);
+			
 		}
 		
 		override public function update():void
@@ -45,7 +50,12 @@ package
 			
 			FlxG.collide(player, floor);
 			FlxG.collide(player, platform);
-			FlxG.overlap(player, spaceHouse, foodDelivered);			
+			FlxG.overlap(player, spaceHouse, foodDelivered);
+			
+			if (foodNum == 0)
+			{
+				FlxG.overlap(player, spaceShip, levelClear);
+			}
 		}
 		
 		private function foodDelivered(player:FlxObject, houseObject:FlxObject):void
@@ -58,6 +68,11 @@ package
 				house.foodDeliveredHere = true;
 			}
 			
+		}
+		
+		private function levelClear(player:Gastronaut, ship:FlxSprite):void
+		{
+			trace("Voitit pelin");
 		}
 	}
 }
