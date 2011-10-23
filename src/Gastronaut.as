@@ -12,7 +12,7 @@ package
 	 */
 	public class Gastronaut extends FlxExtendedSprite 
 	{
-		[Embed(source = "../assets/graphics/gastronaut.png")] private var playerPNG:Class;
+		[Embed(source = "../assets/graphics/gastronautAnim.png")] private var playerPNG:Class;
 		public var fuel:Number = 100.0;
 		private var XSPEED:int = 50;
 		private var MAXXSPEED:int = 50;
@@ -26,8 +26,10 @@ package
 		public function Gastronaut() 
 		{
 			super(FlxG.width / 2, FlxG.height - 50);
-			loadGraphic(playerPNG, false, true, 16, 16);
+			loadGraphic(playerPNG, true, true, 16, 16);
 			
+			addAnimation("idle", [0], 0, false);
+			addAnimation("walk", [0, 1, 0, 2], 5, true);
 			
 			if (FlxG.getPlugin(FlxControl) == null)
 			{
@@ -52,7 +54,8 @@ package
 				} else
 				{
 					facing = LEFT;
-				}			
+				}
+				play("walk");
 			} 
 			
 			if (FlxG.keys.RIGHT )
@@ -64,6 +67,7 @@ package
 				{
 					facing = RIGHT;
 				}	
+				play("walk");
 			}
 			
 			if (FlxG.keys.UP)
@@ -74,6 +78,12 @@ package
 			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
 			{
 				velocity.x = 0;
+				play("idle");
+			}
+			
+			if (velocity.y > 0 )
+			{
+				play("idle");
 			}
 			
 			if (!outOfFuel && fuel <= 0)

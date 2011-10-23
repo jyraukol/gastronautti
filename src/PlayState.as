@@ -72,7 +72,7 @@ package
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
 		{
-			trace("Voitit pelin");
+			FlxG.switchState(new ScoreState);
 		}
 	}
 }
