@@ -17,10 +17,15 @@ package
 		
 		private var spaceHouse:SpaceHouse;
 		private var spaceShip:FlxSprite;
-				
+		
+		private var level:Level1;
+		
 		override public function create():void
 		{
 			FlxG.bgColor = 0xff144954;
+			
+			level = new Level1;
+			
 			player = new Gastronaut();
 			Registry.player = player;
 			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
@@ -35,11 +40,12 @@ package
 			
 			spaceHouse = new SpaceHouse(116, 50 -30);
 			spaceShip = new FlxSprite(FlxG.width - 62, 180, spaceshipPNG);
+			add(level);
 			add(spaceHouse);
 			add(spaceShip);
 			add(player);
-			add(floor);
-			add(platform);			
+			//add(floor);
+			//add(platform);			
 			add(fuelBar);
 			add(foodText);
 			
@@ -49,8 +55,8 @@ package
 		{
 			super.update();
 			
-			FlxG.collide(player, floor);
-			FlxG.collide(player, platform);
+			FlxG.collide(player, level);
+			
 			FlxG.overlap(player, spaceHouse, foodDelivered);
 			
 			if (foodNum == 0)
