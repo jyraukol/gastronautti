@@ -22,6 +22,7 @@ package
 		{
 			FlxG.bgColor = 0xff144954;
 			player = new Gastronaut();
+			Registry.player = player;
 			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
 			floor = new FlxTileblock(0, 208, 320, 32);
