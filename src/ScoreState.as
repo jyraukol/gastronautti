@@ -22,14 +22,16 @@ package
 		override public function create():void 
 		{
 			FlxG.bgColor = 0xff000000;
-			scoreText = new FlxText(150, 50, 100, "Level Complete!");
-			fuelText = new FlxText(200, 70, 100, "Fuel Left: " + Registry.player.fuel);
+			scoreText = new FlxText(100, 50, 100, "Level Complete!");
+			scoreText.alignment = "left";
+			fuelText = new FlxText(100, 70, 100, "Fuel Left: " + int(Registry.player.fuel));
+			fuelText.alignment = "left";
 			add(fuelText);
 			
 			
 			for (var i:int = 1; i < Registry.player.fuel / 25; i++)
 			{
-				add(new SpinningStar(50 + i * 16, 100));
+				add(new SpinningStar(100 + i * 16, 100));
 			}
 			
 			add(scoreText);
