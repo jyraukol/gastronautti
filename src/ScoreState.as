@@ -37,6 +37,20 @@ package
 			add(scoreText);
 			super.create();		
 		}
+		
+		override public function update():void 
+		{
+			if (FlxG.keys.ENTER)
+			{
+				FlxG.fade(0xFFFFFFFF, 1.5, switchState);
+			}
+			super.update();
+		}
+		
+		private function switchState():void
+		{
+			FlxG.switchState(new PlayState);
+		}
 	}
 
 }
