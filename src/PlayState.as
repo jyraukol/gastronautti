@@ -7,6 +7,7 @@ package
 	public class PlayState extends FlxState
 	{
 		[Embed(source = "../assets/graphics/spaceship.png")] private var spaceshipPNG:Class;
+		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
 		private var platform:FlxTileblock;
@@ -44,6 +45,7 @@ package
 				spaceHouses.add(house);
 			}
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
+			add(new FlxSprite(0, 0, starBackground));
 			add(level);
 			add(spaceHouses);
 			add(spaceShip);
