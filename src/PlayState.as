@@ -15,7 +15,7 @@ package
 		private var foodText:FlxText;
 		private var foodNum:int = 1;
 		
-		private var spaceHouse:SpaceHouse;
+		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
 		
 		private var level:Level1;
@@ -38,10 +38,14 @@ package
 			
 			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
 			
-			spaceHouse = new SpaceHouse(116, 50 -30);
-			spaceShip = new FlxSprite(FlxG.width - 62, 180, spaceshipPNG);
+			//spaceHouse = new SpaceHouse(116, 50 -30);
+			for each (var house:SpaceHouse in level.houses)
+			{
+				spaceHouses.add(house);
+			}
+			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			add(level);
-			add(spaceHouse);
+			add(spaceHouses);
 			add(spaceShip);
 			add(player);
 			//add(floor);
@@ -57,7 +61,7 @@ package
 			
 			FlxG.collide(player, level);
 			
-			FlxG.overlap(player, spaceHouse, foodDelivered);
+			FlxG.overlap(player, spaceHouses, foodDelivered);
 			
 			if (foodNum == 0)
 			{

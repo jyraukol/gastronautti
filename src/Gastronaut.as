@@ -28,6 +28,8 @@ package
 			super(FlxG.width / 2, FlxG.height - 50);
 			loadGraphic(playerPNG, true, true, 16, 16);
 			
+			width = 10;
+			
 			addAnimation("idle", [0], 0, false);
 			addAnimation("walk", [0, 1, 0, 2], 5, true);
 			
@@ -73,6 +75,10 @@ package
 			if (FlxG.keys.UP)
 			{				
 				fuel -= FUELCONSUMPTION;
+				if (fuel < 0)
+				{
+					fuel = 0;
+				}
 			}
 			
 			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
