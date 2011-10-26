@@ -19,7 +19,6 @@ package
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
 		private var starField:StarField;
-		
 		private var level:Level1;
 		
 		override public function create():void
@@ -32,28 +31,20 @@ package
 			Registry.player = player;
 			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
-			floor = new FlxTileblock(0, 208, 320, 32);
-			floor.makeGraphic(320, 32, 0xff689c16);
-			
-			platform = new FlxTileblock(100, 50, 64, 32);
-			platform.makeGraphic(64, 32, 0xff689c16);
-			
 			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
 			
-			//spaceHouse = new SpaceHouse(116, 50 -30);
 			for each (var house:SpaceHouse in level.houses)
 			{
 				spaceHouses.add(house);
 			}
+			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			//add(new FlxSprite(0, 0, starBackground));
 			add(new StarField(0, 2));
 			add(level);
 			add(spaceHouses);
 			add(spaceShip);
-			add(player);
-			//add(floor);
-			//add(platform);			
+			add(player);		
 			add(fuelBar);
 			add(foodText);
 			
