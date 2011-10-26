@@ -18,12 +18,13 @@ package
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
+		private var starField:StarField;
 		
 		private var level:Level1;
 		
 		override public function create():void
 		{
-			FlxG.bgColor = 0xff144954;
+			FlxG.bgColor = 0xff000000;
 			
 			level = new Level1;
 			
@@ -45,7 +46,8 @@ package
 				spaceHouses.add(house);
 			}
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
-			add(new FlxSprite(0, 0, starBackground));
+			//add(new FlxSprite(0, 0, starBackground));
+			add(new StarField(0, 2));
 			add(level);
 			add(spaceHouses);
 			add(spaceShip);
