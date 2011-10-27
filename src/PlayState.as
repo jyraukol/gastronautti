@@ -26,10 +26,8 @@ package
 			FlxG.bgColor = 0xff000000;
 			
 			level = new Level1;
+						
 			
-			player = new Gastronaut();
-			Registry.player = player;
-			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
 			for each (var house:SpaceHouse in level.houses)
 			{
@@ -41,6 +39,9 @@ package
 			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
+			player = new Gastronaut(spaceShip.x, spaceShip.y);
+			Registry.player = player;
+			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			//add(new FlxSprite(0, 0, starBackground));
 			add(new StarField(0, 2));
 			add(level);

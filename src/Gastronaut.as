@@ -23,9 +23,9 @@ package
 		private var FUELCONSUMPTION:Number = 0.5;
 		private var outOfFuel:Boolean = false;
 		
-		public function Gastronaut() 
+		public function Gastronaut(x:int, y:int) 
 		{
-			super(FlxG.width / 2, FlxG.height - 50);
+			super(x, y);
 			loadGraphic(playerPNG, true, true, 16, 16);
 			
 			width = 9;
