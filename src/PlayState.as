@@ -15,6 +15,7 @@ package
 		
 		private var foodText:FlxText;
 		private var foodNum:int;
+		private var thankText:FlxText;
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
@@ -51,6 +52,11 @@ package
 			add(fuelBar);
 			add(foodText);
 			
+			thankText = new FlxText(0, 0, 65, "Thanks!");
+			resetThankText();
+			thankText.setFormat(null, 8, 0xFFFFFFFF);
+			thankText.visible = false;
+			add(thankText);
 		}
 		
 		override public function update():void
@@ -65,6 +71,25 @@ package
 			{
 				FlxG.overlap(player, spaceShip, levelClear);
 			}
+			
+			if (thankText.visible)
+			{
+				thankText.alpha -= 0.01;
+				if (thankText.alpha <= 0)
+				{
+					resetThankText();
+				}
+			}
+		}
+		
+		private function resetThankText():void
+		{
+			thankText.visible = false;
+			thankText.alpha = 1;
+			var random:Number = Math.floor(Math.random() * (Registry.thanksText.length - 1)) + 1;
+			trace(random);
+			trace(Registry.thanksText[random]);
+			thankText.text = Registry.thanksText[random];
 		}
 		
 		private function foodDelivered(player:FlxObject, houseObject:FlxObject):void
@@ -75,6 +100,9 @@ package
 				foodNum -= 1;
 				foodText.text = "Food " + foodNum;
 				house.foodDeliveredHere = true;
+				thankText.x = house.x;
+				thankText.y = house.y - 10;
+				thankText.visible = true;
 			}
 			
 		}

@@ -1,6 +1,7 @@
 package  
 {
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxText;
 	
 	/**
 	 * ...
@@ -11,13 +12,19 @@ package
 		[Embed(source = "../assets/graphics/spacehouse.png")] private var housePNG:Class;
 		public var foodDeliveredHere:Boolean = false;
 		
+		
 		public function SpaceHouse(x:int, y:int) 
 		{
 			super(x, y);
-			loadGraphic(housePNG);
+			loadGraphic(housePNG);	
+			
 			
 		}
 		
+		public function thankYou():void
+		{
+			
+		}
 	}
 
 }
