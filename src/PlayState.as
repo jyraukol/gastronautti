@@ -14,7 +14,7 @@ package
 		private var fuelBar:FlxBar;
 		
 		private var foodText:FlxText;
-		private var foodNum:int = 1;
+		private var foodNum:int;
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
@@ -31,12 +31,14 @@ package
 			Registry.player = player;
 			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
-			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
-			
 			for each (var house:SpaceHouse in level.houses)
 			{
 				spaceHouses.add(house);
 			}
+			
+			foodNum = spaceHouses.length;
+			
+			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			//add(new FlxSprite(0, 0, starBackground));
