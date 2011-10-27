@@ -87,9 +87,7 @@ package
 			thankText.visible = false;
 			thankText.alpha = 1;
 
-			var random:Number = Math.floor(Math.random() * Registry.thanksText.length);
-			trace(random);
-			trace(Registry.thanksText[random]);
+			var random:Number = Math.floor(Math.random() * Registry.thanksText.length);			
 			thankText.text = Registry.thanksText[random];
 		}
 		
