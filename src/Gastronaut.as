@@ -20,7 +20,7 @@ package
 		private var YSPEED:int = 100;		
 		private var MAXYSPEED:int = 200;
 		
-		private var FUELCONSUMPTION:Number = 0.5;
+		private var FUELCONSUMPTION:Number = 0.2;
 		private var outOfFuel:Boolean = false;
 		
 		public function Gastronaut(x:int, y:int) 

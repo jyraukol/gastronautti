@@ -52,7 +52,7 @@ package
 			add(fuelBar);
 			add(foodText);
 			
-			thankText = new FlxText(0, 0, 65, "Thanks!");
+			thankText = new FlxText(0, 0, 75, "");
 			resetThankText();
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
@@ -86,7 +86,8 @@ package
 		{
 			thankText.visible = false;
 			thankText.alpha = 1;
-			var random:Number = Math.floor(Math.random() * (Registry.thanksText.length - 1)) + 1;
+
+			var random:Number = Math.floor(Math.random() * Registry.thanksText.length);
 			trace(random);
 			trace(Registry.thanksText[random]);
 			thankText.text = Registry.thanksText[random];
