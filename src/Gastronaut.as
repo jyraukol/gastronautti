@@ -57,7 +57,11 @@ package
 				{
 					facing = LEFT;
 				}
-				play("walk");
+				if (velocity.y == 0)
+				{
+					play("walk");
+				}
+				
 			} 
 			
 			if (FlxG.keys.RIGHT )
@@ -69,7 +73,10 @@ package
 				{
 					facing = RIGHT;
 				}	
-				play("walk");
+				if (velocity.y == 0)
+				{
+					play("walk");
+				}
 			}
 			
 			if (FlxG.keys.UP)
@@ -79,6 +86,7 @@ package
 				{
 					fuel = 0;
 				}
+				play("idle");
 			}
 			
 			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
