@@ -1,6 +1,8 @@
 package
 {
 	import org.flixel.*;
+	import org.flixel.plugin.photonstorm.FX.*;	
+	import org.flixel.plugin.photonstorm.*;
 	import org.flixel.system.FlxTile;
 	import org.flixel.plugin.photonstorm.FlxBar;
  
@@ -19,8 +21,9 @@ package
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
-		private var starField:StarField;
+		private var starField:FlxSprite;
 		private var level:Level1;
+		public var stars:StarfieldFX;
 		
 		override public function create():void
 		{
@@ -44,13 +47,22 @@ package
 			Registry.player = player;
 			fuelBar = new FlxBar(16, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
+			if (FlxG.getPlugin(FlxSpecialFX) == null)
+			{
+				FlxG.addPlugin(new FlxSpecialFX);
+			}
+			
+			stars = FlxSpecialFX.starfield();			
+			starField = stars.create(0, 0, FlxG.width, FlxG.height, 50, 1, 20);
+			
+			add(starField);
+			
 			// Add a bar for hud background
 			var bar:FlxSprite = new FlxSprite(0, 0);
 			bar.makeGraphic(FlxG.width, 15, 0xFFC0C0C0);
 			bar.alpha = 1;
 			add(bar);
 			
-			add(new StarField(0, 2));
 			add(level);
 			add(spaceHouses);
 			add(spaceShip);
@@ -114,6 +126,7 @@ package
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
 		{
+			remove(starField);
 			FlxG.switchState(new ScoreState);
 		}
 	}
