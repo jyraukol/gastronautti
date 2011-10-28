@@ -33,7 +33,7 @@ package
 				str.makeGraphic(2, 2, 0x00ffffff | transp);
 				str.velocity.x = cosang * vel;
 				str.velocity.y = sinang * vel;
-				add(str);
+				add(str);				
 			}
 		}
  

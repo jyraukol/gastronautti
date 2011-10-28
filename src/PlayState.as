@@ -37,13 +37,19 @@ package
 			
 			foodNum = spaceHouses.length;
 			
-			foodText = new FlxText(260, 10, 60, "Food " + foodNum);
+			foodText = new FlxText(260, 2, 60, "Food " + foodNum);
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			player = new Gastronaut(spaceShip.x, spaceShip.y);
 			Registry.player = player;
-			fuelBar = new FlxBar(16, 10, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
-			//add(new FlxSprite(0, 0, starBackground));
+			fuelBar = new FlxBar(16, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
+			
+			// Add a bar for hud background
+			var bar:FlxSprite = new FlxSprite(0, 0);
+			bar.makeGraphic(FlxG.width, 15, 0xFFC0C0C0);
+			bar.alpha = 1;
+			add(bar);
+			
 			add(new StarField(0, 2));
 			add(level);
 			add(spaceHouses);
