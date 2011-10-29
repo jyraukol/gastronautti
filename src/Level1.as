@@ -2,6 +2,8 @@ package
 {
 	import flash.geom.Point;
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxObject;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxTilemap;
 	import flash.utils.ByteArray;
@@ -26,11 +28,27 @@ package
 			super();
 			
 			map = new FlxTilemap;			
+			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 11, 0, 0, 1, 1); 
 			
 			add(map);
 			houses = new Vector.<SpaceHouse>();
 			loadSprites();
+			
+			map.setTileProperties(4, FlxObject.NONE);
+			map.setTileProperties(5, FlxObject.NONE);
+			map.setTileProperties(6, FlxObject.UP);
+			
+			for each (var coords:FlxPoint in map.getTileCoords(4))
+			{
+				var sprite:FlxSprite = new FlxSprite(coords.x, coords.y);
+				sprite.alpha = 0;
+				sprite.offset.x = 3;
+				sprite.immovable = true;
+				add(sprite);
+				
+			}
+			
 		}
 		
 		private function loadSprites():void

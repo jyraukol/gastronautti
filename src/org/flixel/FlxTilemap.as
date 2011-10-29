@@ -91,7 +91,7 @@ package org.flixel
 		/**
 		 * Internal collection of tile objects, one for each type of tile in the map (NOTE one for every single tile in the whole map).
 		 */
-		protected var _tileObjects:Array;
+		public var _tileObjects:Array;
 		
 		/**
 		 * Internal, used for rendering the debug bounding box display.
@@ -1187,7 +1187,7 @@ package org.flixel
 				tile = _tileObjects[i++] as FlxTile;
 				tile.allowCollisions = AllowCollisions;
 				tile.callback = Callback;
-				tile.filter = CallbackFilter;
+				tile.filter = CallbackFilter;			
 			}
 		}
 		

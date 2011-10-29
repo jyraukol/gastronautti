@@ -73,8 +73,8 @@
 	</tilesAbove>
 	<objects>
 		<SpaceShip x="256" y="196"/>
-		<SpaceHouse x="21" y="66"/>
-		<SpaceHouse x="21" y="193"/>
-		<SpaceHouse x="209" y="2"/>
+		<SpaceHouse x="100" y="45"/>
+		<SpaceHouse x="21" y="200"/>
+		<SpaceHouse x="230" y="9"/>
 	</objects>
 </level>

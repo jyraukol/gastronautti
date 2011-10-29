@@ -41,6 +41,7 @@ package
 			foodNum = spaceHouses.length;
 			
 			foodText = new FlxText(260, 2, 60, "Food " + foodNum);
+			foodText.setFormat(null, 8, 0xff000000);
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			player = new Gastronaut(spaceShip.x, spaceShip.y);
