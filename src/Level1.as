@@ -12,8 +12,8 @@ package
 	 */
 	public class Level1 extends FlxGroup 
 	{
-		[Embed(source = "../assets/maps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public var mapCSV:Class;
-		[Embed(source = "../assets/graphics/tilesTest.png")] public var mapTilesPNG:Class;
+		[Embed(source="../assets/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public var mapCSV:Class;
+		[Embed(source = "../assets/graphics/block2.png")] public var mapTilesPNG:Class;
 		
 		[Embed(source="../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]private static const levelDataXML:Class;
 		public var LevelData:XML;
@@ -26,7 +26,7 @@ package
 			super();
 			
 			map = new FlxTilemap;			
-			map.loadMap(new mapCSV, mapTilesPNG, 16, 16, 0, 0, 1, 1); 
+			map.loadMap(new mapCSV, mapTilesPNG, 12, 11, 0, 0, 1, 1); 
 			
 			add(map);
 			houses = new Vector.<SpaceHouse>();
