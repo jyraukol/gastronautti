@@ -5,11 +5,13 @@ package
 	import org.flixel.plugin.photonstorm.*;
 	import org.flixel.system.FlxTile;
 	import org.flixel.plugin.photonstorm.FlxBar;
- 
+	import org.flixel.FlxSound;
+	
 	public class PlayState extends FlxState
 	{
 		[Embed(source = "../assets/graphics/spaceship.png")] private var spaceshipPNG:Class;
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
+		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
 		private var platform:FlxTileblock;
@@ -76,6 +78,7 @@ package
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
 			add(thankText);
+			FlxG.playMusic(bgmusic, 1);
 		}
 		
 		override public function update():void
