@@ -78,7 +78,7 @@ package
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
 			add(thankText);
-			FlxG.playMusic(bgmusic, 1);
+			//FlxG.playMusic(bgmusic, 1);
 		}
 		
 		override public function update():void

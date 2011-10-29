@@ -34,6 +34,7 @@ package
 			offset.x = 3;
 			addAnimation("idle", [0], 0, false);
 			addAnimation("walk", [0, 1, 0, 2], 5, true);
+			addAnimation("fly", [3], 0, false);
 			
 			if (FlxG.getPlugin(FlxControl) == null)
 			{
@@ -88,7 +89,10 @@ package
 				{
 					fuel = 0;
 				}
-				play("idle");
+				else {
+					play("fly");
+				}
+				
 			}
 			
 			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
