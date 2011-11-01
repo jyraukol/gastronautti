@@ -16,6 +16,7 @@ package
 		private var player:Gastronaut;
 		private var platform:FlxTileblock;
 		private var fuelBar:FlxBar;
+		private var bar:FlxSprite;
 		
 		private var foodText:FlxText;
 		private var foodNum:int;
@@ -61,9 +62,10 @@ package
 			add(starField);
 			
 			// Add a bar for hud background
-			var bar:FlxSprite = new FlxSprite(0, 0);
+			bar = new FlxSprite(0, 0);
 			bar.makeGraphic(FlxG.width, 15, 0xFFC0C0C0);
 			bar.alpha = 1;
+			bar.immovable = true;
 			add(bar);
 			Registry.topBarHeight = bar.height;
 			
@@ -79,7 +81,7 @@ package
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
 			add(thankText);
-			FlxG.playMusic(bgmusic, 1);
+			//FlxG.playMusic(bgmusic, 1);
 		}
 		
 		override public function update():void
@@ -87,7 +89,7 @@ package
 			super.update();
 			
 			FlxG.collide(player, level);
-			
+			FlxG.collide(player, bar);
 			FlxG.overlap(player, spaceHouses, foodDelivered);
 			
 			if (foodNum == 0)

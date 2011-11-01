@@ -29,9 +29,9 @@ package
 			add(fuelText);
 			
 			
-			for (var i:int = 1; i < Registry.player.fuel / 25 + 1; i++)
+			for (var i:int = 0; i < Registry.player.fuel / 25; i++)
 			{
-				add(new SpinningStar((FlxG.width / 2 - 16 * Registry.player.fuel / 25 + 1) + i * 16, 100));
+				add(new SpinningStar(FlxG.width / 2 - 16  + i * 16, 100));
 			}
 			
 			add(scoreText);
