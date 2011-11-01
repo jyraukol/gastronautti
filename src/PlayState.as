@@ -65,6 +65,7 @@ package
 			bar.makeGraphic(FlxG.width, 15, 0xFFC0C0C0);
 			bar.alpha = 1;
 			add(bar);
+			Registry.topBarHeight = bar.height;
 			
 			add(level);
 			add(spaceHouses);
@@ -78,7 +79,7 @@ package
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
 			add(thankText);
-			//FlxG.playMusic(bgmusic, 1);
+			FlxG.playMusic(bgmusic, 1);
 		}
 		
 		override public function update():void

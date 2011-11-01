@@ -124,6 +124,11 @@ package
 				x = FlxG.width - width;
 				velocity.x = 0;
 			}
+			
+			if (y < 0 + Registry.topBarHeight)
+			{
+				y = 0 + Registry.topBarHeight;
+			}
 		}
 		
 	}
