@@ -105,6 +105,12 @@ package
 					resetThankText();
 				}
 			}
+			
+			if (FlxG.keys.R)
+			{
+				remove(starField);
+				FlxG.switchState(new PlayState);
+			}
 		}
 		
 		private function resetThankText():void
