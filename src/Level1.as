@@ -14,19 +14,17 @@ package
 	 */
 	public class Level1 extends FlxGroup 
 	{
-		[Embed(source="../assets/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public var mapCSV:Class;
-		[Embed(source = "../assets/graphics/block2.png")] public var mapTilesPNG:Class;
-		
-		[Embed(source="../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]private static const levelDataXML:Class;
+		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;
+		private var levelDataXML:Class;
 		public var LevelData:XML;
 		public var map:FlxTilemap;
 		public var houses:Vector.<SpaceHouse>;
 		public var spaceShipPosition:Point;
 		
-		public function Level1() 
+		public function Level1(mapCSV:Class, levelDataXML:Class) 
 		{
 			super();
-			
+			this.levelDataXML = levelDataXML;
 			map = new FlxTilemap;			
 			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 11, 0, 0, 1, 1); 

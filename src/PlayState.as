@@ -32,7 +32,7 @@ package
 		{
 			FlxG.bgColor = 0xff000000;
 			
-			level = new Level1;
+			level = new Level1(Registry.mapCSV, Registry.levelDataXML);
 						
 			
 			
