@@ -123,7 +123,7 @@ package
 			{
 				foodNum -= 1;
 				foodText.text = "Food " + foodNum;
-				house.foodDeliveredHere = true;
+				house.thankYou();
 				thankText.x = house.x;
 				thankText.y = house.y - 10;
 				thankText.visible = true;

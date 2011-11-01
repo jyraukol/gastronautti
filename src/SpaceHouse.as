@@ -16,14 +16,19 @@ package
 		public function SpaceHouse(x:int, y:int) 
 		{
 			super(x, y);
-			loadGraphic(housePNG);	
+			loadGraphic(housePNG, true, false,32, 32);	
 			
+			addAnimation("open", [0], 0, false);
+			addAnimation("closed", [1], 0, false);
+			
+			play("open");
 			
 		}
 		
 		public function thankYou():void
 		{
-			
+			foodDeliveredHere = true;
+			play("closed");
 		}
 	}
 

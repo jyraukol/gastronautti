@@ -124,7 +124,6 @@ package
 				x = FlxG.width - width;
 				velocity.x = 0;
 			}
-
 		}
 		
 	}
