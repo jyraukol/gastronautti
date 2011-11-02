@@ -75,6 +75,6 @@
 		<SpaceShip x="256" y="196"/>
 		<SpaceHouse x="100" y="45"/>
 		<SpaceHouse x="21" y="200"/>
-		<SpaceHouse x="230" y="9"/>
+		<SpaceHouse x="230" y="35"/>
 	</objects>
 </level>

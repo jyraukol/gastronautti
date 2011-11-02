@@ -56,7 +56,7 @@ package
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			player = new Gastronaut(spaceShip.x, spaceShip.y);
 			Registry.player = player;
-			fuelBar = new FlxBar(16, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
+			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
 			if (FlxG.getPlugin(FlxSpecialFX) == null)
 			{
@@ -81,6 +81,9 @@ package
 			add(spaceShip);
 			add(player);		
 			add(fuelBar);
+			var fuelText:FlxText = new FlxText(2, 2, 50, "Fuel:");
+			fuelText.setFormat(null, 8, 0xff000000);
+			add(fuelText);
 			add(foodText);
 			
 			thankText = new FlxText(0, 0, 75, "");
