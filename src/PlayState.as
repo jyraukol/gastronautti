@@ -69,6 +69,7 @@ package
 			starField = stars.create(0, 0, FlxG.width, FlxG.height, 50, 1, 20);
 			
 			add(starField);
+			add(level);
 			
 			// Add a bar for hud background
 			bar = new FlxSprite(0, 0);
@@ -78,7 +79,7 @@ package
 			add(bar);
 			Registry.topBarHeight = bar.height;
 			
-			add(level);
+			
 			add(spaceHouses);
 			add(spaceShip);
 			add(player);
@@ -154,9 +155,15 @@ package
 			
 		}
 		
-		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan)
+		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
 		{
 			player.fuel += 20;
+			
+			if (player.fuel > 100)
+			{
+				player.fuel = 100;
+			}
+			
 			fuelcan.kill();
 		}
 		
