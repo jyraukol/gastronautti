@@ -25,7 +25,7 @@ package
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
 		private var starField:FlxSprite;
-		private var fuelCan:FuelCan;
+		private var fuelCans:FlxGroup = new FlxGroup();
 		private var fuelPickupText:FlxText;
 		
 		private var level:Level1;
@@ -49,6 +49,11 @@ package
 			for each (var house:SpaceHouse in level.houses)
 			{
 				spaceHouses.add(house);
+			}
+			
+			for each (var can:FuelCan in level.fuelCans)
+			{
+				fuelCans.add(can);
 			}
 			
 			foodNum = spaceHouses.length;
@@ -84,10 +89,8 @@ package
 			add(spaceHouses);
 			add(spaceShip);
 			add(player);
-			fuelCan = new FuelCan();
-			fuelCan.x = 50;
-			fuelCan.y = 50;
-			add(fuelCan);
+			
+			add(fuelCans);
 			add(fuelBar);
 			var fuelText:FlxText = new FlxText(2, 2, 50, "Fuel:");
 			fuelText.setFormat(null, 8, 0xff000000);
@@ -114,7 +117,7 @@ package
 			FlxG.collide(player, level);
 			FlxG.collide(player, bar);
 			FlxG.overlap(player, spaceHouses, foodDelivered);
-			FlxG.overlap(player, fuelCan, fuelPickUp);
+			FlxG.overlap(player, fuelCans, fuelPickUp);
 			
 			if (foodNum == 0)
 			{

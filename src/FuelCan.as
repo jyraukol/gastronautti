@@ -10,9 +10,13 @@ package
 	{
 		[Embed(source = "../assets/graphics/fuelCan.png")] private var graphic:Class;
 		
-		public function FuelCan() 
-		{
+		public function FuelCan(x:int, y:int) 
+		{			
+			super(x, y -4);
 			loadGraphic(graphic);
+			height = 16
+			centerOffsets();
+		
 		}
 		
 	}

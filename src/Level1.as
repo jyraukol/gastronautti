@@ -19,6 +19,7 @@ package
 		public var LevelData:XML;
 		public var map:FlxTilemap;
 		public var houses:Vector.<SpaceHouse>;
+		public var fuelCans:Vector.<FuelCan>;
 		public var spaceShipPosition:Point;
 		
 		public function Level1(mapCSV:Class, levelDataXML:Class) 
@@ -31,6 +32,7 @@ package
 			
 			add(map);
 			houses = new Vector.<SpaceHouse>();
+			fuelCans = new Vector.<FuelCan>();
 			loadSprites();
 			
 			map.setTileProperties(4, FlxObject.NONE);
@@ -67,6 +69,14 @@ package
 			{
 				
 				houses.push(new SpaceHouse(int(dataElement.@x), int(dataElement.@y)));
+			}
+			
+			dataList = LevelData.objects.FuelCan;
+			
+			for each (dataElement in dataList)
+			{
+				
+				fuelCans.push(new FuelCan(int(dataElement.@x), int(dataElement.@y)));
 			}
 			
 			dataList = LevelData.objects.SpaceShip;
