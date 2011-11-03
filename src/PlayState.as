@@ -11,7 +11,7 @@ package
 	{
 		[Embed(source = "../assets/graphics/spaceship.png")] private var spaceshipPNG:Class;
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
-		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
+		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
 		private var platform:FlxTileblock;
