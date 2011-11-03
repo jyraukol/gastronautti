@@ -25,6 +25,8 @@ package
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
 		private var starField:FlxSprite;
+		private var fuelCan:FuelCan;
+		
 		private var level:Level1;
 		public var stars:StarfieldFX;
 		
@@ -79,7 +81,11 @@ package
 			add(level);
 			add(spaceHouses);
 			add(spaceShip);
-			add(player);		
+			add(player);
+			fuelCan = new FuelCan();
+			fuelCan.x = 50;
+			fuelCan.y = 50;
+			add(fuelCan);
 			add(fuelBar);
 			var fuelText:FlxText = new FlxText(2, 2, 50, "Fuel:");
 			fuelText.setFormat(null, 8, 0xff000000);
@@ -101,6 +107,7 @@ package
 			FlxG.collide(player, level);
 			FlxG.collide(player, bar);
 			FlxG.overlap(player, spaceHouses, foodDelivered);
+			FlxG.overlap(player, fuelCan, fuelPickUp);
 			
 			if (foodNum == 0)
 			{
@@ -145,6 +152,12 @@ package
 				thankText.visible = true;
 			}
 			
+		}
+		
+		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan)
+		{
+			player.fuel += 20;
+			fuelcan.kill();
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void

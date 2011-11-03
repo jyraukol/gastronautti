@@ -65,7 +65,7 @@ package
 					play("walk");
 				}
 				
-			} 
+			} else
 			
 			if (FlxG.keys.RIGHT )
 			{					
