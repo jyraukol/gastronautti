@@ -26,6 +26,7 @@ package
 		private var spaceShip:FlxSprite;
 		private var starField:FlxSprite;
 		private var fuelCan:FuelCan;
+		private var fuelPickupText:FlxText;
 		
 		private var level:Level1;
 		public var stars:StarfieldFX;
@@ -93,6 +94,11 @@ package
 			add(fuelText);
 			add(foodText);
 			
+			fuelPickupText = new FlxText(0, 0, 75, "+25 fuel!");
+			fuelPickupText.setFormat(null, 8, 0xFFFFFFFF);
+			fuelPickupText.visible = false;
+			add(fuelPickupText);
+			
 			thankText = new FlxText(0, 0, 75, "");
 			resetThankText();
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
@@ -121,6 +127,16 @@ package
 				if (thankText.alpha <= 0)
 				{
 					resetThankText();
+				}
+			}
+			
+			if (fuelPickupText.visible)
+			{
+				fuelPickupText.alpha -= 0.01;
+				if (fuelPickupText.alpha <= 0)
+				{
+					fuelPickupText.visible = false;
+					fuelPickupText.alpha = 1;
 				}
 			}
 			
@@ -157,8 +173,12 @@ package
 		
 		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
 		{
-			player.fuel += 20;
+			player.fuel += 25;
 			
+			fuelPickupText.x = fuelcan.x;
+			fuelPickupText.y = fuelcan.y -10;
+			
+			fuelPickupText.visible = true;
 			if (player.fuel > 100)
 			{
 				player.fuel = 100;
