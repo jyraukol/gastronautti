@@ -34,7 +34,7 @@ package
 			offset.x = 3;
 			addAnimation("idle", [0], 0, false);
 			addAnimation("walk", [0, 1, 0, 2], 5, true);
-			addAnimation("fly", [3, 4], 2, true);
+			addAnimation("fly", [3, 4, 5, 4, 3], 10, true);
 			
 			if (FlxG.getPlugin(FlxControl) == null)
 			{
