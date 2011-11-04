@@ -15,17 +15,44 @@ package
 	public class Level1 extends FlxGroup 
 	{
 		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;
+		[Embed(source="../assets/maps/mapCSV_Level3_Map1.csv", mimeType="application/octet-stream")] public static var map2CSV:Class;		
+		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level2DataXML:Class;
+		[Embed(source="../assets/maps/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public static var map1CSV:Class;		
+		[Embed(source = "../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]public static const level1DataXML:Class;
+		
 		private var levelDataXML:Class;
+		private var mapCSV:Class;
+		
 		public var LevelData:XML;
 		public var map:FlxTilemap;
 		public var houses:Vector.<SpaceHouse>;
 		public var fuelCans:Vector.<FuelCan>;
 		public var spaceShipPosition:Point;
 		
-		public function Level1(mapCSV:Class, levelDataXML:Class) 
+		public function Level1() 
 		{
 			super();
-			this.levelDataXML = levelDataXML;
+			
+			if (Registry.levelIndex == 1)
+			{
+				//level = new Level1(Registry.map1CSV, Registry.level1DataXML);									
+				this.levelDataXML = level1DataXML;
+				this.mapCSV = map1CSV;
+				//Registry.levelIndex = 2;
+			} else if (Registry.levelIndex == 2)
+			{
+				//level = new Level1(Registry.map2CSV, Registry.level2DataXML);									
+				//Registry.levelIndex = 1;
+				this.levelDataXML = level2DataXML;
+				this.mapCSV = map2CSV;
+			}else
+			{
+				// Load the first level for now
+				this.levelDataXML = level1DataXML;
+				this.mapCSV = map1CSV;
+			}
+			
+			
 			map = new FlxTilemap;			
 			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 11, 0, 0, 1, 1); 

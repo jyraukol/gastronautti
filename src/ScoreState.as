@@ -48,12 +48,14 @@ package
 			if (FlxG.keys.ENTER)
 			{
 				FlxG.fade(0xFFFFFFFF, 1.5, switchState);
+				
 			}
 			super.update();
 		}
 		
 		private function switchState():void
 		{
+			Registry.levelIndex++;
 			FlxG.switchState(new PlayState);
 		}
 	}

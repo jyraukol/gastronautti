@@ -35,15 +35,7 @@ package
 		{
 			FlxG.bgColor = 0xff000000;
 			
-			if (Registry.levelIndex == 1)
-			{
-				level = new Level1(Registry.map1CSV, Registry.level1DataXML);									
-				Registry.levelIndex = 2;
-			} else if (Registry.levelIndex == 2)
-			{
-				level = new Level1(Registry.map2CSV, Registry.level2DataXML);									
-				Registry.levelIndex = 1;
-			}
+			level = new Level1();
 			
 			
 			for each (var house:SpaceHouse in level.houses)
