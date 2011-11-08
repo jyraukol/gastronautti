@@ -19,6 +19,8 @@ package
 		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level2DataXML:Class;
 		[Embed(source="../assets/maps/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public static var map1CSV:Class;		
 		[Embed(source = "../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]public static const level1DataXML:Class;
+		[Embed(source="../assets/maps/mapCSV_Group1_level2.csv", mimeType="application/octet-stream")] public static var map3CSV:Class;		
+		[Embed(source = "../assets/maps/Level_level2.xml", mimeType = "application/octet-stream")]public static const level3DataXML:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
@@ -44,8 +46,15 @@ package
 				//level = new Level1(Registry.map2CSV, Registry.level2DataXML);									
 				//Registry.levelIndex = 1;
 				this.levelDataXML = level2DataXML;
-				this.mapCSV = map2CSV;
-			}else
+				this.mapCSV = map2CSV;				
+			} else if (Registry.levelIndex == 3)
+			{
+				//level = new Level1(Registry.map2CSV, Registry.level2DataXML);									
+				//Registry.levelIndex = 1;
+				this.levelDataXML = level3DataXML;
+				this.mapCSV = map3CSV;
+			}
+			else
 			{
 				// Load the first level for now
 				this.levelDataXML = level1DataXML;
