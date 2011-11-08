@@ -28,8 +28,9 @@ package
 			fuelText.alignment = "center";
 			add(fuelText);
 			
+			var starsAchieved:uint = Registry.player.fuel / 25 -1;
 			
-			for (var i:int = 0; i < Registry.player.fuel / 25 -1; i++)
+			for (var i:int = 0; i < starsAchieved; i++)
 			{
 				add(new SpinningStar(FlxG.width / 2 - 16  + i * 16, 100));
 			}
@@ -39,6 +40,8 @@ package
 			var instructions:FlxText = new FlxText(0, fuelText.y + 80, FlxG.width, "Press Enter to continue");
 			instructions.alignment = "center";
 			add(instructions);
+			
+			Registry.levelScores[Registry.levelIndex] = starsAchieved;
 			
 			super.create();		
 		}

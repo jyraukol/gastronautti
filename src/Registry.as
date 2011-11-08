@@ -14,6 +14,7 @@ package
 		public static const thanksText:Array = new Array("Thanks!", "OMNOMNOM!", "Finally!", "Sweet!", "Pizza!");
 		public static var topBarHeight:int;
 		public static var levelIndex:uint = 1;
+		public static var levelScores:Array = new Array();
 				
 		public function Registry() 
 		{
