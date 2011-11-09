@@ -28,7 +28,7 @@ package
 			fuelText.alignment = "center";
 			add(fuelText);
 			
-			var starsAchieved:uint = Registry.player.fuel / 25 -1;
+			var starsAchieved:int = Registry.player.fuel / 25;
 			
 			for (var i:int = 0; i < starsAchieved; i++)
 			{
@@ -40,7 +40,7 @@ package
 			var instructions:FlxText = new FlxText(0, fuelText.y + 80, FlxG.width, "Press Enter to continue");
 			instructions.alignment = "center";
 			add(instructions);
-			
+			trace(starsAchieved);
 			Registry.levelScores[Registry.levelIndex] = starsAchieved;
 			
 			super.create();		
@@ -58,8 +58,16 @@ package
 		
 		private function switchState():void
 		{
-			Registry.levelIndex++;
-			FlxG.switchState(new PlayState);
+			
+			if (Registry.levelIndex == Registry.levelNumber)
+			{
+				FlxG.switchState(new GameOverState);
+			} else 
+			{
+				Registry.levelIndex++;
+				FlxG.switchState(new PlayState);
+			}
+			
 		}
 	}
 
