@@ -85,6 +85,8 @@ package
 				
 			}
 			
+			//add(new FlxSprite(50, 50, satellite));
+			
 		}
 		
 		private function loadSprites():void
