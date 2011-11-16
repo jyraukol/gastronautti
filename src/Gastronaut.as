@@ -40,6 +40,7 @@ package
 			{
 				FlxG.addPlugin(new FlxControl);
 			}
+			
 			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES);
 			FlxControl.player1.setCursorControl(true, false, true, true);
 			FlxControl.player1.setGravity(0, 75);
@@ -53,9 +54,11 @@ package
 			
 			if (FlxG.keys.LEFT )
 			{				
+				
 				if (FlxG.keys.RIGHT)
 				{
 					velocity.x = 0;
+					play("idle");
 				} else
 				{
 					facing = LEFT;
@@ -69,9 +72,10 @@ package
 			
 			if (FlxG.keys.RIGHT )
 			{					
-				if (FlxG.keys.LEFT)
+				if (FlxG.keys.LEFT )
 				{
 					velocity.x = 0;
+					play("idle");
 				} else
 				{
 					facing = RIGHT;
@@ -95,7 +99,14 @@ package
 				
 			}
 			
-			if (touching == FlxObject.FLOOR && !FlxG.keys.LEFT && !FlxG.keys.RIGHT)
+			
+			if (justTouched(FlxObject.FLOOR))
+			{
+				velocity.x = 0;
+				play("idle");
+			}
+			
+			if (touching == FlxObject.FLOOR && (FlxG.keys.justReleased("LEFT") || FlxG.keys.justReleased("LEFT")))
 			{
 				velocity.x = 0;
 				play("idle");
