@@ -30,10 +30,7 @@ package
 			super(x, y);
 			loadGraphic(playerPNG, true, true, 16, 16);
 			
-			width = 9;
-			height = 13;
-			offset.y = -3;
-			offset.x = 3;
+			height = 20;
 			addAnimation("idle", [0], 0, false);
 			addAnimation("walk", [0, 1, 0, 2], 5, true);
 			addAnimation("fly", [3, 4, 5, 4, 3], 10, true);
@@ -157,7 +154,9 @@ package
 				velocity.x = 0;
 			}
 			
-			trace(velocity.x);
+			if (isTouching(WALL)) {
+				play("idle");
+			}
 		}
 		
 	}
