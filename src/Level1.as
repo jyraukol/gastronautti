@@ -16,11 +16,11 @@ package
 	{
 		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;
 		[Embed(source="../assets/maps/mapCSV_Level3_Map1.csv", mimeType="application/octet-stream")] public static var map2CSV:Class;		
-		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level2DataXML:Class;
+		[Embed(source = "../assets/maps/Level_level2.xml", mimeType = "application/octet-stream")]public static const level2DataXML:Class;
 		[Embed(source="../assets/maps/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public static var map1CSV:Class;		
 		[Embed(source = "../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]public static const level1DataXML:Class;
-		[Embed(source="../assets/maps/mapCSV_Group1_level2.csv", mimeType="application/octet-stream")] public static var map3CSV:Class;		
-		[Embed(source = "../assets/maps/Level_level2.xml", mimeType = "application/octet-stream")]public static const level3DataXML:Class;
+		[Embed(source="../assets/maps/level3.csv", mimeType="application/octet-stream")] public static var map3CSV:Class;		
+		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level3DataXML:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;

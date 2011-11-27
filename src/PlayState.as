@@ -140,6 +140,11 @@ package
 				remove(starField);
 				FlxG.switchState(new PlayState);
 			}
+			
+			if (FlxG.keys.N)
+			{
+				levelClear(player, spaceShip);
+			}
 		}
 		
 		private function resetThankText():void
