@@ -15,6 +15,7 @@ package
 		[Embed(source = "../assets/graphics/gastronautAnim.png")] private var playerPNG:Class;
 		public var fuel:Number = 100.0;
 		private var XSPEED:int = 50;
+		private var XSPEEDONGROUND:int = 25;
 		private var MAXXSPEED:int = 50;
 		
 		private var YSPEED:int = 100;		
@@ -22,6 +23,7 @@ package
 		
 		private var FUELCONSUMPTION:Number = 0.2;
 		private var outOfFuel:Boolean = false;
+		private var flying:Boolean = false;
 		
 		public function Gastronaut(x:int, y:int) 
 		{
@@ -52,16 +54,26 @@ package
 		{
 			super.update();
 			
+			if (!flying)
+			{
+				velocity.x = 0;
+			}
+			
 			if (FlxG.keys.LEFT )
 			{				
-				
-				if (FlxG.keys.RIGHT)
+				// If both buttons are pressed down stop movement
+				if (FlxG.keys.RIGHT && !flying)
 				{
 					velocity.x = 0;
 					play("idle");
 				} else
 				{
 					facing = LEFT;
+					if (!flying) 
+					{
+						velocity.x -= XSPEEDONGROUND;	
+					}
+					
 				}
 				if (velocity.y == 0)
 				{
@@ -71,14 +83,20 @@ package
 			} else
 			
 			if (FlxG.keys.RIGHT )
-			{					
-				if (FlxG.keys.LEFT )
+			{
+				// If both buttons are pressed down stop movement
+				if (FlxG.keys.LEFT && !flying)
 				{
 					velocity.x = 0;
 					play("idle");
 				} else
 				{
 					facing = RIGHT;
+					if (!flying)
+					{
+						velocity.x = XSPEEDONGROUND;
+					}
+					
 				}	
 				if (velocity.y == 0)
 				{
@@ -87,7 +105,8 @@ package
 			}
 			
 			if (FlxG.keys.UP)
-			{				
+			{	
+				flying = true;
 				fuel -= FUELCONSUMPTION;
 				if (fuel < 0)
 				{
@@ -103,13 +122,15 @@ package
 			if (justTouched(FlxObject.FLOOR))
 			{
 				velocity.x = 0;
+				flying = false;
 				play("idle");
 			}
 			
-			if (touching == FlxObject.FLOOR && (FlxG.keys.justReleased("LEFT") || FlxG.keys.justReleased("LEFT")))
-			{
+			if (touching == FlxObject.FLOOR && (FlxG.keys.justReleased("LEFT") || FlxG.keys.justReleased("RIGHT")))
+			{			
 				velocity.x = 0;
 				play("idle");
+				
 			}
 			
 			if (velocity.y > 0 )
@@ -135,6 +156,8 @@ package
 				x = FlxG.width - width;
 				velocity.x = 0;
 			}
+			
+			trace(velocity.x);
 		}
 		
 	}
