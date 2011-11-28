@@ -15,10 +15,11 @@ package
 	{
 		[Embed(source = "../assets/graphics/gastronautAnim.png")] private var playerPNG:Class;
 		[Embed(source = "../assets/sounds/rocket.mp3")] private var rocketSoundClass:Class;
+		[Embed(source = "../assets/sounds/landing.mp3")] private var landingSound:Class;
 		
 		public var fuel:Number = 100.0;
 		private var XSPEED:int = 50;
-		private var XSPEEDONGROUND:int = 25;
+		private var XSPEEDONGROUND:int = 30;
 		private var MAXXSPEED:int = 50;
 		
 		private var YSPEED:int = 100;		
@@ -129,7 +130,12 @@ package
 			if (justTouched(FlxObject.FLOOR))
 			{
 				velocity.x = 0;
+				if (flying)
+				{
+					FlxG.play(landingSound);
+				}
 				flying = false;
+				
 				play("idle");
 			}
 			

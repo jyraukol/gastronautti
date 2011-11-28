@@ -1,5 +1,6 @@
 package  
 {
+	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	
@@ -10,6 +11,7 @@ package
 	public class SpaceHouse extends FlxSprite 
 	{
 		[Embed(source = "../assets/graphics/spacehouse.png")] private var housePNG:Class;
+		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] private var foodDeliverSound:Class;
 		public var foodDeliveredHere:Boolean = false;
 		
 		
@@ -28,6 +30,7 @@ package
 		public function thankYou():void
 		{
 			foodDeliveredHere = true;
+			FlxG.play(foodDeliverSound);
 			play("closed");
 		}
 	}
