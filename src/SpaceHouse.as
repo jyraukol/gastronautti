@@ -10,7 +10,7 @@ package
 	 */
 	public class SpaceHouse extends FlxSprite 
 	{
-		[Embed(source = "../assets/graphics/spacehouse.png")] private var housePNG:Class;
+		[Embed(source = "../assets/graphics/spacehouse2.png")] private var housePNG:Class;
 		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] private var foodDeliverSound:Class;
 		public var foodDeliveredHere:Boolean = false;
 		
