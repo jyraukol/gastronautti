@@ -27,7 +27,6 @@ package
 		private var FUELCONSUMPTION:Number = 0.2;
 		private var outOfFuel:Boolean = false;
 		private var flying:Boolean = false;
-		private var rocketSoundPlaying:Boolean = false;
 		private var rocketSound:FlxSound = new FlxSound();
 		
 		public function Gastronaut(x:int, y:int) 
@@ -112,10 +111,9 @@ package
 				flying = true;
 				fuel -= FUELCONSUMPTION;
 				
-				if (!rocketSoundPlaying)
+				if (!rocketSound.active)
 				{
 					rocketSound.play();
-					rocketSoundPlaying = true;
 				}
 				
 				if (fuel < 0)
@@ -126,14 +124,7 @@ package
 					play("fly");
 				}
 				
-			} else 
-			{
-				if (!rocketSound.active)
-				{
-					rocketSoundPlaying = false;
-				}
 			}
-			
 			
 			if (justTouched(FlxObject.FLOOR))
 			{
