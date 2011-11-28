@@ -2,6 +2,7 @@ package
 {
 	import org.flixel.FlxG;	
 	import org.flixel.FlxObject;
+	import org.flixel.FlxSound;
 	import org.flixel.plugin.photonstorm.FlxControl;
 	import org.flixel.plugin.photonstorm.FlxControlHandler;
 	import org.flixel.plugin.photonstorm.FlxExtendedSprite;
@@ -13,6 +14,8 @@ package
 	public class Gastronaut extends FlxExtendedSprite 
 	{
 		[Embed(source = "../assets/graphics/gastronautAnim.png")] private var playerPNG:Class;
+		[Embed(source = "../assets/sounds/rocket.mp3")] private var rocketSoundClass:Class;
+		
 		public var fuel:Number = 100.0;
 		private var XSPEED:int = 50;
 		private var XSPEEDONGROUND:int = 25;
@@ -24,11 +27,14 @@ package
 		private var FUELCONSUMPTION:Number = 0.2;
 		private var outOfFuel:Boolean = false;
 		private var flying:Boolean = false;
+		private var rocketSoundPlaying:Boolean = false;
+		private var rocketSound:FlxSound = new FlxSound();
 		
 		public function Gastronaut(x:int, y:int) 
 		{
 			super(x, y);
 			loadGraphic(playerPNG, true, true, 16, 16);
+			rocketSound.loadEmbedded(rocketSoundClass);
 			
 			height = 20;
 			addAnimation("idle", [0], 0, false);
@@ -105,6 +111,13 @@ package
 			{	
 				flying = true;
 				fuel -= FUELCONSUMPTION;
+				
+				if (!rocketSoundPlaying)
+				{
+					rocketSound.play();
+					rocketSoundPlaying = true;
+				}
+				
 				if (fuel < 0)
 				{
 					fuel = 0;
@@ -113,6 +126,12 @@ package
 					play("fly");
 				}
 				
+			} else 
+			{
+				if (!rocketSound.active)
+				{
+					rocketSoundPlaying = false;
+				}
 			}
 			
 			
