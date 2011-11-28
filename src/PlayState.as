@@ -21,6 +21,7 @@ package
 		private var foodText:FlxText;
 		private var foodNum:int;
 		private var thankText:FlxText;
+		private var restartText:FlxText;
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
@@ -52,6 +53,10 @@ package
 			
 			foodText = new FlxText(260, 2, 60, "Food " + foodNum);
 			foodText.setFormat(null, 8, 0xff000000);
+			
+			restartText = new FlxText(150, 2 , 90, "R to restart");
+			restartText.setFormat(null, 8, 0xff000000);
+			restartText.visible = false;
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
 			player = new Gastronaut(spaceShip.x, spaceShip.y);
@@ -99,6 +104,7 @@ package
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
 			add(thankText);
+			add(restartText);
 			//FlxG.playMusic(bgmusic, 1);
 		}
 		
@@ -133,6 +139,11 @@ package
 					fuelPickupText.visible = false;
 					fuelPickupText.alpha = 1;
 				}
+			}
+			
+			if (player.fuel == 0)
+			{
+				restartText.visible = true;				
 			}
 			
 			if (FlxG.keys.R)
