@@ -11,6 +11,7 @@ package
 	{
 		[Embed(source = "../assets/graphics/spaceship2.png")] private var spaceshipPNG:Class;
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
+		[Embed(source = "../assets/graphics/barBackground.png")] private var hudBackground:Class;
 		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
@@ -76,7 +77,9 @@ package
 			
 			// Add a bar for hud background
 			bar = new FlxSprite(0, 0);
-			bar.makeGraphic(FlxG.width, 15, 0xFFC0C0C0);
+			bar.loadGraphic(hudBackground, false, false, 32, 15);
+			bar.scale.x = FlxG.width;
+			bar.width = FlxG.width;
 			bar.alpha = 1;
 			bar.immovable = true;
 			add(bar);
