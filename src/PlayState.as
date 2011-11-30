@@ -60,7 +60,7 @@ package
 			restartText.visible = false;
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
-			player = new Gastronaut(spaceShip.x, spaceShip.y);
+			player = new Gastronaut(spaceShip.x + spaceShip.width / 2, spaceShip.y);
 			Registry.player = player;
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			

@@ -78,29 +78,6 @@ package
 			map.setTileProperties(6, FlxObject.NONE);
 			map.setTileProperties(7, FlxObject.NONE);
 			
-			/*for each (var coords:FlxPoint in map.getTileCoords(4))
-			{
-				var sprite:FlxSprite = new FlxSprite(coords.x, coords.y);				
-				sprite.offset.x = 3;
-				sprite.immovable = true;
-				sprite.visible = false;
-				add(sprite);
-				
-			}
-			
-			for each (var coords:FlxPoint in map.getTileCoords(3))
-			{
-				var sprite:FlxSprite = new FlxSprite(coords.x, coords.y + 5);
-				sprite.alpha = 0;
-				sprite.height = 6;
-				sprite.visible = false;
-				sprite.immovable = true;
-				add(sprite);
-				
-			}*/
-			
-			//add(new FlxSprite(50, 50, satellite));
-			
 		}
 		
 		private function loadSprites():void
