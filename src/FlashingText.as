@@ -14,9 +14,9 @@ package
 		private var flashCounter:Number = 0;
 		private var fading:Boolean = true;
 		
-		public function FlashingText(x:int, y:int, text:String, duration:int) 
+		public function FlashingText(x:int, y:int, width:int, text:String, duration:int) 
 		{
-			super(x, y, 100, text);			
+			super(x, y, width, text);			
 			this.duration = duration;
 		}
 		
