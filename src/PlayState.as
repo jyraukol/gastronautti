@@ -55,8 +55,7 @@ package
 			foodText = new FlxText(260, 2, 60, "Food " + foodNum);
 			foodText.setFormat(null, 8, 0xff000000);
 			
-			restartText = new FlxText(150, 2 , 90, "R to restart");
-			restartText.setFormat(null, 8, 0xff000000);
+			restartText = new FlashingText(20, "R to restart", 1);
 			restartText.visible = false;
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
@@ -109,7 +108,7 @@ package
 			add(thankText);
 			add(restartText);
 			//FlxG.playMusic(bgmusic, 1);
-			add(new FlashingText(150, 150, 100, "MORO!", 1));
+			
 		}
 		
 		override public function update():void

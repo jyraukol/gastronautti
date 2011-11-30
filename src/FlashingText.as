@@ -14,9 +14,10 @@ package
 		private var flashCounter:Number = 0;
 		private var fading:Boolean = true;
 		
-		public function FlashingText(x:int, y:int, width:int, text:String, duration:int) 
+		public function FlashingText(y:int, text:String, duration:int) 
 		{
-			super(x, y, width, text);			
+			super(0, y, FlxG.width, text);			
+			setFormat(null, 8, 0xFFFFFFFF, "center");
 			this.duration = duration;
 		}
 		

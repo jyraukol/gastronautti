@@ -50,8 +50,7 @@ package
 			add(instructions3);
 			
 			var instructions4:FlxText;
-			instructions4 = new FlashingText(0, FlxG.height - 15, FlxG.width, "Enter to start", 1);
-			instructions4.setFormat(null, 8, 0xFFFFFFFF, "center");
+			instructions4 = new FlashingText(FlxG.height - 25, "Enter to start", 1);			
 			add(instructions4);
 			
 		}
