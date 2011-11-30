@@ -36,21 +36,15 @@ package
 			super();
 			
 			if (Registry.levelIndex == 1)
-			{
-				//level = new Level1(Registry.map1CSV, Registry.level1DataXML);									
+			{								
 				this.levelDataXML = level1DataXML;
 				this.mapCSV = map1CSV;
-				//Registry.levelIndex = 2;
 			} else if (Registry.levelIndex == 2)
 			{
-				//level = new Level1(Registry.map2CSV, Registry.level2DataXML);									
-				//Registry.levelIndex = 1;
 				this.levelDataXML = level2DataXML;
 				this.mapCSV = map2CSV;				
 			} else if (Registry.levelIndex == 3)
 			{
-				//level = new Level1(Registry.map2CSV, Registry.level2DataXML);									
-				//Registry.levelIndex = 1;
 				this.levelDataXML = level3DataXML;
 				this.mapCSV = map3CSV;
 			}

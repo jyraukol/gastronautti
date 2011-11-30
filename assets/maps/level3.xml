@@ -1,5 +1,5 @@
 <level>
-	<tilesAbove set="Level3Map2">
+	<tilesAbove set="Group1Map2">
 		<tile tx="12" ty="0" x="0" y="0"/>
 		<tile tx="12" ty="0" x="12" y="0"/>
 		<tile tx="12" ty="0" x="24" y="0"/>
