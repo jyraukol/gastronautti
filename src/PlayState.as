@@ -109,6 +109,7 @@ package
 			add(thankText);
 			add(restartText);
 			//FlxG.playMusic(bgmusic, 1);
+			add(new FlashingText(150, 150, "MORO!", 1));
 		}
 		
 		override public function update():void
