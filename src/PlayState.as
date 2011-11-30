@@ -12,6 +12,7 @@ package
 		[Embed(source = "../assets/graphics/spaceship2.png")] private var spaceshipPNG:Class;
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
 		[Embed(source = "../assets/graphics/barBackground.png")] private var hudBackground:Class;
+		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
 		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
@@ -28,7 +29,7 @@ package
 		private var spaceShip:FlxSprite;
 		private var starField:FlxSprite;
 		private var fuelCans:FlxGroup = new FlxGroup();
-		private var fuelPickupText:FlxText;
+		//private var fuelPickupText:FlxText;
 		
 		private var level:Level1;
 		public var stars:StarfieldFX;
@@ -55,7 +56,7 @@ package
 			foodText = new FlxText(260, 2, 60, "Food " + foodNum);
 			foodText.setFormat(null, 8, 0xff000000);
 			
-			restartText = new FlashingText(20, "R to restart", 1);
+			restartText = new FlashingText(20, "R to restart", 0);
 			restartText.visible = false;
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
@@ -96,10 +97,10 @@ package
 			add(fuelText);
 			add(foodText);
 			
-			fuelPickupText = new FlxText(0, 0, 75, "+25 fuel!");
+			/*fuelPickupText = new FlxText(0, 0, 75, "+25 fuel!");
 			fuelPickupText.setFormat(null, 8, 0xFFFFFFFF);
 			fuelPickupText.visible = false;
-			add(fuelPickupText);
+			add(fuelPickupText); */
 			
 			thankText = new FlxText(0, 0, 75, "");
 			resetThankText();
@@ -134,7 +135,7 @@ package
 				}
 			}
 			
-			if (fuelPickupText.visible)
+			/*if (fuelPickupText.visible)
 			{
 				fuelPickupText.alpha -= 0.01;
 				if (fuelPickupText.alpha <= 0)
@@ -142,6 +143,11 @@ package
 					fuelPickupText.visible = false;
 					fuelPickupText.alpha = 1;
 				}
+			}*/
+			
+			if (player.fuel < 25)
+			{
+				add(new FlxSprite(fuelBar.x + fuelBar.width + 10, fuelBar.y, exclamationImage));
 			}
 			
 			if (player.fuel == 0)
@@ -189,10 +195,10 @@ package
 		{
 			player.fuel += 25;
 			
-			fuelPickupText.x = fuelcan.x;
-			fuelPickupText.y = fuelcan.y -10;
-			
-			fuelPickupText.visible = true;
+			//fuelPickupText.x = fuelcan.x;
+			//fuelPickupText.y = fuelcan.y -10;
+			add(new FlashingText(20, "+25 Fuel!", 3.5));
+			//fuelPickupText.visible = true;
 			if (player.fuel > 100)
 			{
 				player.fuel = 100;
