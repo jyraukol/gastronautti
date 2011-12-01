@@ -34,6 +34,8 @@ package
 		private var level:Level1;
 		public var stars:StarfieldFX;
 		
+		private var deathTimer:Number = 0;
+		
 		override public function create():void
 		{
 			FlxG.bgColor = 0xff000000;
@@ -147,12 +149,41 @@ package
 			
 			if (player.fuel < 25)
 			{
-				add(new FlxSprite(fuelBar.x + fuelBar.width + 10, fuelBar.y, exclamationImage));
+				add(new ExclamationMark(fuelBar.x + fuelBar.width + 10, fuelBar.y));
 			}
 			
 			if (player.fuel == 0)
 			{
-				restartText.visible = true;				
+				//restartText.visible = true;				
+				// First thing
+				if (deathTimer == 0)
+				{
+					// Slow down the game
+					FlxG.timeScale = 0.3;
+					// Set the timer
+					deathTimer = 1.5;
+					
+				}
+				else
+				{
+										
+					deathTimer -= FlxG.elapsed;
+						
+					player.scale.x *= 0.97;
+					player.scale.y *= 0.97;
+					if (deathTimer <= 1)
+					{
+						FlxG.fade(0xff000000, 1);					
+					}
+					// The last tick
+					if (deathTimer <= FlxG.elapsed)
+					{
+						FlxG.timeScale = 1.0;
+						// Restart
+						remove(starField);
+						FlxG.switchState(new PlayState);
+					}
+				}
 			}
 			
 			if (FlxG.keys.R)
@@ -188,6 +219,11 @@ package
 				thankText.y = house.y - 10;
 				thankText.visible = true;
 			}
+			
+		}
+		
+		private function resetLevel():void 
+		{
 			
 		}
 		
