@@ -20,7 +20,7 @@ package
 		
 		override public function update():void 
 		{
-			super.update();
+			
 			if (fading)
 			{
 				visible = false;
@@ -35,6 +35,7 @@ package
 				fading = !fading;
 				flashCounter = 0;
 			}
+			super.update();
 		}
 	}
 

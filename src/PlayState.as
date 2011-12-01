@@ -29,12 +29,14 @@ package
 		private var spaceShip:FlxSprite;
 		private var starField:FlxSprite;
 		private var fuelCans:FlxGroup = new FlxGroup();
+		private var fuelLow:ExclamationMark;
+		
 		//private var fuelPickupText:FlxText;
 		
 		private var level:Level1;
 		public var stars:StarfieldFX;
 		
-		private var deathTimer:Number = 0;
+		private var deathTimer:Number = 0;		
 		
 		override public function create():void
 		{
@@ -110,6 +112,10 @@ package
 			thankText.visible = false;
 			add(thankText);
 			add(restartText);
+			
+			fuelLow = new ExclamationMark(fuelBar.x + fuelBar.width + 10, fuelBar.y);
+			fuelLow.exists = false;
+			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
 		}
@@ -149,8 +155,13 @@ package
 			
 			if (player.fuel < 25)
 			{
-				add(new ExclamationMark(fuelBar.x + fuelBar.width + 10, fuelBar.y));
+				
+				fuelLow.exists = true;
+			} else
+			{
+				fuelLow.exists = false;
 			}
+			
 			
 			if (player.fuel == 0)
 			{
@@ -180,8 +191,8 @@ package
 					{
 						FlxG.timeScale = 1.0;
 						// Restart
-						remove(starField);
-						FlxG.switchState(new PlayState);
+						FlxG.flash(0xff000000, 1, resetLevel);
+						
 					}
 				}
 			}
@@ -224,7 +235,8 @@ package
 		
 		private function resetLevel():void 
 		{
-			
+			remove(starField);
+			FlxG.switchState(new PlayState);
 		}
 		
 		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
