@@ -15,10 +15,15 @@ package
 		private var flashCounter:Number = 0;
 		private var fading:Boolean = true;
 		
-		public function FlashingText(y:int, text:String, duration:Number) 
+		public function FlashingText(y:int, text:String, duration:Number, color:uint = 0xFFFFFFFF, x:int = 0, centered:Boolean = true) 
 		{
-			super(0, y, FlxG.width, text);			
-			setFormat(null, 8, 0xFFFFFFFF, "center");
+			super(x, y, FlxG.width, text);			
+			setFormat(null, 8, color);
+			if (centered)
+			{
+				alignment = "center";
+			}
+			
 			this.duration = duration;
 		}
 		
