@@ -71,7 +71,7 @@ package
 			map.setTileProperties(5, FlxObject.NONE);
 			map.setTileProperties(6, FlxObject.NONE);
 			map.setTileProperties(7, FlxObject.NONE);
-			
+			Registry.level = this;
 		}
 		
 		private function loadSprites():void

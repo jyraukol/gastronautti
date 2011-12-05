@@ -43,7 +43,7 @@ package
 			FlxG.bgColor = 0xff000000;
 			
 			level = new Level1();
-			
+			Registry.playState = this;
 			
 			for each (var house:SpaceHouse in level.houses)
 			{

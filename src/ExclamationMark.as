@@ -12,21 +12,27 @@ package
 		[Embed(source = "../assets/graphics/exclamation.png")] private var image:Class;
 		private var fading:Boolean = false;
 		private var flashCounter:Number = 0;
+		private var text:FlashingText;
 		
 		public function ExclamationMark(x:int, y:int) 
 		{
 			super(x, y, image);
+			text = new FlashingText(y, "Fuel Low", -1, 0xFF0000, x + width, false);
+			text.visible = false;
+			Registry.playState.add(text);
 		}
 		
 		override public function update():void 
 		{
-			
+			text.visible = true;
 			if (fading)
 			{
 				visible = false;
+				//text.visible = false;
 			} else
 			{
 				visible = true;
+				//text.visible = true;
 			}
 			
 			flashCounter += FlxG.elapsed;
