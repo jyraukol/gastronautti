@@ -19,7 +19,6 @@ package
 		private var fireIntervalCounter:Number = 0;
 		private var activeLimit:Number = 2;
 		private var activeCounter:Number = 0;
-		public var laserActive:Boolean = false;
 		private var laserGettingReady:Boolean = false;
 		
 		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int, fireInterval:int = 5) 
@@ -67,8 +66,6 @@ package
 			{
 				if (activeCounter == 0)
 				{
-					//laser.flicker(1);
-					laserActive = true;
 					laser.visible = true;
 				}
 				
@@ -78,7 +75,6 @@ package
 					fireIntervalCounter = 0;
 					activeCounter = 0;
 					laser.visible = false;
-					laserActive = false;
 					laserGettingReady = false;
 					emitterStart.color = 0xFFC0C0C0;
 					emitterEnd.color = 0xFFC0C0C0;

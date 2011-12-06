@@ -134,8 +134,7 @@ package
 			FlxG.overlap(player, spaceHouses, foodDelivered);
 			FlxG.overlap(player, fuelCans, fuelPickUp);
 			
-			
-				FlxG.overlap(player, laserEmitters, playerHitLaser);
+			FlxG.overlap(player, laserEmitters, playerHitLaser);
 			
 			
 			if (foodNum == 0)
