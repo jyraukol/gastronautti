@@ -114,8 +114,12 @@ package
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
-			laserEmitter = new LaserEmitter(50, 50, 50, 100);
-			add(laserEmitter);
+			if (Registry.levelIndex == 1)
+			{
+				laserEmitter = new LaserEmitter(140, 90, 140, 180);
+				add(laserEmitter);
+			}
+			
 			
 		}
 		
@@ -128,7 +132,7 @@ package
 			FlxG.overlap(player, spaceHouses, foodDelivered);
 			FlxG.overlap(player, fuelCans, fuelPickUp);
 			
-			if (laserEmitter.laserActive)
+			if (laserEmitter != null && laserEmitter.laserActive)
 			{
 				FlxG.overlap(player, laserEmitter, playerHitLaser);
 			}

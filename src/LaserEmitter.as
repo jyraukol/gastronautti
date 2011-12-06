@@ -22,7 +22,7 @@ package
 		public var laserActive:Boolean = false;
 		private var laserGettingReady:Boolean = false;
 		
-		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int) 
+		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int, fireInterval:int = 5) 
 		{
 			
 			
@@ -40,6 +40,7 @@ package
 			emitterEnd.makeGraphic(laser.width + 4, 3, 0xFFC0C0C0);
 			emitterEnd.allowCollisions = FlxObject.NONE;
 			
+			fireIntervalLimit = fireInterval;
 			
 			add(emitterStart);
 			add(emitterEnd);
