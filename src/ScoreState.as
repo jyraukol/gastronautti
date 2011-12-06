@@ -28,13 +28,29 @@ package
 			fuelText.alignment = "center";
 			add(fuelText);
 			
-			var starsAchieved:int = Registry.player.fuel / 25;
-			
-			for (var i:int = 0; i < starsAchieved; i++)
+			var starsAchieved:int = Registry.player.fuel / 25 +1;
+			if (starsAchieved > 3)
 			{
-				add(new SpinningStar(FlxG.width / 2 - 16  + i * 16, 100));
+				starsAchieved = 3;
 			}
 			
+			if (starsAchieved == 1 || starsAchieved == 3)
+			{
+				add(new SpinningStar(FlxG.width / 2 -10, 100));
+			}
+			
+			if (starsAchieved == 2)
+			{
+				add(new SpinningStar(FlxG.width / 2 - 15, 100));
+				add(new SpinningStar(FlxG.width / 2 , 100));
+			}
+			
+			if (starsAchieved == 3)
+			{
+				add(new SpinningStar(FlxG.width / 2 - 25, 100));
+				add(new SpinningStar(FlxG.width / 2 + 5, 100));
+			}
+						
 			add(scoreText);
 			
 			var instructions:FlxText = new FlxText(0, fuelText.y + 80, FlxG.width, "Press Enter to continue");
