@@ -2,6 +2,7 @@ package
 {
 	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxObject;
 	import org.flixel.FlxSprite;
 	
 	/**
@@ -12,14 +13,18 @@ package
 	{
 		[Embed(source = "../assets/graphics/laser.png")] private var laserImage:Class;
 		private var laser:FlxSprite;
+		private var emitterStart:FlxSprite;
+		private var emitterEnd:FlxSprite;
 		private var fireIntervalLimit:Number = 5;
 		private var fireIntervalCounter:Number = 0;
 		private var activeLimit:Number = 2;
 		private var activeCounter:Number = 0;
-
+		public var laserActive:Boolean = false;
+		private var laserGettingReady:Boolean = false;
+		
 		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int) 
 		{
-			super();
+			
 			
 			laser = new FlxSprite(startX, startY, laserImage);
 			laser.scale.y = (endY - startY) / laser.height;
@@ -27,15 +32,18 @@ package
 			laser.height = laser.height * laser.scale.y;
 			laser.centerOffsets();
 			laser.visible = false;
-			var emitterStart:FlxSprite = new FlxSprite(startX -2, startY - 3);
+			emitterStart = new FlxSprite(startX -2, startY - 3);
 			emitterStart.makeGraphic(laser.width + 4, 3, 0xFFC0C0C0);
+			emitterStart.allowCollisions = FlxObject.NONE;
 			
-			var emitterEnd:FlxSprite = new FlxSprite(endX -2, endY);
+			emitterEnd = new FlxSprite(endX -2, endY);
 			emitterEnd.makeGraphic(laser.width + 4, 3, 0xFFC0C0C0);
+			emitterEnd.allowCollisions = FlxObject.NONE;
 			
-			add(laser);
+			
 			add(emitterStart);
 			add(emitterEnd);
+			add(laser);
 		
 		}
 		
@@ -45,12 +53,21 @@ package
 			
 			fireIntervalCounter += FlxG.elapsed;
 			
+			if (fireIntervalCounter > fireIntervalLimit - 2 && !laserGettingReady)
+			{
+				//laser.visible = true;
+				//laser.flicker(2);
+				emitterStart.color = FlxG.RED;
+				emitterEnd.color = FlxG.RED;
+				laserGettingReady = true;
+			}
 			if (fireIntervalCounter > fireIntervalLimit)
 			{
 				if (activeCounter == 0)
 				{
+					//laser.flicker(1);
+					laserActive = true;
 					laser.visible = true;
-					laser.flicker(2);
 				}
 				
 				activeCounter += FlxG.elapsed;
@@ -59,6 +76,10 @@ package
 					fireIntervalCounter = 0;
 					activeCounter = 0;
 					laser.visible = false;
+					laserActive = false;
+					laserGettingReady = false;
+					emitterStart.color = 0xFFC0C0C0;
+					emitterEnd.color = 0xFFC0C0C0;
 				} 
 			}
 		}

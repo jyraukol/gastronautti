@@ -30,6 +30,7 @@ package
 		private var starField:FlxSprite;
 		private var fuelCans:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
+		private var laserEmitter:LaserEmitter;
 		
 		//private var fuelPickupText:FlxText;
 		
@@ -101,11 +102,6 @@ package
 			add(fuelText);
 			add(foodText);
 			
-			/*fuelPickupText = new FlxText(0, 0, 75, "+25 fuel!");
-			fuelPickupText.setFormat(null, 8, 0xFFFFFFFF);
-			fuelPickupText.visible = false;
-			add(fuelPickupText); */
-			
 			thankText = new FlxText(0, 0, 75, "");
 			resetThankText();
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
@@ -118,7 +114,8 @@ package
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
-			add(new LaserEmitter(50, 50, 50, 100));
+			laserEmitter = new LaserEmitter(50, 50, 50, 100);
+			add(laserEmitter);
 			
 		}
 		
@@ -130,6 +127,11 @@ package
 			FlxG.collide(player, bar);
 			FlxG.overlap(player, spaceHouses, foodDelivered);
 			FlxG.overlap(player, fuelCans, fuelPickUp);
+			
+			if (laserEmitter.laserActive)
+			{
+				FlxG.overlap(player, laserEmitter, playerHitLaser);
+			}
 			
 			if (foodNum == 0)
 			{
@@ -255,6 +257,11 @@ package
 			}
 			
 			fuelcan.kill();
+		}
+		
+		private function playerHitLaser(player:Gastronaut, laser:FlxSprite):void
+		{
+			player.kill();
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
