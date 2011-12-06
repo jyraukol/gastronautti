@@ -18,7 +18,7 @@ package
 		private var player:Gastronaut;
 		private var platform:FlxTileblock;
 		private var fuelBar:FlxBar;
-		private var bar:FlxSprite;
+		private var bar:FlxSprite;		
 		
 		private var foodText:FlxText;
 		private var foodNum:int;
@@ -266,8 +266,10 @@ package
 		
 		private function playerHitLaser(player:Gastronaut, laser:FlxSprite):void
 		{
-			player.color = FlxG.RED;
-			//player.kill();
+			player.visible = false;
+			player.moves = false;
+			FlxG.shake(0.1, 0.2, resetLevel);
+
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
