@@ -17,7 +17,7 @@ package
 		public function ExclamationMark(x:int, y:int) 
 		{
 			super(x, y, image);
-			text = new FlashingText(y, "Fuel Low", -1, 0xFF0000, x + width, false);
+			text = new FlashingText(y - 2, "Fuel Low", -1, 0xFF0000, x + width + 10, false);
 			text.visible = false;
 			Registry.playState.add(text);
 		}

@@ -58,8 +58,8 @@ package
 			
 			foodNum = spaceHouses.length;
 			
-			foodText = new FlxText(260, 2, 60, "Food " + foodNum);
-			foodText.setFormat(null, 8, 0xff000000);
+			//foodText = new FlxText(260, 2, 60, "Food " + foodNum);
+			//foodText.setFormat(null, 8, 0xff000000);
 			
 			restartText = new FlashingText(20, "R to restart", 0);
 			restartText.visible = false;
@@ -100,7 +100,7 @@ package
 			var fuelText:FlxText = new FlxText(2, 2, 50, "Fuel:");
 			fuelText.setFormat(null, 8, 0xff000000);
 			add(fuelText);
-			add(foodText);
+			//add(foodText);
 			
 			thankText = new FlxText(0, 0, 75, "");
 			resetThankText();
@@ -114,6 +114,7 @@ package
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
+			// Hard coded laser emitter test for level 1
 			if (Registry.levelIndex == 1)
 			{
 				laserEmitter = new LaserEmitter(140, 90, 140, 180);
