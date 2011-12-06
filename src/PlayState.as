@@ -93,6 +93,14 @@ package
 			
 			add(spaceHouses);
 			add(spaceShip);
+			
+			// Hard coded laser emitter test for level 1
+			if (Registry.levelIndex == 1)
+			{
+				laserEmitter = new LaserEmitter(140, 90, 140, 180);
+				add(laserEmitter);
+			}
+			
 			add(player);
 			
 			add(fuelCans);
@@ -113,14 +121,6 @@ package
 			fuelLow.exists = false;
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
-			
-			// Hard coded laser emitter test for level 1
-			if (Registry.levelIndex == 1)
-			{
-				laserEmitter = new LaserEmitter(140, 90, 140, 180);
-				add(laserEmitter);
-			}
-			
 			
 		}
 		
@@ -266,7 +266,8 @@ package
 		
 		private function playerHitLaser(player:Gastronaut, laser:FlxSprite):void
 		{
-			player.kill();
+			player.color = FlxG.RED;
+			//player.kill();
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
