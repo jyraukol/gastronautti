@@ -118,6 +118,8 @@ package
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
+			add(new LaserEmitter(50, 50));
+			
 		}
 		
 		override public function update():void
