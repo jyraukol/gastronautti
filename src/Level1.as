@@ -29,6 +29,7 @@ package
 		public var map:FlxTilemap;
 		public var houses:Vector.<SpaceHouse>;
 		public var fuelCans:Vector.<FuelCan>;
+		public var laserEmitters:Vector.<LaserEmitter>;
 		public var spaceShipPosition:Point;
 		
 		public function Level1() 
@@ -63,6 +64,7 @@ package
 			add(map);
 			houses = new Vector.<SpaceHouse>();
 			fuelCans = new Vector.<FuelCan>();
+			laserEmitters = new Vector.<LaserEmitter>();
 			loadSprites();
 			
 			map.setTileProperties(2, FlxObject.NONE);
@@ -100,6 +102,17 @@ package
 			{
 				
 				fuelCans.push(new FuelCan(int(dataElement.@x), int(dataElement.@y)));
+			}
+			
+			
+			
+			dataList = LevelData.objects.LaserEmitter;
+			
+			for each (dataElement in dataList)
+			{
+				
+				laserEmitters.push(new LaserEmitter(int(dataElement.@startX), int(dataElement.@startY),
+													int(dataElement.@endX), int(dataElement.@endY)));
 			}
 			
 			dataList = LevelData.objects.SpaceShip;

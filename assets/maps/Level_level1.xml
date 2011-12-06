@@ -76,5 +76,6 @@
 		<SpaceHouse x="100" y="45"/>
 		<SpaceHouse x="21" y="200"/>
 		<SpaceHouse x="230" y="35"/>
+		<LaserEmitter startX="140" startY="90" endX="140" endY="180" />
 	</objects>
 </level>

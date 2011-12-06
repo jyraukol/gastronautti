@@ -29,6 +29,7 @@ package
 		private var spaceShip:FlxSprite;
 		private var starField:FlxSprite;
 		private var fuelCans:FlxGroup = new FlxGroup();
+		private var laserEmitters:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
 		private var laserEmitter:LaserEmitter;
 		
@@ -94,13 +95,12 @@ package
 			add(spaceHouses);
 			add(spaceShip);
 			
-			// Hard coded laser emitter test for level 1
-			if (Registry.levelIndex == 1)
+			for each (var laserEmitter:LaserEmitter in level.laserEmitters)
 			{
-				laserEmitter = new LaserEmitter(140, 90, 140, 180);
-				add(laserEmitter);
+				laserEmitters.add(laserEmitter);
 			}
 			
+			add(laserEmitters);
 			add(player);
 			
 			add(fuelCans);
@@ -134,10 +134,9 @@ package
 			FlxG.overlap(player, spaceHouses, foodDelivered);
 			FlxG.overlap(player, fuelCans, fuelPickUp);
 			
-			if (laserEmitter != null && laserEmitter.laserActive)
-			{
-				FlxG.overlap(player, laserEmitter, playerHitLaser);
-			}
+			
+				FlxG.overlap(player, laserEmitters, playerHitLaser);
+			
 			
 			if (foodNum == 0)
 			{
@@ -267,9 +266,14 @@ package
 		
 		private function playerHitLaser(player:Gastronaut, laser:FlxSprite):void
 		{
+			if (!laser.visible) 
+			{
+				return;
+			}
+	
 			player.visible = false;
 			player.moves = false;
-			FlxG.shake(0.1, 0.2, resetLevel);
+			FlxG.shake(0.05, 0.05, resetLevel);
 
 		}
 		
