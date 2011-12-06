@@ -111,6 +111,7 @@ package
 			//add(foodText);
 			
 			thankText = new FlxText(0, 0, 75, "");
+			thankText.alignment = "center"; 
 			resetThankText();
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
@@ -233,10 +234,10 @@ package
 			if (!house.foodDeliveredHere)
 			{
 				foodNum -= 1;
-				foodText.text = "Food " + foodNum;
+				//foodText.text = "Food " + foodNum;
 				house.thankYou();
-				thankText.x = house.x;
-				thankText.y = house.y - 10;
+				thankText.x = house.x - 22;
+				thankText.y = house.y - 15;
 				thankText.visible = true;
 			}
 			
