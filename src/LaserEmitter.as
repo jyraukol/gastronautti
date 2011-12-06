@@ -1,19 +1,35 @@
 package  
 {
+	import org.flixel.FlxGroup;
 	import org.flixel.FlxSprite;
 	
 	/**
 	 * ...
 	 * @author Jyri Raukola
 	 */
-	public class LaserEmitter extends FlxSprite 
+	public class LaserEmitter extends FlxGroup
 	{
-		[Embed(source = "../assets/graphics/laser.png")] private var lightningImage:Class;
-		
-		public function LaserEmitter(x:int, y:int) 
+		[Embed(source = "../assets/graphics/laser.png")] private var laserImage:Class;
+		private var laser:FlxSprite;
+		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int) 
 		{
-			super(x, y);
-			loadGraphic(lightningImage, false, false, 7, 16);			
+			super();
+			
+			laser = new FlxSprite(startX, startY, laserImage);
+			laser.scale.y = (endY - startY) / laser.height;
+			laser.y = startY;
+			laser.height = laser.height * laser.scale.y;
+			laser.centerOffsets();
+			var emitterStart:FlxSprite = new FlxSprite(startX, startY - 3);
+			emitterStart.makeGraphic(laser.width, 3, 0xFFC0C0C0);
+			
+			var emitterEnd:FlxSprite = new FlxSprite(endX, endY);
+			emitterEnd.makeGraphic(laser.width, 3, 0xFFC0C0C0);
+			add(laser);
+			add(emitterStart);
+			add(emitterEnd);
+			
+			//scale.y = 3;
 		}
 		
 		override public function update():void 

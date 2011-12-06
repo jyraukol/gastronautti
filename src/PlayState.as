@@ -118,7 +118,7 @@ package
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
-			add(new LaserEmitter(50, 50));
+			add(new LaserEmitter(50, 50, 50, 100));
 			
 		}
 		
