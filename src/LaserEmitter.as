@@ -53,12 +53,13 @@ package
 			
 			fireIntervalCounter += FlxG.elapsed;
 			
-			if (fireIntervalCounter > fireIntervalLimit - 2 && !laserGettingReady)
+			if (fireIntervalCounter > fireIntervalLimit - 1.5 && !laserGettingReady)
 			{
-				//laser.visible = true;
-				//laser.flicker(2);
+				
 				emitterStart.color = FlxG.RED;
+				emitterStart.flicker(1.5);
 				emitterEnd.color = FlxG.RED;
+				emitterEnd.flicker(1.5);
 				laserGettingReady = true;
 			}
 			if (fireIntervalCounter > fireIntervalLimit)
