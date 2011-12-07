@@ -125,6 +125,11 @@ package
 			
 		}
 		
+        private function createLevelObjects():void
+        {
+            
+        }
+        
 		override public function update():void
 		{
 			super.update();
