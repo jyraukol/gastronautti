@@ -47,15 +47,7 @@ package
 			level = new Level1();
 			Registry.playState = this;
 			
-			for each (var house:SpaceHouse in level.houses)
-			{
-				spaceHouses.add(house);
-			}
-			
-			for each (var can:FuelCan in level.fuelCans)
-			{
-				fuelCans.add(can);
-			}
+			createLevelObjects();
 			
 			foodNum = spaceHouses.length;
 			
@@ -90,16 +82,10 @@ package
 			bar.immovable = true;
 			add(bar);
 			Registry.topBarHeight = bar.height;
-			
-			
+						
 			add(spaceHouses);
 			add(spaceShip);
-			
-			for each (var laserEmitter:LaserEmitter in level.laserEmitters)
-			{
-				laserEmitters.add(laserEmitter);
-			}
-			
+						
 			add(laserEmitters);
 			add(player);
 			
@@ -124,12 +110,7 @@ package
 			//FlxG.playMusic(bgmusic, 1);
 			
 		}
-		
-        private function createLevelObjects():void
-        {
-            
-        }
-        
+		        
 		override public function update():void
 		{
 			super.update();
@@ -270,15 +251,16 @@ package
 		
 		private function playerHitLaser(player:Gastronaut, laser:FlxSprite):void
 		{
+            // Laser isn't on screen (active) so player can pass
 			if (!laser.visible) 
 			{
 				return;
 			}
-	
+            
+            // Player hit active laser, resetLevel
 			player.visible = false;
 			player.moves = false;
 			FlxG.shake(0.05, 0.05, resetLevel);
-
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
@@ -286,5 +268,26 @@ package
 			remove(starField);
 			FlxG.switchState(new ScoreState);
 		}
+        
+        // Function for reading each level object (houses, fuelcans...) from level
+        // and adding them to the flxGroup objects
+        private function createLevelObjects():void
+        {
+            for each (var house:SpaceHouse in level.houses)
+			{
+				spaceHouses.add(house);
+			}
+			
+			for each (var can:FuelCan in level.fuelCans)
+			{
+				fuelCans.add(can);
+			}
+            
+            for each (var laserEmitter:LaserEmitter in level.laserEmitters)
+			{
+				laserEmitters.add(laserEmitter);
+			}
+        }
+        
 	}
 }
