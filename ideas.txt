@@ -1,0 +1,13 @@
+Ideoita:
+
+Uusia elementtejä peliin:
+- magneetti, vetää pelaajaa luoksensa
+- Vastakohta (Iso tuuletin?) työntää pelaajaa poispäin
+- portaalit, (mitens damessa? Osaako se exportata xml:ksi elementit siinä järjestyksessä kuin ne on laitettu?
+              Jos osaa, niin se olisi yksinkertaisin, voisi ottaa aina kaksi elementtiä. Eiku saatana, pystyn
+              antaan niille propertyja, joku id, joka on kahdella portaalilla sama. Kun menet toisesta, niin
+              hakee id:llä vastaparin ja pelaaja ilmestyy sinne. Tällä tavoin voisi vielä pelinaikaisesti
+              muuttaakkin ulostulokohtaa...)
+- Jotain niinkin simppeliä kuin lukittuja ovia? Tarvii keycardin.
+
+Näistä ehkä tuo porttaali-idea kuulosti eka siisteimmältä.              
