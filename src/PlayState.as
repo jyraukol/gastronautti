@@ -2,8 +2,7 @@ package
 {
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.FX.*;	
-	import org.flixel.plugin.photonstorm.*;
-	import org.flixel.system.FlxTile;
+	import org.flixel.plugin.photonstorm.*;	
 	import org.flixel.plugin.photonstorm.FlxBar;
 	import org.flixel.FlxSound;
 	
@@ -13,10 +12,8 @@ package
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
 		[Embed(source = "../assets/graphics/barBackground.png")] private var hudBackground:Class;
 		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
-		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
-		private var floor:FlxTileblock;
-		private var player:Gastronaut;
-		private var platform:FlxTileblock;
+		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe		
+		private var player:Gastronaut;		
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
 		
@@ -50,15 +47,17 @@ package
 			createLevelObjects();
 			
 			foodNum = spaceHouses.length;
-			
+            
+            // Is this really needed, the graphics tell you how much food is left
 			//foodText = new FlxText(260, 2, 60, "Food " + foodNum);
 			//foodText.setFormat(null, 8, 0xff000000);
 			
+            // This was used when players fuel reached 0, but now the player dies and restart is automatic
 			restartText = new FlashingText(20, "R to restart", 0);
 			restartText.visible = false;
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
-			player = new Gastronaut(spaceShip.x + spaceShip.width / 2, spaceShip.y);
+			player = new Gastronaut(spaceShip.x + spaceShip.width / 2, spaceShip.y + spaceShip.height - 2);
 			Registry.player = player;
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
@@ -235,11 +234,11 @@ package
 		
 		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
 		{
-			player.fuel += 25;
+			player.fuel += fuelCan.fuelAmount;
 			
 			//fuelPickupText.x = fuelcan.x;
 			//fuelPickupText.y = fuelcan.y -10;
-			add(new FlashingText(20, "+25 Fuel!", 3.5));
+			add(new FlashingText(20, "+" + fuelCan.fuelAmount + " Fuel!", 3.5));
 			//fuelPickupText.visible = true;
 			if (player.fuel > 100)
 			{
