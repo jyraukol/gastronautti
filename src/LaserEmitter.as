@@ -25,12 +25,11 @@ package
 		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int, fireInterval:int = 5) 
 		{
 						
-			emitterStart = new FlxSprite(startX -2, startY - 3, emitterImage);
-			//emitterStart.makeGraphic(laser.width + 4, 3, 0xFFC0C0C0);
+			emitterStart = new FlxSprite(startX -2, startY - 3, emitterImage);			
 			emitterStart.allowCollisions = FlxObject.NONE;
 			
-			emitterEnd = new FlxSprite(endX -2, endY, emitterImage);
-			//emitterEnd.makeGraphic(laser.width + 4, 3, 0xFFC0C0C0);
+			emitterEnd = new FlxSprite(endX -2, endY, emitterImage);	
+			emitterEnd.angle = 180;
 			emitterEnd.allowCollisions = FlxObject.NONE;
 			
 			laser = new FlxSprite(0, startY, laserImage);

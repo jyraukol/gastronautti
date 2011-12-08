@@ -108,11 +108,27 @@ package
 			
 			dataList = LevelData.objects.LaserEmitter;
 			
+			var firstEmitter:Boolean = true;
+			var startX:int;
+			var startY:int;
+			
 			for each (dataElement in dataList)
 			{
-				
-				laserEmitters.push(new LaserEmitter(int(dataElement.@startX), int(dataElement.@startY),
-													int(dataElement.@endX), int(dataElement.@endY)));
+				if (firstEmitter)
+				{
+					startX = int(dataElement.@x);
+					startY = int(dataElement.@y);					
+					firstEmitter = false;
+				} else
+				{
+					laserEmitters.push(new LaserEmitter(startX, startY,
+										startX, int(dataElement.@y)));
+					firstEmitter = true;
+					trace(startX);
+					trace(startY);
+					trace(dataElement.@y);
+				}
+								
 			}
 			
 			dataList = LevelData.objects.SpaceShip;
