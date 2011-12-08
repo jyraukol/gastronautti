@@ -21,6 +21,8 @@ package
 		[Embed(source = "../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]public static const level1DataXML:Class;
 		[Embed(source="../assets/maps/level3.csv", mimeType="application/octet-stream")] public static var map3CSV:Class;		
 		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level3DataXML:Class;
+		[Embed(source = "../assets/maps/mapCSV_Level4_Map1.csv", mimeType = "application/octet-stream")] public static var map4CSV:Class;		
+		[Embed(source = "../assets/maps/Level_Level4.xml", mimeType = "application/octet-stream")] public static const level4DataXML:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
@@ -48,6 +50,10 @@ package
 			{
 				this.levelDataXML = level3DataXML;
 				this.mapCSV = map3CSV;
+			}  else if (Registry.levelIndex == 4)
+			{
+				this.levelDataXML = level4DataXML;
+				this.mapCSV = map4CSV;
 			}
 			else
 			{
@@ -111,6 +117,7 @@ package
 			var firstEmitter:Boolean = true;
 			var startX:int;
 			var startY:int;
+			var fireInterval:int;
 			
 			for each (dataElement in dataList)
 			{
@@ -118,11 +125,12 @@ package
 				{
 					startX = int(dataElement.@x);
 					startY = int(dataElement.@y);					
+					fireInterval = int(dataElement.@fireInterval);
 					firstEmitter = false;
 				} else
-				{
+				{					
 					laserEmitters.push(new LaserEmitter(startX, startY,
-										startX, int(dataElement.@y)));
+										startX, int(dataElement.@y), fireInterval));
 					firstEmitter = true;
 					trace(startX);
 					trace(startY);

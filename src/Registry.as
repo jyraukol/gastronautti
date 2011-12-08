@@ -16,7 +16,7 @@ package
 		public static var topBarHeight:int;
 		public static var levelIndex:uint = 1;
 		public static var levelScores:Array = new Array();
-		public static var levelNumber:uint = 3; // save the number of levels the game has
+		public static var levelNumber:uint = 4; // save the number of levels the game has
 				
 		public function Registry() 
 		{
