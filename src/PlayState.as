@@ -13,6 +13,7 @@ package
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
 		[Embed(source = "../assets/graphics/barBackground.png")] private var hudBackground:Class;
 		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
+		[Embed(source = "../assets/graphics/moon.png")] private var moonImage:Class;
 		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		private var floor:FlxTileblock;
 		private var player:Gastronaut;
@@ -32,6 +33,7 @@ package
 		private var laserEmitters:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
 		private var laserEmitter:LaserEmitter;
+		private var moon:FlxSprite;
 		
 		//private var fuelPickupText:FlxText;
 		
@@ -71,6 +73,9 @@ package
 			starField = stars.create(0, 0, FlxG.width, FlxG.height, 50, 1, 20);
 			
 			add(starField);
+			moon = new FlxSprite(280, 50, moonImage);
+			moon.velocity.x = -0.3;
+			add(moon);
 			add(level);
 			
 			// Add a bar for hud background
