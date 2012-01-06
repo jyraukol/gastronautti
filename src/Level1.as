@@ -132,9 +132,6 @@ package
 					laserEmitters.push(new LaserEmitter(startX, startY,
 										startX, int(dataElement.@y), fireInterval));
 					firstEmitter = true;
-					trace(startX);
-					trace(startY);
-					trace(dataElement.@y);
 				}
 								
 			}

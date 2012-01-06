@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<project>
-  <spriteEntries currentId="3">
-    <sprite name="SpaceHouse" idx="1" className="SpaceHouse" image="../graphics/spacehouse.png" width="32" height="32" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
-    <sprite name="spaceShip" idx="2" className="spaceShip" image="../graphics/spaceship.png" width="64" height="32" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" selected="true"/>
-  </spriteEntries>
-</project>
