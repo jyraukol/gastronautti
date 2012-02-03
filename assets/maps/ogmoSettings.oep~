@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project>
+	<name>Gastronautti default level</name>
+
+	<settings>
+		<defaultWidth>320</defaultWidth>
+		<defaultHeight>240</defaultHeight>
+		<workingDirectory>../graphics</workingDirectory>
+	</settings>
+
+<tilesets>
+	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="11" />
+</tilesets>
+
+<layers>
+	<tiles name="level" gridSize="12" exportTileIDs="true"/>
+</layers>
+
+</project>

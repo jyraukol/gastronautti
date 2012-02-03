@@ -1,6 +1,7 @@
 package  
 {
 	import flash.geom.Point;
+	import flash.xml.XMLNode;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxObject;
 	import org.flixel.FlxPoint;
@@ -23,6 +24,7 @@ package
 		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level3DataXML:Class;
 		[Embed(source = "../assets/maps/mapCSV_Level4_Map1.csv", mimeType = "application/octet-stream")] public static var map4CSV:Class;		
 		[Embed(source = "../assets/maps/Level_Level4.xml", mimeType = "application/octet-stream")] public static const level4DataXML:Class;
+		[Embed(source = "../assets/maps/ogmoTest.oel", mimeType = "application/octet-stream")] public static const ogmoLevel:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
@@ -63,9 +65,13 @@ package
 			}
 			
 			
-			map = new FlxTilemap;			
+			map = new FlxTilemap();			
+						
 			
-			map.loadMap(new mapCSV, mapTilesPNG, 12, 11, 0, 0, 1, 1); 
+			
+			
+			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
+			var tempMap:Array = createCSVFromXML(ogmoLevel);
 			
 			add(map);
 			houses = new Vector.<SpaceHouse>();
@@ -88,7 +94,7 @@ package
 			
 			var rawData:ByteArray = new levelDataXML;
 			var dataString:String = rawData.readUTFBytes(rawData.length);
-			
+				
 			var LevelData:XML = new XML(dataString);
 			
 			var dataList:XMLList;
@@ -141,6 +147,27 @@ package
 			
 		}
 		
+		private function createCSVFromXML(map:Class):Array {
+			var array:Array = new Array();
+			var bytes:ByteArray = new map;
+			var file:XML = new XML(bytes.readUTFBytes(bytes.length));			
+			
+			
+			if (file.level) {
+				
+				for each (var t in file.level.tile) {									
+					this.map.setTile(t.@x / 12, t.@y / 12, t.@id);
+			
+				}
+			}
+			
+			
+			
+			return array;
+		}
+		
 	}
+	
+	
 
 }
