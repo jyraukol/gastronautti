@@ -117,7 +117,7 @@ package
 			messageOverlay = new FlxSprite(0, 0);
 			messageOverlay.makeGraphic(FlxG.width, FlxG.height, 0xff000000);
 			add(messageOverlay);
-			add(levelMessage = new FlxText(100, 50, 100, "Testiviesti"));
+			add(levelMessage = new FlxText(100, 50, 100, level.levelMessage));
 			
 			if (!level.levelMessageExists) {
 				levelMessage.visible = false;

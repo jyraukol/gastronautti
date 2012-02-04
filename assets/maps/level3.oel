@@ -1,4 +1,4 @@
-<level>
+<level messageBeforeLevel="Viesti levelille kolme">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
