@@ -15,8 +15,7 @@ package
 		[Embed(source = "../assets/graphics/laser.png")] private var laserImage:Class;
 		[Embed(source = "../assets/graphics/laserEmitter.png")] private var emitterImage:Class;
 		private var laser:FlxSprite;
-		private var emitterStart:FlxSprite;
-		private var emitterEnd:FlxSprite;
+		private var emitterStart:FlxSprite;		
 		private var fireIntervalLimit:Number = 5;
 		private var fireIntervalCounter:Number = 0;
 		private var activeLimit:Number = 2;
@@ -24,34 +23,20 @@ package
 		private var laserGettingReady:Boolean = false;
 		
 		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int, fireInterval:int = 5) 
-		{
-						
+		{						
 			emitterStart = new FlxSprite(startX -2, startY - 3, emitterImage);			
 			emitterStart.allowCollisions = FlxObject.NONE;
 			
-			//emitterEnd = new FlxSprite(endX -2, endY, emitterImage);	
-			//emitterEnd.angle = 180;
-			//emitterEnd.allowCollisions = FlxObject.NONE;
-			
-			
-			
 			fireIntervalLimit = fireInterval;
-			
-			
-			add(emitterStart);
-			// add(emitterEnd);
-			
-		
+
+			add(emitterStart);		
 		}
 		
 		public function generateLaser():void {
 			var x:int = emitterStart.x;
 			var y:int = emitterStart.y;
-			
-			var tempX:int = x;
-			var tempY:int = y;
-			
-			laser = new FlxSprite(tempX, tempY + 25, laserImage);
+						
+			laser = new FlxSprite(x, y + 12, laserImage);
 			
 			var laserEndPoint:int = 1;
 			var i:int = 0;
@@ -63,9 +48,9 @@ package
 			laserEndPoint = laser.y + laser.height;
 			laser.y = y;
 			
-			laser.x = x + emitterStart.width / 2.0 - Math.floor(laser.width / 2) - 2.5 ;
-			laser.scale.y = (laserEndPoint - y) / laser.height;
-			laser.y = y;
+			laser.x = x + emitterStart.width / 2.0 - Math.floor(laser.width / 2);
+			laser.scale.y = (laserEndPoint - y - emitterStart.height) / laser.height ;
+			laser.y = y + emitterStart.height;;
 			laser.height = laser.height * laser.scale.y;
 			laser.centerOffsets();
 			laser.visible = false;
