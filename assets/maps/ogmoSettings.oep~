@@ -9,11 +9,16 @@
 	</settings>
 
 <tilesets>
-	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="11" />
+	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="12" />
 </tilesets>
-
+<objects>
+	<object name="houses" image="spaceHouse2.png" tile="true" width="32" height="32" />
+	<object name="fuelCans" image="fuelCan.png" width="8" height="8" />
+	<object name="spaceShip" image="spaceShip2.png" width="64" height="32" limit="1" />
+</objects>
 <layers>
 	<tiles name="level" gridSize="12" exportTileIDs="true"/>
+	<objects name="objects" gridSize="6"  />
 </layers>
 
 </project>

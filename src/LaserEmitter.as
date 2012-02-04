@@ -3,6 +3,7 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxObject;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	
 	/**
@@ -28,27 +29,48 @@ package
 			emitterStart = new FlxSprite(startX -2, startY - 3, emitterImage);			
 			emitterStart.allowCollisions = FlxObject.NONE;
 			
-			emitterEnd = new FlxSprite(endX -2, endY, emitterImage);	
-			emitterEnd.angle = 180;
-			emitterEnd.allowCollisions = FlxObject.NONE;
+			//emitterEnd = new FlxSprite(endX -2, endY, emitterImage);	
+			//emitterEnd.angle = 180;
+			//emitterEnd.allowCollisions = FlxObject.NONE;
 			
-			laser = new FlxSprite(0, startY, laserImage);
-			laser.x = startX + emitterStart.width / 2.0 - Math.floor(laser.width / 2) -2.5 ;
-			laser.scale.y = (endY - startY) / laser.height;
-			laser.y = startY;
-			laser.height = laser.height * laser.scale.y;
-			laser.centerOffsets();
-			laser.visible = false;
+			
 			
 			fireIntervalLimit = fireInterval;
 			
-			add(laser);
+			
 			add(emitterStart);
-			add(emitterEnd);
+			// add(emitterEnd);
 			
 		
 		}
 		
+		public function generateLaser():void {
+			var x:int = emitterStart.x;
+			var y:int = emitterStart.y;
+			
+			var tempX:int = x;
+			var tempY:int = y;
+			
+			laser = new FlxSprite(tempX, tempY + 25, laserImage);
+			
+			var laserEndPoint:int = 1;
+			var i:int = 0;
+			
+			while (!FlxG.collide(Registry.level.map, laser)) {				
+				laser.y += laser.height; 			
+			}
+			
+			laserEndPoint = laser.y + laser.height;
+			laser.y = y;
+			
+			laser.x = x + emitterStart.width / 2.0 - Math.floor(laser.width / 2) - 2.5 ;
+			laser.scale.y = (laserEndPoint - y) / laser.height;
+			laser.y = y;
+			laser.height = laser.height * laser.scale.y;
+			laser.centerOffsets();
+			laser.visible = false;
+			add(laser);
+		}
 		override public function update():void 
 		{
 			super.update();
@@ -60,8 +82,8 @@ package
 				
 				emitterStart.color = FlxG.RED;
 				emitterStart.flicker(1.5);
-				emitterEnd.color = FlxG.RED;
-				emitterEnd.flicker(1.5);
+				//emitterEnd.color = FlxG.RED;
+				//emitterEnd.flicker(1.5);
 				laserGettingReady = true;
 			}
 			if (fireIntervalCounter > fireIntervalLimit)
@@ -79,7 +101,7 @@ package
 					laser.visible = false;
 					laserGettingReady = false;
 					emitterStart.color = 0xFFC0C0C0;
-					emitterEnd.color = 0xFFC0C0C0;
+					//emitterEnd.color = 0xFFC0C0C0;
 				} 
 			}
 		}

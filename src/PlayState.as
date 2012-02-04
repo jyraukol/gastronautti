@@ -34,7 +34,7 @@ package
 		
 		//private var fuelPickupText:FlxText;
 		
-		private var level:Level1;
+		public var level:Level1;
 		public var stars:StarfieldFX;
 		
 		private var deathTimer:Number = 0;		
@@ -290,6 +290,7 @@ package
             
             for each (var laserEmitter:LaserEmitter in level.laserEmitters)
 			{
+				laserEmitter.generateLaser();
 				laserEmitters.add(laserEmitter);
 			}
         }

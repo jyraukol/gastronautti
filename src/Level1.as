@@ -67,16 +67,15 @@ package
 			
 			map = new FlxTilemap();			
 						
-			
-			
+			houses = new Vector.<SpaceHouse>();
+			fuelCans = new Vector.<FuelCan>();
+			laserEmitters = new Vector.<LaserEmitter>();
 			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
 			var tempMap:Array = createCSVFromXML(ogmoLevel);
 			
 			add(map);
-			houses = new Vector.<SpaceHouse>();
-			fuelCans = new Vector.<FuelCan>();
-			laserEmitters = new Vector.<LaserEmitter>();
+			
 			loadSprites();
 			
 			map.setTileProperties(2, FlxObject.NONE);
@@ -91,7 +90,7 @@ package
 		private function loadSprites():void
 		{
 			
-			
+			/* The old way commented out 
 			var rawData:ByteArray = new levelDataXML;
 			var dataString:String = rawData.readUTFBytes(rawData.length);
 				
@@ -143,7 +142,7 @@ package
 			}
 			
 			dataList = LevelData.objects.SpaceShip;
-			spaceShipPosition = new Point(int(LevelData.objects.SpaceShip.@x), int(LevelData.objects.SpaceShip.@y));
+			spaceShipPosition = new Point(int(LevelData.objects.SpaceShip.@x), int(LevelData.objects.SpaceShip.@y)); */
 			
 		}
 		
@@ -155,13 +154,33 @@ package
 			
 			if (file.level) {
 				
-				for each (var t in file.level.tile) {									
+				for each (var t:Object in file.level.tile) {									
 					this.map.setTile(t.@x / 12, t.@y / 12, t.@id);
 			
 				}
 			}
-			
-			
+						
+			if (file.objects) {
+				
+				// Only one spaceship
+				var ship:Object = file.objects.spaceShip;
+				spaceShipPosition = new Point(int(ship.@x), int(ship.@y))
+				
+				// Houses
+				for each (var house:Object in file.objects.houses) {									
+					houses.push(new SpaceHouse(int(house.@x), int(house.@y)));			
+				}
+				
+				// Fuelcans
+				for each (var can:Object in file.objects.fuelCans) {									
+					fuelCans.push(new FuelCan(int(can.@x), int(can.@y)));			
+				}
+				
+				// Lasers
+				for each (var laser:Object in file.objects.lasers) {
+					laserEmitters.push(new LaserEmitter(int(laser.@x), int(laser.@y), 0 ,0));			
+				}
+			}
 			
 			return array;
 		}
