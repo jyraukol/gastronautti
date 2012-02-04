@@ -72,12 +72,10 @@ package
 			laserEmitters = new Vector.<LaserEmitter>();
 			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
-			var tempMap:Array = createCSVFromXML(ogmoLevel);
+			createCSVFromXML(ogmoLevel);
 			
 			add(map);
-			
-			loadSprites();
-			
+						
 			map.setTileProperties(2, FlxObject.NONE);
 			map.setTileProperties(3, FlxObject.NONE);
 			map.setTileProperties(4, FlxObject.NONE);
@@ -87,67 +85,8 @@ package
 			Registry.level = this;
 		}
 		
-		private function loadSprites():void
-		{
-			
-			/* The old way commented out 
-			var rawData:ByteArray = new levelDataXML;
-			var dataString:String = rawData.readUTFBytes(rawData.length);
-				
-			var LevelData:XML = new XML(dataString);
-			
-			var dataList:XMLList;
-			var dataElement:XML;
-			
-			dataList = LevelData.objects.SpaceHouse;
-			
-			for each (dataElement in dataList)
-			{
-				
-				houses.push(new SpaceHouse(int(dataElement.@x), int(dataElement.@y)));
-			}
-			
-			dataList = LevelData.objects.FuelCan;
-			
-			for each (dataElement in dataList)
-			{
-				
-				fuelCans.push(new FuelCan(int(dataElement.@x), int(dataElement.@y)));
-			}
-			
-			
-			
-			dataList = LevelData.objects.LaserEmitter;
-			
-			var firstEmitter:Boolean = true;
-			var startX:int;
-			var startY:int;
-			var fireInterval:int;
-			
-			for each (dataElement in dataList)
-			{
-				if (firstEmitter)
-				{
-					startX = int(dataElement.@x);
-					startY = int(dataElement.@y);					
-					fireInterval = int(dataElement.@fireInterval);
-					firstEmitter = false;
-				} else
-				{					
-					laserEmitters.push(new LaserEmitter(startX, startY,
-										startX, int(dataElement.@y), fireInterval));
-					firstEmitter = true;
-				}
-								
-			}
-			
-			dataList = LevelData.objects.SpaceShip;
-			spaceShipPosition = new Point(int(LevelData.objects.SpaceShip.@x), int(LevelData.objects.SpaceShip.@y)); */
-			
-		}
 		
-		private function createCSVFromXML(map:Class):Array {
-			var array:Array = new Array();
+		private function createCSVFromXML(map:Class):void {			
 			var bytes:ByteArray = new map;
 			var file:XML = new XML(bytes.readUTFBytes(bytes.length));			
 			
@@ -181,8 +120,6 @@ package
 					laserEmitters.push(new LaserEmitter(int(laser.@x), int(laser.@y), 0 ,0));			
 				}
 			}
-			
-			return array;
 		}
 		
 	}

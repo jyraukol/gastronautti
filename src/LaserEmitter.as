@@ -67,8 +67,6 @@ package
 				
 				emitterStart.color = FlxG.RED;
 				emitterStart.flicker(1.5);
-				//emitterEnd.color = FlxG.RED;
-				//emitterEnd.flicker(1.5);
 				laserGettingReady = true;
 			}
 			if (fireIntervalCounter > fireIntervalLimit)
@@ -85,8 +83,7 @@ package
 					activeCounter = 0;
 					laser.visible = false;
 					laserGettingReady = false;
-					emitterStart.color = 0xFFC0C0C0;
-					//emitterEnd.color = 0xFFC0C0C0;
+					emitterStart.color = 0xFFC0C0C0;					
 				} 
 			}
 		}
