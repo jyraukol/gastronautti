@@ -2,6 +2,7 @@ package
 {
 	import flash.geom.Point;
 	import flash.xml.XMLNode;
+	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxObject;
 	import org.flixel.FlxPoint;
@@ -32,7 +33,7 @@ package
 		public var laserEmitters:Vector.<LaserEmitter>;
 		public var spaceShipPosition:Point;
 		
-		private var levelMessageDisplayed:Boolean = false;
+		public var levelMessageDisplayed:Boolean = false;
 		
 		public function Level1() 
 		{
@@ -47,7 +48,12 @@ package
 			laserEmitters = new Vector.<LaserEmitter>();
 			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
-			
+			Registry.level = this;
+						
+			loadLevel();
+		}
+		
+		public function loadLevel():void {
 			if (Registry.levelIndex == 1)
 			{								
 				createCSVFromXML(ogmoLevel1);
@@ -76,9 +82,8 @@ package
 			map.setTileProperties(5, FlxObject.NONE);
 			map.setTileProperties(6, FlxObject.NONE);
 			map.setTileProperties(7, FlxObject.NONE);
-			Registry.level = this;
+			
 		}
-		
 		
 		private function createCSVFromXML(map:Class):void {			
 			var bytes:ByteArray = new map;

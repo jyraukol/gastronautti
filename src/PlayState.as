@@ -17,6 +17,7 @@ package
 		private var player:Gastronaut;
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
+		private var messageOverlay:FlxSprite;
 		
 		private var foodText:FlxText;
 		private var foodNum:int;
@@ -25,7 +26,7 @@ package
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
-		private var starField:FlxSprite;
+		private var starField:StarField;
 		private var fuelCans:FlxGroup = new FlxGroup();
 		private var laserEmitters:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
@@ -36,6 +37,7 @@ package
 		
 		public var level:Level1;
 		public var stars:StarfieldFX;
+		private var levelMessage:FlxText;
 		
 		private var deathTimer:Number = 0;		
 		
@@ -43,10 +45,13 @@ package
 		{
 			FlxG.bgColor = 0xff000000;
 			
-			level = new Level1();
-			Registry.playState = this;
-			
+			if (level == null) {
+				level = new Level1();
+			} else {
+				level = Registry.level;
+			}
 			createLevelObjects();
+			Registry.playState = this;
 			
 			foodNum = spaceHouses.length;
             
@@ -64,14 +69,10 @@ package
 			Registry.player = player;
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
-			if (FlxG.getPlugin(FlxSpecialFX) == null)
-			{
-				FlxG.addPlugin(new FlxSpecialFX);
-			}
 			
-			stars = FlxSpecialFX.starfield();			
-			starField = stars.create(0, 0, FlxG.width, FlxG.height, 50, 1, 20);
 			
+			
+			starField = new StarField(0, 2);
 			add(starField);
 			moon = new FlxSprite(280, 50, moonImage);
 			moon.velocity.x = -0.3;
@@ -80,7 +81,7 @@ package
 			
 			// Add a bar for hud background
 			bar = new FlxSprite(0, 0);
-			bar.loadGraphic(hudBackground, false, false, 32, 15);
+			bar.loadGraphic(hudBackground, false, false, 32, 13);
 			bar.scale.x = FlxG.width;
 			bar.width = FlxG.width;
 			bar.alpha = 1;
@@ -114,97 +115,111 @@ package
 			add(fuelLow);
 			FlxG.playMusic(bgmusic, 1);
 			
+			messageOverlay = new FlxSprite(0, 0);
+			messageOverlay.makeGraphic(FlxG.width, FlxG.height, 0xff000000);
+			add(messageOverlay);
+			add(levelMessage = new FlxText(100, 50, 100, "Testiviesti"));
+			
+						
 		}
 		        
 		override public function update():void
 		{
 			super.update();
 			
-			FlxG.collide(player, level);
-			FlxG.collide(player, bar);
-			FlxG.overlap(player, spaceHouses, foodDelivered);
-			FlxG.overlap(player, fuelCans, fuelPickUp);
-			
-			FlxG.overlap(player, laserEmitters, playerHitLaser);
-			
-			
-			if (foodNum == 0)
-			{
-				FlxG.overlap(player, spaceShip, levelClear);
-			}
-			
-			if (thankText.visible)
-			{
-				thankText.alpha -= 0.01;
-				if (thankText.alpha <= 0)
-				{
-					resetThankText();
-				}
-			}
-			
-			/*if (fuelPickupText.visible)
-			{
-				fuelPickupText.alpha -= 0.01;
-				if (fuelPickupText.alpha <= 0)
-				{
-					fuelPickupText.visible = false;
-					fuelPickupText.alpha = 1;
-				}
-			}*/
-			
-			if (player.fuel < 25)
-			{
+			if (!level.levelMessageDisplayed && (FlxG.keys.ENTER)) {
+				levelMessage.visible = false;
+				messageOverlay.visible = false;
+				messageOverlay.active = false;
+				level.levelMessageDisplayed = true;	
+			} else {
+									
+				FlxG.collide(player, level);
+				FlxG.collide(player, bar);
+				FlxG.overlap(player, spaceHouses, foodDelivered);
+				FlxG.overlap(player, fuelCans, fuelPickUp);
 				
-				fuelLow.exists = true;
-			} else
-			{
-				fuelLow.exists = false;
-			}
-			
-			
-			if (player.fuel == 0)
-			{
-				//restartText.visible = true;				
-				// First thing
-				if (deathTimer == 0)
+				FlxG.overlap(player, laserEmitters, playerHitLaser);
+				
+				
+				if (foodNum == 0)
 				{
-					// Slow down the game
-					FlxG.timeScale = 0.3;
-					// Set the timer
-					deathTimer = 1.5;
+					FlxG.overlap(player, spaceShip, levelClear);
+				}
+				
+				if (thankText.visible)
+				{
+					thankText.alpha -= 0.01;
+					if (thankText.alpha <= 0)
+					{
+						resetThankText();
+					}
+				}
+				
+				/*if (fuelPickupText.visible)
+				{
+					fuelPickupText.alpha -= 0.01;
+					if (fuelPickupText.alpha <= 0)
+					{
+						fuelPickupText.visible = false;
+						fuelPickupText.alpha = 1;
+					}
+				}*/
+				
+				if (player.fuel < 25)
+				{
 					
-				}
-				else
+					fuelLow.exists = true;
+				} else
 				{
-										
-					deathTimer -= FlxG.elapsed;
-						
-					player.scale.x *= 0.97;
-					player.scale.y *= 0.97;
-					if (deathTimer <= 1)
+					fuelLow.exists = false;
+				}
+				
+				
+				if (player.fuel == 0)
+				{
+					//restartText.visible = true;				
+					// First thing
+					if (deathTimer == 0)
 					{
-						FlxG.fade(0xff000000, 1);					
+						// Slow down the game
+						FlxG.timeScale = 0.3;
+						// Set the timer
+						deathTimer = 1.5;
+						
 					}
-					// The last tick
-					if (deathTimer <= FlxG.elapsed)
+					else
 					{
-						FlxG.timeScale = 1.0;
-						// Restart
-						FlxG.flash(0xff000000, 1, resetLevel);
-						
+											
+						deathTimer -= FlxG.elapsed;
+							
+						player.scale.x *= 0.97;
+						player.scale.y *= 0.97;
+						if (deathTimer <= 1)
+						{
+							FlxG.fade(0xff000000, 1);					
+						}
+						// The last tick
+						if (deathTimer <= FlxG.elapsed)
+						{
+							FlxG.timeScale = 1.0;
+							// Restart
+							FlxG.flash(0xff000000, 1, resetLevel);
+							
+						}
 					}
 				}
-			}
-			
-			if (FlxG.keys.R)
-			{
-				remove(starField);
-				FlxG.switchState(new PlayState);
-			}
-			
-			if (FlxG.keys.N)
-			{
-				levelClear(player, spaceShip);
+				
+				if (FlxG.keys.R)
+				{
+					remove(starField);
+					FlxG.switchState(new PlayState);
+				}
+				
+				if (FlxG.keys.N)
+				{
+					levelClear(player, spaceShip);
+				}
 			}
 		}
 		
@@ -232,9 +247,13 @@ package
 			
 		}
 		
+		public function clearStartField(): void {
+			remove(starField);
+		}
+		
 		private function resetLevel():void 
 		{
-			remove(starField);
+			
 			FlxG.switchState(new PlayState);
 		}
 		

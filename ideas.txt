@@ -9,5 +9,6 @@ Uusia elementtej‰ peliin:
               hakee id:ll‰ vastaparin ja pelaaja ilmestyy sinne. T‰ll‰ tavoin voisi viel‰ pelinaikaisesti
               muuttaakkin ulostulokohtaa...)
 - Jotain niinkin simppeli‰ kuin lukittuja ovia? Tarvii keycardin.
+- Ennen uuden elementin ensikohtaamista pelaajan pomo voisi l‰hett‰‰ viestin, joka v‰h‰n valmistelee, mist‰ kyse
 
 N‰ist‰ ehk‰ tuo porttaali-idea kuulosti eka siisteimm‰lt‰.              

@@ -67,7 +67,7 @@ package
 		}
 		
 		private function onFade():void
-		{
+		{			
 			FlxG.switchState(new PlayState);
 		}
 		
