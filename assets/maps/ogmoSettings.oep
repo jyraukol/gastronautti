@@ -9,7 +9,7 @@
 	</settings>
 	
 	<values>
-		<string name="messageBeforeLevel" default="" maxChars="120" />
+		<string name="messageBeforeLevel" maxChars="120" />
 	</values>
 <tilesets>
 	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="12" />

@@ -93,11 +93,10 @@ package
 			var bytes:ByteArray = new map;
 			var file:XML = new XML(bytes.readUTFBytes(bytes.length));			
 			levelMessageExists = false;
-			
-			trace(file.hasOwnProperty("@messageBeforeLevel"));
+						
 			// Do we have a level spesific message to display?
-			if (file.hasOwnProperty("@messageBeforeLevel")) {
-				levelMessage = file.attribute("messageBeforeLevel")
+			if (file.hasOwnProperty("@messageBeforeLevel") && file.attribute("messageBeforeLevel") != "") {
+				levelMessage = file.attribute("messageBeforeLevel");
 				levelMessageExists = true;
 				levelMessageDisplayed = false;
 			}
