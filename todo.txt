@@ -1,1 +1,2 @@
--PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
+- PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
+- Jos pelaaja tippuu ulospelialueelta niin henki pois!
