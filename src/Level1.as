@@ -15,16 +15,12 @@ package
 	 */
 	public class Level1 extends FlxGroup 
 	{
-		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;
-		[Embed(source="../assets/maps/mapCSV_Level3_Map1.csv", mimeType="application/octet-stream")] public static var map2CSV:Class;		
-		[Embed(source = "../assets/maps/Level_level2.xml", mimeType = "application/octet-stream")]public static const level2DataXML:Class;
-		[Embed(source="../assets/maps/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public static var map1CSV:Class;		
-		[Embed(source = "../assets/maps/Level_level1.xml", mimeType = "application/octet-stream")]public static const level1DataXML:Class;
-		[Embed(source="../assets/maps/level3.csv", mimeType="application/octet-stream")] public static var map3CSV:Class;		
-		[Embed(source = "../assets/maps/Level_level3.xml", mimeType = "application/octet-stream")]public static const level3DataXML:Class;
-		[Embed(source = "../assets/maps/mapCSV_Level4_Map1.csv", mimeType = "application/octet-stream")] public static var map4CSV:Class;		
-		[Embed(source = "../assets/maps/Level_Level4.xml", mimeType = "application/octet-stream")] public static const level4DataXML:Class;
-		[Embed(source = "../assets/maps/ogmoTest.oel", mimeType = "application/octet-stream")] public static const ogmoLevel:Class;
+		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;		
+		[Embed(source="../assets/maps/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public static var map1CSV:Class;						
+		[Embed(source = "../assets/maps/level1.oel", mimeType = "application/octet-stream")] public static const ogmoLevel1:Class;
+		[Embed(source = "../assets/maps/level2.oel", mimeType = "application/octet-stream")] public static const ogmoLevel2:Class;
+		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel3:Class;
+		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
@@ -40,39 +36,36 @@ package
 		{
 			super();
 			
-			if (Registry.levelIndex == 1)
-			{								
-				this.levelDataXML = level1DataXML;
-				this.mapCSV = map1CSV;
-			} else if (Registry.levelIndex == 2)
-			{
-				this.levelDataXML = level2DataXML;
-				this.mapCSV = map2CSV;				
-			} else if (Registry.levelIndex == 3)
-			{
-				this.levelDataXML = level3DataXML;
-				this.mapCSV = map3CSV;
-			}  else if (Registry.levelIndex == 4)
-			{
-				this.levelDataXML = level4DataXML;
-				this.mapCSV = map4CSV;
-			}
-			else
-			{
-				// Load the first level for now
-				this.levelDataXML = level1DataXML;
-				this.mapCSV = map1CSV;
-			}
-			
-			
 			map = new FlxTilemap();			
-						
+			this.mapCSV = map1CSV;
+			
 			houses = new Vector.<SpaceHouse>();
 			fuelCans = new Vector.<FuelCan>();
 			laserEmitters = new Vector.<LaserEmitter>();
 			
 			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
-			createCSVFromXML(ogmoLevel);
+			
+			if (Registry.levelIndex == 1)
+			{								
+				createCSVFromXML(ogmoLevel1);
+			} else if (Registry.levelIndex == 2)
+			{
+				createCSVFromXML(ogmoLevel2);
+			} else if (Registry.levelIndex == 3)
+			{
+				createCSVFromXML(ogmoLevel3);
+			}  else if (Registry.levelIndex == 4)
+			{
+				createCSVFromXML(ogmoLevel4);
+			}
+			else
+			{
+				// Load the first level for now
+				
+				this.mapCSV = map1CSV;
+			}
+			
+			
 			
 			add(map);
 						
