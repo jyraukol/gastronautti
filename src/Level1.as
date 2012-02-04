@@ -33,13 +33,15 @@ package
 		public var laserEmitters:Vector.<LaserEmitter>;
 		public var spaceShipPosition:Point;
 		
-		public var levelMessageDisplayed:Boolean = false;
+		public var levelMessageDisplayed:Boolean = true;
+		public var levelMessageExists:Boolean = false;
+		public var levelMessage:String;
 		
 		public function Level1() 
 		{
 			super();
 			
-			map = new FlxTilemap();			
+			
 			this.mapCSV = map1CSV;
 			
 			
@@ -47,13 +49,24 @@ package
 			fuelCans = new Vector.<FuelCan>();
 			laserEmitters = new Vector.<LaserEmitter>();
 			
-			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
+			
 			Registry.level = this;
+		
 						
+					
 			loadLevel();
 		}
 		
-		public function loadLevel():void {
+		public function loadLevel():void {			
+			map = new FlxTilemap();						
+			map.loadMap(new mapCSV, mapTilesPNG, 12, 12, 0, 0, 1, 1); 
+			map.setTileProperties(2, FlxObject.NONE);
+			map.setTileProperties(3, FlxObject.NONE);
+			map.setTileProperties(4, FlxObject.NONE);
+			map.setTileProperties(5, FlxObject.NONE);
+			map.setTileProperties(6, FlxObject.NONE);
+			map.setTileProperties(7, FlxObject.NONE);
+			add(map);
 			if (Registry.levelIndex == 1)
 			{								
 				createCSVFromXML(ogmoLevel1);
@@ -73,22 +86,21 @@ package
 				
 				this.mapCSV = map1CSV;
 			}
-								
-			add(map);
-						
-			map.setTileProperties(2, FlxObject.NONE);
-			map.setTileProperties(3, FlxObject.NONE);
-			map.setTileProperties(4, FlxObject.NONE);
-			map.setTileProperties(5, FlxObject.NONE);
-			map.setTileProperties(6, FlxObject.NONE);
-			map.setTileProperties(7, FlxObject.NONE);
 			
 		}
 		
 		private function createCSVFromXML(map:Class):void {			
 			var bytes:ByteArray = new map;
 			var file:XML = new XML(bytes.readUTFBytes(bytes.length));			
+			levelMessageExists = false;
 			
+			trace(file.hasOwnProperty("@messageBeforeLevel"));
+			// Do we have a level spesific message to display?
+			if (file.hasOwnProperty("@messageBeforeLevel")) {
+				levelMessage = file.attribute("messageBeforeLevel")
+				levelMessageExists = true;
+				levelMessageDisplayed = false;
+			}
 			
 			if (file.level) {
 				
@@ -103,6 +115,8 @@ package
 				// Only one spaceship
 				var ship:Object = file.objects.spaceShip;
 				spaceShipPosition = new Point(int(ship.@x), int(ship.@y))
+				
+				
 				
 				// Houses
 				for each (var house:Object in file.objects.houses) {									

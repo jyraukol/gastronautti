@@ -1,4 +1,4 @@
-<level>
+<level messageBeforeLevel="Message for level 1">
   <width>320</width>
   <height>240</height>
   <level set="tiles">

@@ -45,11 +45,10 @@ package
 		{
 			FlxG.bgColor = 0xff000000;
 			
-			if (level == null) {
-				level = new Level1();
-			} else {
-				level = Registry.level;
-			}
+
+			level = new Level1();
+
+			
 			createLevelObjects();
 			Registry.playState = this;
 			
@@ -120,7 +119,12 @@ package
 			add(messageOverlay);
 			add(levelMessage = new FlxText(100, 50, 100, "Testiviesti"));
 			
-						
+			if (!level.levelMessageExists) {
+				levelMessage.visible = false;
+				messageOverlay.visible = false;
+				messageOverlay.active = false;
+				level.levelMessageDisplayed = true;	
+			}
 		}
 		        
 		override public function update():void
@@ -281,7 +285,7 @@ package
 				return;
 			}
             
-            // Player hit active laser, resetLevel
+            // Player hit active laser, reset
 			player.visible = false;
 			player.moves = false;
 			FlxG.shake(0.05, 0.05, resetLevel);
