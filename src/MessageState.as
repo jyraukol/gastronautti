@@ -11,9 +11,9 @@ package
 	public class MessageState extends FlxState 
 	{
 		
-		public function MessageState() 
+		public function MessageState(message:String) 
 		{
-			
+			add(new FlxText(100, 50, 100, "Testiviesti");
 		}
 		
 		override public function update():void 
@@ -28,7 +28,7 @@ package
 				
 		private function switchState():void
 		{
-			Registry.levelIndex++;
+			
 			FlxG.switchState(new PlayState);				
 		}
 		

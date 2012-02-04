@@ -7,7 +7,10 @@
 		<defaultHeight>240</defaultHeight>
 		<workingDirectory>../graphics</workingDirectory>
 	</settings>
-
+	
+	<values>
+		<string name="messageBeforeLevel" default="" maxChars="120" />
+	</values>
 <tilesets>
 	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="12" />
 </tilesets>

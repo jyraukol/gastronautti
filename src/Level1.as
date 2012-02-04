@@ -32,12 +32,15 @@ package
 		public var laserEmitters:Vector.<LaserEmitter>;
 		public var spaceShipPosition:Point;
 		
+		private var levelMessageDisplayed:Boolean = false;
+		
 		public function Level1() 
 		{
 			super();
 			
 			map = new FlxTilemap();			
 			this.mapCSV = map1CSV;
+			
 			
 			houses = new Vector.<SpaceHouse>();
 			fuelCans = new Vector.<FuelCan>();
@@ -64,9 +67,7 @@ package
 				
 				this.mapCSV = map1CSV;
 			}
-			
-			
-			
+								
 			add(map);
 						
 			map.setTileProperties(2, FlxObject.NONE);
