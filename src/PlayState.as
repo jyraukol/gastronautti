@@ -43,6 +43,8 @@ package
 		
 		private var deathTimer:Number = 0;		
 		
+		private var lever:Lever = new Lever(150, 100);
+		
 		override public function create():void
 		{
 			FlxG.bgColor = 0xff000000;
@@ -69,9 +71,6 @@ package
 			player.y = spaceShip.y + spaceShip.height - player.height;
 			Registry.player = player;
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
-			
-			
-			
 			
 			starField = new StarField(0, 2);
 			add(starField);
@@ -138,6 +137,8 @@ package
 				level.levelMessageDisplayed = true;
 				remove(levelMessageObject);
 			}
+			
+			add(lever);
 		}
 		        
 		override public function update():void
@@ -156,6 +157,7 @@ package
 				FlxG.collide(player, bar);
 				FlxG.overlap(player, spaceHouses, foodDelivered);
 				FlxG.overlap(player, fuelCans, fuelPickUp);
+				FlxG.overlap(player, lever, pullLever);
 				
 				FlxG.overlap(player, laserEmitters, playerHitLaser);
 				
@@ -303,6 +305,10 @@ package
 			player.visible = false;
 			player.moves = false;
 			FlxG.shake(0.05, 0.05, resetLevel);
+		}
+		
+		private function pullLever(player:Gastronaut, lever:Lever):void {
+			lever.pull();
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
