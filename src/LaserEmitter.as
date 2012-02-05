@@ -53,10 +53,7 @@ package
 				laserEndPoint = laser.y + laser.height - 2;
 				laser.y = y;
 			}
-			
-			
-			
-			
+						
 			laser.x = x + emitterStart.width / 2.0 - Math.floor(laser.width / 2);
 			laser.scale.y = (laserEndPoint - y - emitterStart.height) / laser.height ;
 			laser.y = y + emitterStart.height;;

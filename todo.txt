@@ -1,2 +1,3 @@
 - PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
-- Jos pelaaja tippuu ulospelialueelta niin henki pois!
+- Jos pelaaja tippuu ulospelialueelta niin henki pois! DONE!
+
