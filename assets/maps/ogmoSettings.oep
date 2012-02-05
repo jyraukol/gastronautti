@@ -10,6 +10,7 @@
 	
 	<values>
 		<string name="messageBeforeLevel" maxChars="120" />
+		<string name="messageImageFileName" maxChars="120" />
 	</values>
 <tilesets>
 	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="12" />
@@ -22,7 +23,7 @@
 </objects>
 <layers>
 	<tiles name="level" gridSize="12" exportTileIDs="true"/>
-	<objects name="objects" gridSize="6"  />
+	<objects name="objects" gridSize="1"  />
 </layers>
 
 </project>

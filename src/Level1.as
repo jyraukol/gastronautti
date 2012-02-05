@@ -21,7 +21,7 @@ package
 		[Embed(source = "../assets/maps/level1.oel", mimeType = "application/octet-stream")] public static const ogmoLevel1:Class;
 		[Embed(source = "../assets/maps/level2.oel", mimeType = "application/octet-stream")] public static const ogmoLevel2:Class;
 		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel3:Class;
-		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4:Class;
+		[Embed(source = "../assets/maps/level4.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
@@ -36,6 +36,7 @@ package
 		public var levelMessageDisplayed:Boolean = true;
 		public var levelMessageExists:Boolean = false;
 		public var levelMessage:String;
+		public var levelMessageObject:String = "";
 		
 		public function Level1() 
 		{
@@ -99,6 +100,8 @@ package
 				levelMessage = file.attribute("messageBeforeLevel");
 				levelMessageExists = true;
 				levelMessageDisplayed = false;
+				levelMessageObject = file.attribute("messageImageFileName");
+				trace(levelMessageObject);
 			}
 			
 			if (file.level) {

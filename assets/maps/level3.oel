@@ -1,4 +1,4 @@
-<level messageBeforeLevel="Viesti levelille kolme">
+<level messageBeforeLevel="There is a fuel can in this level. Pick it up for extra fuel!" messageImageFileName="fuelcan">
   <width>320</width>
   <height>240</height>
   <level set="tiles">

@@ -1,4 +1,4 @@
-<level>
+<level messageBeforeLevel="">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
@@ -101,8 +101,6 @@
     <tile id="1" x="204" y="84"/>
     <tile id="1" x="216" y="84"/>
     <tile id="1" x="228" y="84"/>
-    <tile id="1" x="228" y="96"/>
-    <tile id="1" x="228" y="108"/>
     <tile id="1" x="228" y="120"/>
     <tile id="1" x="228" y="132"/>
     <tile id="1" x="240" y="132"/>
@@ -176,6 +174,116 @@
     <tile id="2" x="204" y="72"/>
     <tile id="2" x="216" y="72"/>
     <tile id="3" x="228" y="72"/>
+    <tile id="1" x="0" y="60"/>
+    <tile id="1" x="0" y="72"/>
+    <tile id="1" x="0" y="84"/>
+    <tile id="1" x="0" y="96"/>
+    <tile id="1" x="0" y="108"/>
+    <tile id="1" x="0" y="120"/>
+    <tile id="1" x="0" y="132"/>
+    <tile id="1" x="0" y="144"/>
+    <tile id="1" x="0" y="156"/>
+    <tile id="1" x="0" y="168"/>
+    <tile id="1" x="0" y="180"/>
+    <tile id="1" x="0" y="192"/>
+    <tile id="1" x="12" y="192"/>
+    <tile id="1" x="24" y="192"/>
+    <tile id="1" x="36" y="192"/>
+    <tile id="1" x="48" y="192"/>
+    <tile id="1" x="60" y="192"/>
+    <tile id="1" x="72" y="192"/>
+    <tile id="1" x="84" y="204"/>
+    <tile id="1" x="96" y="204"/>
+    <tile id="1" x="84" y="192"/>
+    <tile id="1" x="96" y="192"/>
+    <tile id="1" x="108" y="192"/>
+    <tile id="1" x="108" y="204"/>
+    <tile id="1" x="108" y="216"/>
+    <tile id="1" x="96" y="216"/>
+    <tile id="1" x="84" y="216"/>
+    <tile id="1" x="72" y="204"/>
+    <tile id="1" x="60" y="204"/>
+    <tile id="1" x="48" y="204"/>
+    <tile id="1" x="36" y="204"/>
+    <tile id="1" x="24" y="204"/>
+    <tile id="1" x="12" y="204"/>
+    <tile id="1" x="0" y="204"/>
+    <tile id="1" x="0" y="216"/>
+    <tile id="1" x="12" y="216"/>
+    <tile id="1" x="24" y="216"/>
+    <tile id="1" x="36" y="216"/>
+    <tile id="1" x="48" y="216"/>
+    <tile id="1" x="60" y="216"/>
+    <tile id="1" x="72" y="216"/>
+    <tile id="1" x="0" y="228"/>
+    <tile id="1" x="12" y="228"/>
+    <tile id="1" x="24" y="228"/>
+    <tile id="1" x="36" y="228"/>
+    <tile id="1" x="48" y="228"/>
+    <tile id="1" x="60" y="228"/>
+    <tile id="1" x="72" y="228"/>
+    <tile id="1" x="84" y="228"/>
+    <tile id="1" x="96" y="228"/>
+    <tile id="1" x="108" y="228"/>
+    <tile id="1" x="180" y="96"/>
+    <tile id="1" x="192" y="96"/>
+    <tile id="1" x="204" y="96"/>
+    <tile id="1" x="216" y="96"/>
+    <tile id="1" x="228" y="96"/>
+    <tile id="1" x="228" y="108"/>
+    <tile id="1" x="216" y="108"/>
+    <tile id="1" x="204" y="108"/>
+    <tile id="1" x="192" y="108"/>
+    <tile id="1" x="180" y="108"/>
+    <tile id="1" x="180" y="120"/>
+    <tile id="1" x="180" y="132"/>
+    <tile id="1" x="192" y="120"/>
+    <tile id="1" x="204" y="120"/>
+    <tile id="1" x="216" y="120"/>
+    <tile id="1" x="216" y="132"/>
+    <tile id="1" x="204" y="132"/>
+    <tile id="1" x="192" y="132"/>
+    <tile id="1" x="192" y="144"/>
+    <tile id="1" x="180" y="144"/>
+    <tile id="1" x="180" y="156"/>
+    <tile id="1" x="192" y="156"/>
+    <tile id="1" x="204" y="156"/>
+    <tile id="1" x="204" y="144"/>
+    <tile id="1" x="240" y="144"/>
+    <tile id="1" x="216" y="144"/>
+    <tile id="1" x="228" y="144"/>
+    <tile id="1" x="228" y="156"/>
+    <tile id="1" x="216" y="156"/>
+    <tile id="1" x="192" y="168"/>
+    <tile id="1" x="204" y="168"/>
+    <tile id="1" x="216" y="168"/>
+    <tile id="1" x="228" y="168"/>
+    <tile id="1" x="240" y="168"/>
+    <tile id="1" x="240" y="156"/>
+    <tile id="1" x="264" y="156"/>
+    <tile id="1" x="264" y="168"/>
+    <tile id="1" x="252" y="168"/>
+    <tile id="1" x="252" y="156"/>
+    <tile id="1" x="252" y="144"/>
+    <tile id="1" x="264" y="144"/>
+    <tile id="1" x="276" y="144"/>
+    <tile id="1" x="276" y="156"/>
+    <tile id="1" x="276" y="168"/>
+    <tile id="1" x="288" y="168"/>
+    <tile id="1" x="288" y="156"/>
+    <tile id="1" x="288" y="144"/>
+    <tile id="1" x="312" y="144"/>
+    <tile id="1" x="312" y="132"/>
+    <tile id="1" x="312" y="120"/>
+    <tile id="1" x="312" y="108"/>
+    <tile id="1" x="312" y="96"/>
+    <tile id="1" x="300" y="96"/>
+    <tile id="1" x="300" y="108"/>
+    <tile id="1" x="300" y="120"/>
+    <tile id="1" x="300" y="132"/>
+    <tile id="1" x="300" y="144"/>
+    <tile id="1" x="300" y="156"/>
+    <tile id="1" x="312" y="156"/>
   </level>
   <objects>
     <spaceShip x="252" y="198"/>

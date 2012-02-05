@@ -21,14 +21,16 @@ package
 		private var activeLimit:Number = 2;
 		private var activeCounter:Number = 0;
 		private var laserGettingReady:Boolean = false;
+		private var laserToBottom:Boolean;
 		
-		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int, fireInterval:int = 5) 
+		public function LaserEmitter(startX:int, startY:int, endX:int, endY:int, fireInterval:int = 5, laserToBottom:Boolean = false ) 
 		{						
-			emitterStart = new FlxSprite(startX -2, startY - 3, emitterImage);			
+			emitterStart = new FlxSprite(startX -2, startY, emitterImage);			
 			emitterStart.allowCollisions = FlxObject.NONE;
 			
 			fireIntervalLimit = fireInterval;
-
+			this.laserToBottom = laserToBottom;
+			
 			add(emitterStart);		
 		}
 		
@@ -41,12 +43,19 @@ package
 			var laserEndPoint:int = 1;
 			var i:int = 0;
 			
-			while (!FlxG.collide(Registry.level.map, laser)) {				
+			if (laserToBottom) {
+				laserEndPoint = FlxG.height;
+			}
+			else {
+				while (!FlxG.collide(Registry.level.map, laser) || laser.y > FlxG.height) {				
 				laser.y += laser.height; 			
+				}
+				laserEndPoint = laser.y + laser.height - 2;
+				laser.y = y;
 			}
 			
-			laserEndPoint = laser.y + laser.height;
-			laser.y = y;
+			
+			
 			
 			laser.x = x + emitterStart.width / 2.0 - Math.floor(laser.width / 2);
 			laser.scale.y = (laserEndPoint - y - emitterStart.height) / laser.height ;

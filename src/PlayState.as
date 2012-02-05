@@ -33,6 +33,8 @@ package
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
 		
+		private var levelMessageObject:FlxBasic;
+		
 		//private var fuelPickupText:FlxText;
 		
 		public var level:Level1;
@@ -119,11 +121,22 @@ package
 			add(messageOverlay);
 			add(levelMessage = new FlxText(100, 50, 100, level.levelMessage));
 			
+			if (level.levelMessageObject.search("fuelcan") != -1) {
+					levelMessageObject = new FuelCan(150, 100)
+					add(levelMessageObject);					
+			}
+			if (level.levelMessageObject.search("laser") != -1) {
+					levelMessageObject = new LaserEmitter(150, 100, 0, 0, 3, true);
+					(levelMessageObject as LaserEmitter).generateLaser();
+					add(levelMessageObject);					
+			}
+				
 			if (!level.levelMessageExists) {
 				levelMessage.visible = false;
 				messageOverlay.visible = false;
 				messageOverlay.active = false;
-				level.levelMessageDisplayed = true;	
+				level.levelMessageDisplayed = true;
+				remove(levelMessageObject);
 			}
 		}
 		        
@@ -136,6 +149,7 @@ package
 				messageOverlay.visible = false;
 				messageOverlay.active = false;
 				level.levelMessageDisplayed = true;	
+				remove(levelMessageObject);
 			} else {
 									
 				FlxG.collide(player, level);
