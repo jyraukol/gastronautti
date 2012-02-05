@@ -180,7 +180,7 @@ package
 				}
 				
 				
-				if (player.fuel == 0)
+				if (player.fuel == 0 || player.y > FlxG.height)
 				{
 					//restartText.visible = true;				
 					// First thing
