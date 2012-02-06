@@ -122,7 +122,7 @@ package
 			messageOverlay = new FlxSprite(0, 0);
 			messageOverlay.makeGraphic(FlxG.width, FlxG.height, 0xff000000);
 			add(messageOverlay);
-			add(levelMessage = new FlxText(100, 50, 100, level.levelMessage));
+			add(levelMessage = new FlxText(100, 50, 150, level.levelMessage));
 			
 			if (level.levelMessageObject.search("fuelcan") != -1) {
 					levelMessageObject = new FuelCan(150, 100)
@@ -131,6 +131,12 @@ package
 			if (level.levelMessageObject.search("laser") != -1) {
 					levelMessageObject = new LaserEmitter(150, 100, 0, 0, 3, true);
 					(levelMessageObject as LaserEmitter).generateLaser();
+					add(levelMessageObject);					
+			}
+			if (level.levelMessageObject.search("leverDoor") != -1) {				
+					levelMessageObject = new FlxGroup();
+					(levelMessageObject as FlxGroup).add(new Lever(130, 120, 1));
+					(levelMessageObject as FlxGroup).add(new Door(170, 120, 1, 32));					
 					add(levelMessageObject);					
 			}
 				
@@ -313,7 +319,13 @@ package
 		}
 		
 		private function pullLever(player:Gastronaut, lever:Lever):void {
-			lever.pull();
+			if (!lever.getPulled()) {
+				lever.pull();
+			
+				for each (var door:Door in doors.members) {
+				door.openDoor(lever.getID());				
+				}
+			}			
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void

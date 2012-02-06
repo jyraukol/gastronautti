@@ -22,6 +22,7 @@ package
 			
 			play("notPulled");
 			this.leverId = leverId;
+			trace("leverin id on " + this.leverId);
 		}
 		
 		public function pull():void {
@@ -32,6 +33,13 @@ package
 			
 		}
 		
+		public function getID():int {
+			return leverId;
+		}
+		
+		public function getPulled():Boolean {
+			return pulled;
+		}
 		override public function update():void 
 		{
 			super.update();
