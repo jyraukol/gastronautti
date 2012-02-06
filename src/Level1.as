@@ -141,6 +141,10 @@ package
 					levers.push(new Lever(int(lever.@x), int(lever.@y), int(lever.@leverId) ));			
 				}
 				
+				// Levers
+				for each (var door:Object in file.objects.doors) {
+					doors.push(new Door(int(door.@x), int(door.@y), int(door.@leverId), int(door.@height) ));			
+				}
 				
 			}
 		}

@@ -27,7 +27,7 @@ package
 		public function pull():void {
 			if (!pulled) {
 				play("pulled");	
-				pulled = false;
+				pulled = true;
 			}
 			
 		}

@@ -192,7 +192,7 @@
   </level>
   <objects>
     <spaceShip x="1" y="196"/>
-    <levers x="122" y="162" leverId="1"/>
+    <levers x="101" y="211" leverId="1"/>
     <doors x="145" y="192" height="37" leverId="1"/>
     <houses x="279" y="195"/>
   </objects>

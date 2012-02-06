@@ -30,6 +30,7 @@ package
 		private var fuelCans:FlxGroup = new FlxGroup();
 		private var laserEmitters:FlxGroup = new FlxGroup();
 		private var levers:FlxGroup = new FlxGroup();
+		private var doors:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
@@ -95,6 +96,7 @@ package
 						
 			add(laserEmitters);
 			add(levers);
+			add(doors);
 			add(player);
 			
 			add(fuelCans);
@@ -157,6 +159,7 @@ package
 									
 				FlxG.collide(player, level);
 				FlxG.collide(player, bar);
+				FlxG.collide(player, doors);
 				FlxG.overlap(player, spaceHouses, foodDelivered);
 				FlxG.overlap(player, fuelCans, fuelPickUp);
 				FlxG.overlap(player, levers, pullLever);
@@ -342,6 +345,11 @@ package
 			for each (var lever:Lever in level.levers)
 			{				
 				levers.add(lever);
+			}
+			
+			for each (var door:Door in level.doors)
+			{				
+				doors.add(door);
 			}
         }
         
