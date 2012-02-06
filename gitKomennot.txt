@@ -1,0 +1,4 @@
+git remote add ulkoa ssh://jyri@89.106.41.149:4222/home/jyri/gitRepo/gastronautti
+
+git pull ulkoa master
+git push ulkoa master
