@@ -22,6 +22,7 @@ package
 		[Embed(source = "../assets/maps/level2.oel", mimeType = "application/octet-stream")] public static const ogmoLevel2:Class;
 		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel3:Class;
 		[Embed(source = "../assets/maps/level4.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4:Class;
+		[Embed(source = "../assets/maps/level5.oel", mimeType = "application/octet-stream")] public static const ogmoLevel5:Class;
 		
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
@@ -31,6 +32,8 @@ package
 		public var houses:Vector.<SpaceHouse>;
 		public var fuelCans:Vector.<FuelCan>;
 		public var laserEmitters:Vector.<LaserEmitter>;
+		public var levers:Vector.<Lever>;
+		public var doors:Vector.<FlxSprite>; // Flxsprite for now
 		public var spaceShipPosition:Point;
 		
 		public var levelMessageDisplayed:Boolean = true;
@@ -49,7 +52,8 @@ package
 			houses = new Vector.<SpaceHouse>();
 			fuelCans = new Vector.<FuelCan>();
 			laserEmitters = new Vector.<LaserEmitter>();
-			
+			levers = new Vector.<Lever>();
+			doors = new Vector.<FlxSprite>();
 			
 			Registry.level = this;
 		
@@ -80,12 +84,9 @@ package
 			}  else if (Registry.levelIndex == 4)
 			{
 				createCSVFromXML(ogmoLevel4);
-			}
-			else
+			} else if (Registry.levelIndex == 5)
 			{
-				// Load the first level for now
-				
-				this.mapCSV = map1CSV;
+				createCSVFromXML(ogmoLevel5);
 			}
 			
 		}
@@ -134,6 +135,13 @@ package
 				for each (var laser:Object in file.objects.lasers) {
 					laserEmitters.push(new LaserEmitter(int(laser.@x), int(laser.@y), 0 ,0));			
 				}
+				
+				// Levers
+				for each (var lever:Object in file.objects.levers) {
+					levers.push(new Lever(int(lever.@x), int(lever.@y), int(lever.@leverId) ));			
+				}
+				
+				
 			}
 		}
 		

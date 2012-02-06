@@ -29,6 +29,7 @@ package
 		private var starField:StarField;
 		private var fuelCans:FlxGroup = new FlxGroup();
 		private var laserEmitters:FlxGroup = new FlxGroup();
+		private var levers:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
@@ -43,7 +44,7 @@ package
 		
 		private var deathTimer:Number = 0;		
 		
-		private var lever:Lever = new Lever(150, 100);
+		
 		
 		override public function create():void
 		{
@@ -93,6 +94,7 @@ package
 			add(spaceShip);
 						
 			add(laserEmitters);
+			add(levers);
 			add(player);
 			
 			add(fuelCans);
@@ -138,7 +140,7 @@ package
 				remove(levelMessageObject);
 			}
 			
-			add(lever);
+			
 		}
 		        
 		override public function update():void
@@ -157,7 +159,7 @@ package
 				FlxG.collide(player, bar);
 				FlxG.overlap(player, spaceHouses, foodDelivered);
 				FlxG.overlap(player, fuelCans, fuelPickUp);
-				FlxG.overlap(player, lever, pullLever);
+				FlxG.overlap(player, levers, pullLever);
 				
 				FlxG.overlap(player, laserEmitters, playerHitLaser);
 				
@@ -335,6 +337,11 @@ package
 			{
 				laserEmitter.generateLaser();
 				laserEmitters.add(laserEmitter);
+			}
+			
+			for each (var lever:Lever in level.levers)
+			{				
+				levers.add(lever);
 			}
         }
         

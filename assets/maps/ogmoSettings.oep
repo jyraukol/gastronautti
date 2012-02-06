@@ -20,6 +20,16 @@
 	<object name="fuelCans" image="fuelCan.png" width="8" height="8" />
 	<object name="spaceShip" image="spaceShip2.png" width="64" height="32" limit="1" />
 	<object name="lasers" image="laserEmitter.png" width="21" height="8" />
+	<object name="doors" image="door.png" width="12" height="12"  resizableY="true" >
+		<values>
+				<number name="leverId" default="1" />
+			</values>	
+	</object>
+	<object name="levers" image="lever.png" width="16" height="16" >
+		<values>
+				<number name="leverId" default="1" />
+			</values>	
+	</object>
 </objects>
 <layers>
 	<tiles name="level" gridSize="12" exportTileIDs="true"/>
