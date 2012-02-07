@@ -12,3 +12,5 @@ Uusia elementtej‰ peliin:
 - Ennen uuden elementin ensikohtaamista pelaajan pomo voisi l‰hett‰‰ viestin, joka v‰h‰n valmistelee, mist‰ kyse
 
 N‰ist‰ ehk‰ tuo porttaali-idea kuulosti eka siisteimm‰lt‰.              
+
+- Jotkut semmoset telaketjut, mitk‰ lie rullatasot. Niill‰ kun seisoo niin liikkuu johonki suuntaan.

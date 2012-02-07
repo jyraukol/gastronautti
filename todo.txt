@@ -1,5 +1,6 @@
 - PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
 - Jos pelaaja tippuu ulospelialueelta niin henki pois! DONE!
     * Paranna tätä vielä vähän, nyt se on ehkä vähän lame
-- Leverin ja oven, johon lever vaikuttaa lisäys ja yhteistoiminta    
+- Leverin ja oven, johon lever vaikuttaa lisäys ja yhteistoiminta. DONE!
+    * Partikkeliefektit oven ovautumiseen olis nice
 
