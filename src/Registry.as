@@ -14,7 +14,7 @@ package
 		public static var spaceShip:SpaceShip;
 		public static const thanksText:Array = new Array("Thanks!", "OMNOMNOM!", "Finally!", "Sweet!", "Pizza!");
 		public static var topBarHeight:int;
-		public static var levelIndex:uint = 5;
+		public static var levelIndex:uint = 1;
 		public static var levelScores:Array = new Array();
 		public static var levelNumber:uint = 5; // save the number of levels the game has
 				
