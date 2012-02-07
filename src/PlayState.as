@@ -251,6 +251,16 @@ package
 				{
 					levelClear(player, spaceShip);
 				}
+				
+				if (FlxG.keys.I)
+				{
+					player.setSpeed(2, 2);
+				}
+				
+				if (FlxG.keys.O)
+				{
+					player.setSpeed(-2, -2);
+				}
 			}
 		}
 		

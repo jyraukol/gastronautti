@@ -3,4 +3,4 @@
     * Paranna tätä vielä vähän, nyt se on ehkä vähän lame
 - Leverin ja oven, johon lever vaikuttaa lisäys ja yhteistoiminta. DONE!
     * Partikkeliefektit oven ovautumiseen olis nice
-
+- Mahdollisuus kontrolloida pelaajan nopeutta pelin sisältä, trace sen hetkisestä nopeudesta, pelitasapainon löytämiseen. DONE!

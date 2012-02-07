@@ -2,3 +2,6 @@ git remote add ulkoa ssh://jyri@89.106.41.149:4222/home/jyri/gitRepo/gastronautt
 
 git pull ulkoa master
 git push ulkoa master
+
+Jonkun tiedoston trackaamisen lopetus:
+git rm --cached obj/TestiConfig.xml

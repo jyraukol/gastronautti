@@ -175,6 +175,15 @@ package
 			}
 		}
 		
+		public function setSpeed(xSpeed:int, ySpeed:int):void {
+			XSPEED += xSpeed;
+			YSPEED += ySpeed;
+			MAXXSPEED += xSpeed;
+			MAXYSPEED += ySpeed;
+			FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);
+			trace("xspeed = " + XSPEED + "\nyspeed = " + YSPEED);
+		}
+		
 	}
 
 }
