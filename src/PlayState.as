@@ -26,6 +26,7 @@ package
 		private var foodNum:int;
 		private var thankText:FlxText;
 		private var restartText:FlxText;
+		private var incomingTransmissionText:FlashingText;
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
@@ -159,7 +160,7 @@ package
 				remove(levelMessageObject);
 				boss.exists = false;
 			} else {
-				add(new FlashingText(10, "Incoming transmission", -1));
+				add(incomingTransmissionText = new FlashingText(10, "Incoming transmission", -1));
 			}
 			
 			
@@ -175,6 +176,7 @@ package
 				level.levelMessageDisplayed = true;	
 				remove(levelMessageObject);
 				boss.exists = false;
+				incomingTransmissionText.exists = false;
 				
 			} else {
 									
