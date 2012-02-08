@@ -14,6 +14,7 @@ package
 		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
 		[Embed(source = "../assets/graphics/moon.png")] private var moonImage:Class;
 		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
+		[Embed(source = "../assets/graphics/boss.png")] private var bossImage:Class;
 		private var player:Gastronaut;
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
@@ -126,7 +127,12 @@ package
 			
 			if (level.levelMessageObject.search("fuelcan") != -1) {
 					levelMessageObject = new FuelCan(150, 100)
-					add(levelMessageObject);					
+					add(levelMessageObject);
+					var boss:FlxSprite = new FlxSprite(5, 10);
+					boss.loadGraphic(bossImage, true, false, 100, 50);
+					boss.addAnimation("speaking", [0, 1, 2, 0, 2, 1], 5, true);
+					boss.play("speaking");
+					add(boss);
 			}
 			if (level.levelMessageObject.search("laser") != -1) {
 					levelMessageObject = new LaserEmitter(150, 100, 0, 0, 3, true);
