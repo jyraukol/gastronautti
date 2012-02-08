@@ -15,6 +15,8 @@ package
 		[Embed(source = "../assets/graphics/moon.png")] private var moonImage:Class;
 		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		[Embed(source = "../assets/graphics/boss.png")] private var bossImage:Class;
+		[Embed(source = "../assets/graphics/transmissionBackground.png")] private var transmissionBackground:Class;
+		
 		private var player:Gastronaut;
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
@@ -43,6 +45,7 @@ package
 		public var level:Level1;
 		public var stars:StarfieldFX;
 		private var levelMessage:FlxText;
+		private var boss:FlxSprite;
 		
 		private var deathTimer:Number = 0;		
 		
@@ -118,32 +121,34 @@ package
 			fuelLow = new ExclamationMark(fuelBar.x + fuelBar.width + 10, fuelBar.y);
 			fuelLow.exists = false;
 			add(fuelLow);
-			FlxG.playMusic(bgmusic, 1);
+			//FlxG.playMusic(bgmusic, 1);
 			
-			messageOverlay = new FlxSprite(0, 0);
-			messageOverlay.makeGraphic(FlxG.width, FlxG.height, 0xff000000);
+			messageOverlay = new FlxSprite(0, 0, transmissionBackground);			
 			add(messageOverlay);
 			add(levelMessage = new FlxText(100, 50, 150, level.levelMessage));
+			boss = new FlxSprite(5, 180);
+			boss.loadGraphic(bossImage, true, false, 100, 50);
+			boss.addAnimation("speaking", [0, 1, 2, 0, 2, 1], 5, true);
+			boss.play("speaking");
 			
-			if (level.levelMessageObject.search("fuelcan") != -1) {
+			add(boss);
+			
+
+			if (level.levelMessageObject.search("fuelcan") != -1) {					
 					levelMessageObject = new FuelCan(150, 100)
-					add(levelMessageObject);
-					var boss:FlxSprite = new FlxSprite(5, 10);
-					boss.loadGraphic(bossImage, true, false, 100, 50);
-					boss.addAnimation("speaking", [0, 1, 2, 0, 2, 1], 5, true);
-					boss.play("speaking");
-					add(boss);
+					add(levelMessageObject);				
 			}
 			if (level.levelMessageObject.search("laser") != -1) {
 					levelMessageObject = new LaserEmitter(150, 100, 0, 0, 3, true);
 					(levelMessageObject as LaserEmitter).generateLaser();
 					add(levelMessageObject);					
+					
 			}
 			if (level.levelMessageObject.search("leverDoor") != -1) {				
 					levelMessageObject = new FlxGroup();
 					(levelMessageObject as FlxGroup).add(new Lever(130, 120, 1));
 					(levelMessageObject as FlxGroup).add(new Door(170, 120, 1, 32));					
-					add(levelMessageObject);					
+					add(levelMessageObject);										
 			}
 				
 			if (!level.levelMessageExists) {
@@ -152,6 +157,9 @@ package
 				messageOverlay.active = false;
 				level.levelMessageDisplayed = true;
 				remove(levelMessageObject);
+				boss.exists = false;
+			} else {
+				add(new FlashingText(10, "Incoming transmission", -1));
 			}
 			
 			
@@ -163,10 +171,11 @@ package
 			
 			if (!level.levelMessageDisplayed && (FlxG.keys.ENTER)) {
 				levelMessage.visible = false;
-				messageOverlay.visible = false;
-				messageOverlay.active = false;
+				messageOverlay.exists = false;				
 				level.levelMessageDisplayed = true;	
 				remove(levelMessageObject);
+				boss.exists = false;
+				
 			} else {
 									
 				FlxG.collide(player, level);
