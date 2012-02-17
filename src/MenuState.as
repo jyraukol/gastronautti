@@ -29,10 +29,10 @@ package
 			title.setFormat(null, 16, 0xFFFFFFFF, "center");
 			this.add(title);
 			
-			var instructions:FlxText;
+			/*var instructions:FlxText;
 			instructions = new FlxText(0, (FlxG.width / 2) - 40, FlxG.width, "Deliver food to all the spacehouses and return to your ship");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
-			add(instructions);
+			add(instructions); */
 			
 			var instructions2:FlxText;
 			instructions2 = new FlxText(0, (FlxG.width / 2) - 20, FlxG.width, "Press up to fire your jetpack!");
@@ -49,9 +49,10 @@ package
 			instructions3.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions3);
 			
+			
 			var instructions4:FlxText;
 			instructions4 = new FlashingText(FlxG.height - 25, "Enter to start", 0);			
-			add(instructions4);
+			add(instructions4); 
 			
 		}
 		

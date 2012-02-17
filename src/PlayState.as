@@ -126,7 +126,7 @@ package
 			
 			messageOverlay = new FlxSprite(0, 0, transmissionBackground);			
 			add(messageOverlay);
-			add(levelMessage = new FlxText(100, 50, 150, level.levelMessage));
+			add(levelMessage = new FlxText(50, 50, 230, level.levelMessage));
 			boss = new FlxSprite(5, 180);
 			boss.loadGraphic(bossImage, true, false, 100, 50);
 			boss.addAnimation("speaking", [0, 1, 2, 0, 2, 1], 5, true);
@@ -134,7 +134,7 @@ package
 			
 			add(boss);
 			
-
+			
 			if (level.levelMessageObject.search("fuelcan") != -1) {					
 					levelMessageObject = new FuelCan(150, 100)
 					add(levelMessageObject);				
