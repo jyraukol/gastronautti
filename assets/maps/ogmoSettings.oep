@@ -18,7 +18,7 @@
 <objects>
 	<object name="houses" image="spaceHouse2.png" tile="true" width="32" height="32" />
 	<object name="fuelCans" image="fuelCan.png" width="8" height="8" />
-	<object name="spaceShip" image="spaceShip2.png" width="64" height="32" limit="1" />
+	<object name="spaceShip" image="spaceMoped.png" width="32" height="16" limit="1" />
 	<object name="lasers" image="laserEmitter.png" width="21" height="8" />
 	<object name="doors" image="door.png" width="12" height="12"  resizableY="true" >
 		<values>

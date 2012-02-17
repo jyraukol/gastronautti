@@ -8,7 +8,7 @@ package
 	
 	public class PlayState extends FlxState
 	{
-		[Embed(source = "../assets/graphics/spaceship2.png")] private var spaceshipPNG:Class;
+		[Embed(source = "../assets/graphics/spaceMoped.png")] private var spaceshipPNG:Class;
 		[Embed(source = "../assets/graphics/starsBackground.jpg")] private var starBackground:Class;
 		[Embed(source = "../assets/graphics/barBackground.png")] private var hudBackground:Class;
 		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
@@ -74,7 +74,7 @@ package
 			restartText.visible = false;
 			
 			spaceShip = new FlxSprite(level.spaceShipPosition.x, level.spaceShipPosition.y, spaceshipPNG);
-			player = new Gastronaut(spaceShip.x + spaceShip.width / 2, 0);
+			player = new Gastronaut(spaceShip.x - 10, 0);
 			player.y = spaceShip.y + spaceShip.height - player.height;
 			Registry.player = player;
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");

@@ -1,4 +1,4 @@
-<level messageBeforeLevel="">
+<level messageBeforeLevel="" messageImageFileName="">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
@@ -176,7 +176,7 @@
     <tile id="5" x="168" y="108"/>
   </level>
   <objects>
-    <spaceShip x="246" y="198"/>
+    <spaceShip x="272" y="211"/>
     <houses x="42" y="192"/>
     <houses x="270" y="72"/>
     <houses x="18" y="72"/>

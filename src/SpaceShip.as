@@ -8,7 +8,7 @@ package
 	 */
 	public class SpaceShip extends FlxSprite 
 	{
-		[Embed(source = "../assets/graphics/spaceship2.png")] private var shipPNG:Class;
+		[Embed(source = "../assets/graphics/spacemoped.png")] private var shipPNG:Class;
 		
 		public function SpaceShip(x:int, y:int) 
 		{

@@ -287,7 +287,7 @@
     <tile id="2" x="120" y="60"/>
   </level>
   <objects>
-    <spaceShip x="12" y="18"/>
+    <spaceShip x="12" y="30"/>
     <houses x="264" y="6"/>
     <houses x="270" y="174"/>
     <fuelCans x="12" y="192"/>

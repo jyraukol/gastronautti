@@ -265,7 +265,7 @@
     <tile id="6" x="156" y="60"/>
   </level>
   <objects>
-    <spaceShip x="1" y="196"/>
+    <spaceShip x="6" y="211"/>
     <levers x="207" y="163" leverId="1"/>
     <doors x="145" y="192" height="37" leverId="1"/>
     <houses x="279" y="195"/>
