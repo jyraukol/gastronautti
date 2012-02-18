@@ -85,6 +85,7 @@ package
 			moon = new FlxSprite(280, 50, moonImage);
 			moon.velocity.x = -0.3;
 			add(moon);
+			add(new BackgroundEntities());
 			add(level);
 			
 			// Add a bar for hud background
