@@ -28,6 +28,7 @@ package
 		private var restartText:FlxText;
 		private var incomingTransmissionText:FlashingText;
 		
+		
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
 		private var starField:StarField;
@@ -126,6 +127,7 @@ package
 			
 			messageOverlay = new FlxSprite(0, 0, transmissionBackground);			
 			add(messageOverlay);
+			add(Registry.transmissionStarField);
 			add(levelMessage = new FlxText(50, 50, 230, level.levelMessage));
 			boss = new FlxSprite(5, 180);
 			boss.loadGraphic(bossImage, true, false, 100, 50);
@@ -159,6 +161,7 @@ package
 				level.levelMessageDisplayed = true;
 				remove(levelMessageObject);
 				boss.exists = false;
+				remove(Registry.transmissionStarField);
 			} else {
 				add(incomingTransmissionText = new FlashingText(10, "Incoming transmission", -1));
 			}
@@ -177,7 +180,8 @@ package
 				remove(levelMessageObject);
 				boss.exists = false;
 				incomingTransmissionText.exists = false;
-				
+				boss.exists = false;
+				remove(Registry.transmissionStarField);
 			} else {
 									
 				FlxG.collide(player, level);
