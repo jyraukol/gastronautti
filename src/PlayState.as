@@ -124,7 +124,7 @@ package
 			fuelLow = new ExclamationMark(fuelBar.x + fuelBar.width + 10, fuelBar.y);
 			fuelLow.exists = false;
 			add(fuelLow);
-			//FlxG.playMusic(bgmusic, 1);
+			FlxG.playMusic(bgmusic, 1);
 			
 			messageOverlay = new FlxSprite(0, 0, transmissionBackground);			
 			add(messageOverlay);

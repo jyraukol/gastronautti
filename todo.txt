@@ -5,3 +5,4 @@
     * Partikkeliefektit oven ovautumiseen olis nice
 - Mahdollisuus kontrolloida pelaajan nopeutta pelin sisältä, trace sen hetkisestä nopeudesta, pelitasapainon löytämiseen. DONE!
 - Satunnaisesti taustaruudulla lentelevät avaruussukkulat
+- Aloitusruutuun taustalle gastronautti lenteleen satunnaisesti
