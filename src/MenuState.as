@@ -15,25 +15,15 @@ package
 		
 		public function MenuState() 
 		{
-			//var level:Level1 = 
-			//Registry.level = new Level1();
-			//trace(Registry.level.houses);
+			
 			starField = new StarField(0, 2);
 			add(starField);
-			//add(Registry.level);
-			
-			//Registry.spaceShip = new SpaceShip(Registry.level.spaceShipPosition.x, Registry.level.spaceShipPosition.y);
-			//add(Registry.spaceShip);
+						
 			var title:FlxText
 			title = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "Gastronaut");
 			title.setFormat(null, 16, 0xFFFFFFFF, "center");
 			this.add(title);
-			
-			/*var instructions:FlxText;
-			instructions = new FlxText(0, (FlxG.width / 2) - 40, FlxG.width, "Deliver food to all the spacehouses and return to your ship");
-			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
-			add(instructions); */
-			
+						
 			var instructions2:FlxText;
 			instructions2 = new FlxText(0, (FlxG.width / 2) - 20, FlxG.width, "Press up to fire your jetpack!");
 			instructions2.setFormat(null, 8, 0xFFFFFFFF, "center");
