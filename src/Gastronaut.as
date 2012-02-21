@@ -204,45 +204,32 @@ package
 			lastAutomatedAction += FlxG.elapsed;
 			
 			if (lastAutomatedAction > automatedActionLimit && !doingAction) {
-				var x:int = FlxG.random() * 50;
+				var x:int = FlxG.random() * 5 + 10;
 				if (FlxG.random() < 0.5) {
 					x = -x;
 				}
-				var y:int = FlxG.random() * 50;
-				if (FlxG.random() < 0.5) {
-					y = -y;
-				}
+				var y:int = -FlxG.random() * 5 - 10;
+				
 				velocity.x = x
 				
 				velocity.y = y;
 				doingAction = true;
-			} else {
-				actionTime += FlxG.elapsed;				
 			}
+				
 			
 			if (doingAction) {
 				play("fly");
+				actionTime += FlxG.elapsed;	
 			}
-			if (actionTime > 2) {
+			if (actionTime > 2.5) {
 				lastAutomatedAction = 0.0;
 				play("idle");
 				actionTime = 0.0;
-				velocity.y = -15;
+				velocity.y = 5;
+				velocity.x = 0;
 				doingAction = false;
 			}
-			
-			/*if ( x < 0 + width) {
-				x = 0 + width;
-			}
-			
-			if ( x > FlxG.width - width) {
-				x = FlxG.width - width;
-			}
-			
-			if (y > FlxG.height + height) {
-				play("fly");
-				velocity.y = -8;
-			}*/
+						
 		}
 		
 	}
