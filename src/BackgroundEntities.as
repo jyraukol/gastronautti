@@ -3,6 +3,7 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;	
 	import org.flixel.FlxObject;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	
 	/**
@@ -24,14 +25,15 @@ package
 			{
 				var shuttle:FlxSprite = new FlxSprite();
 				shuttle.loadGraphic(image, false, true);
-				
+				shuttle.scale.x = FlxG.random();
+				shuttle.scale.y = shuttle.scale.x;
 				if (i % 2 == 0) {
 					shuttle.x = - 10;
-					shuttle.velocity.x = FlxG.random() * 200;
+					shuttle.velocity.x = FlxG.random() * 300;
 					shuttle.facing = FlxObject.LEFT;
 				} else {
 					shuttle.x = FlxG.width + 10;
-					shuttle.velocity.x = -FlxG.random() * 200;
+					shuttle.velocity.x = -FlxG.random() * 300;
 				}
 				
 				shuttle.y = FlxG.random() * FlxG.height + 20;
@@ -57,19 +59,22 @@ package
 		}
 		private function launchShuttle(shuttle:FlxSprite):void 
 		{
-			
-			// Shuttle moving to left
-			if (shuttle.x < 0) {
-					shuttle.x = -10;
-					shuttle.velocity.x = FlxG.random() * 200;
-					shuttle.facing = FlxObject.LEFT;
-			} else if (shuttle.x >= FlxG.width + 20) {
-				shuttle.x = FlxG.width + 10;
-				shuttle.velocity.x = -FlxG.random() * 200;
-				shuttle.facing = FlxObject.RIGHT;
+			if (FlxG.random() < 0.001)
+			{
+				var shuttleSpeedMultiplier:int = 300;
+				// Shuttle moving to left
+				if (shuttle.x < 0) {
+						shuttle.x = -10;
+						shuttle.velocity.x = FlxG.random() * shuttleSpeedMultiplier + 50;
+						shuttle.facing = FlxObject.LEFT;
+				} else if (shuttle.x >= FlxG.width + 20) {
+					shuttle.x = FlxG.width + 10;
+					shuttle.velocity.x = -FlxG.random() * shuttleSpeedMultiplier - 50;
+					shuttle.facing = FlxObject.RIGHT;
+				}
+					
+					shuttle.y = FlxG.random() * FlxG.height + 20;
 			}
-				
-				shuttle.y = FlxG.random() * FlxG.height + 20;
 		}
 	}
 
