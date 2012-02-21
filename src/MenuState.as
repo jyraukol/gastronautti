@@ -18,7 +18,8 @@ package
 			
 			starField = new StarField(0, 2);
 			add(starField);
-						
+			
+			add(new Gastronaut(100, 50, true));
 			var title:FlxText
 			title = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "Gastronaut");
 			title.setFormat(null, 16, 0xFFFFFFFF, "center");
@@ -29,6 +30,7 @@ package
 			instructions2.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions2);
 			
+			// Show a fuel bar sample
 			var bar:FlxSprite = new FlxSprite(FlxG.width / 2, instructions2.y + 40);
 			bar.makeGraphic(80, 10, 0xff00FF40);
 			bar.x = FlxG.width / 2 - bar.width / 2;

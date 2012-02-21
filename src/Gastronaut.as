@@ -30,7 +30,14 @@ package
 		private var flying:Boolean = false;
 		private var rocketSound:FlxSound = new FlxSound();
 		
-		public function Gastronaut(x:int, y:int) 
+		// Automation variables
+		private var automated:Boolean;
+		private var lastAutomatedAction:Number = 0.0;
+		private var automatedActionLimit:Number = 1.5;
+		private var actionTime:Number = 0.0;
+		private var doingAction:Boolean = false;
+		
+		public function Gastronaut(x:int, y:int, automated:Boolean = false) 
 		{
 			super(x, y);
 			loadGraphic(playerPNG, true, true, 16, 16);
@@ -45,18 +52,27 @@ package
 			{
 				FlxG.addPlugin(new FlxControl);
 			}
-			
-			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES);
-			FlxControl.player1.setCursorControl(true, false, true, true);
-			FlxControl.player1.setGravity(0, 75);
-			
-			FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);						
+			this.automated = automated;
+			if (!automated)
+			{
+				FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES);
+				FlxControl.player1.setCursorControl(true, false, true, true);
+				FlxControl.player1.setGravity(0, 75);
+				
+				FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);						
+			} else {
+				velocity.y = 25;
+			}
 		}
 		
 		override public function update():void 
 		{
 			super.update();
 			
+			if (automated) {
+				autoPilot();
+				return;
+			}
 			if (!flying)
 			{
 				velocity.x = 0;
@@ -182,6 +198,51 @@ package
 			MAXYSPEED += ySpeed;
 			FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);
 			trace("xspeed = " + XSPEED + "\nyspeed = " + YSPEED);
+		}
+		
+		private function autoPilot():void {
+			lastAutomatedAction += FlxG.elapsed;
+			
+			if (lastAutomatedAction > automatedActionLimit && !doingAction) {
+				var x:int = FlxG.random() * 50;
+				if (FlxG.random() < 0.5) {
+					x = -x;
+				}
+				var y:int = FlxG.random() * 50;
+				if (FlxG.random() < 0.5) {
+					y = -y;
+				}
+				velocity.x = x
+				
+				velocity.y = y;
+				doingAction = true;
+			} else {
+				actionTime += FlxG.elapsed;				
+			}
+			
+			if (doingAction) {
+				play("fly");
+			}
+			if (actionTime > 2) {
+				lastAutomatedAction = 0.0;
+				play("idle");
+				actionTime = 0.0;
+				velocity.y = -15;
+				doingAction = false;
+			}
+			
+			/*if ( x < 0 + width) {
+				x = 0 + width;
+			}
+			
+			if ( x > FlxG.width - width) {
+				x = FlxG.width - width;
+			}
+			
+			if (y > FlxG.height + height) {
+				play("fly");
+				velocity.y = -8;
+			}*/
 		}
 		
 	}
