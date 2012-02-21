@@ -108,7 +108,7 @@ package
 			
 			add(fuelCans);
 			add(fuelBar);
-			var fuelText:FlxText = new FlxText(2, 2, 50, "Fuel:");
+			var fuelText:FlxText = new FlxText(2, 0, 50, "Fuel:");
 			fuelText.setFormat(null, 8, 0xff000000);
 			add(fuelText);
 			//add(foodText);
