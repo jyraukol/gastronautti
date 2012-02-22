@@ -104,6 +104,9 @@ package
 			add(laserEmitters);
 			add(levers);
 			add(doors);
+			for each (var door:Door in doors.members ) {
+				add(door.emitter);
+			}
 			add(player);
 			
 			add(fuelCans);
@@ -172,7 +175,7 @@ package
 		        
 		override public function update():void
 		{
-			super.update();
+			
 			
 			if (!level.levelMessageDisplayed && (FlxG.keys.ENTER)) {
 				levelMessage.visible = false;
@@ -284,6 +287,7 @@ package
 					player.setSpeed(-2, -2);
 				}
 			}
+			super.update();
 		}
 		
 		private function resetThankText():void
@@ -355,7 +359,10 @@ package
 				lever.pull();
 			
 				for each (var door:Door in doors.members) {
-				door.openDoor(lever.getID());				
+					if (door.openDoor(lever.getID())) {
+						door.emitter.start(false, 5);	
+					}
+					
 				}
 			}			
 		}
@@ -392,8 +399,8 @@ package
 			}
 			
 			for each (var door:Door in level.doors)
-			{				
-				doors.add(door);
+			{								
+				doors.add(door);				
 			}
         }
         
