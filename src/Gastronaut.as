@@ -2,6 +2,8 @@ package
 {
 	import org.flixel.FlxG;	
 	import org.flixel.FlxObject;
+	import org.flixel.FlxPath;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSound;
 	import org.flixel.plugin.photonstorm.FlxControl;
 	import org.flixel.plugin.photonstorm.FlxControlHandler;
@@ -32,10 +34,8 @@ package
 		
 		// Automation variables
 		private var automated:Boolean;
-		private var lastAutomatedAction:Number = 0.0;
-		private var automatedActionLimit:Number = 1.5;
-		private var actionTime:Number = 0.0;
-		private var doingAction:Boolean = false;
+		private var automationStarted:Boolean = false;
+		
 		
 		public function Gastronaut(x:int, y:int, automated:Boolean = false) 
 		{
@@ -61,7 +61,7 @@ package
 				
 				FlxControl.player1.setMovementSpeed(XSPEED, YSPEED, MAXXSPEED, MAXYSPEED, 0, 0);						
 			} else {
-				velocity.y = 25;
+				this.hasGravity = false;
 			}
 		}
 		
@@ -69,7 +69,20 @@ package
 		{
 			super.update();
 			
-			if (automated) {
+			if (automated ) {
+				
+				if (!automationStarted)
+				{
+					var automatedPath:FlxPath = new FlxPath();					
+					automatedPath.add(80, 30);
+					automatedPath.add(10, 130);
+					automatedPath.add(200, 200);
+					automatedPath.add(320, 10);
+					automatedPath.add(50, 50);
+					automatedPath.add(150, 150);								
+					followPath(automatedPath, 30, PATH_LOOP_FORWARD);
+					automationStarted = true;
+				}
 				autoPilot();
 				return;
 			}
@@ -200,36 +213,8 @@ package
 			trace("xspeed = " + XSPEED + "\nyspeed = " + YSPEED);
 		}
 		
-		private function autoPilot():void {
-			lastAutomatedAction += FlxG.elapsed;
-			
-			if (lastAutomatedAction > automatedActionLimit && !doingAction) {
-				var x:int = FlxG.random() * 5 + 10;
-				if (FlxG.random() < 0.5) {
-					x = -x;
-				}
-				var y:int = -FlxG.random() * 5 - 10;
-				
-				velocity.x = x
-				
-				velocity.y = y;
-				doingAction = true;
-			}
-				
-			
-			if (doingAction) {
-				play("fly");
-				actionTime += FlxG.elapsed;	
-			}
-			if (actionTime > 2.5) {
-				lastAutomatedAction = 0.0;
-				play("idle");
-				actionTime = 0.0;
-				velocity.y = 5;
-				velocity.x = 0;
-				doingAction = false;
-			}
-						
+		private function autoPilot():void {			
+			play("fly");			
 		}
 		
 	}
