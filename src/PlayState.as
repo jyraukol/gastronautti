@@ -108,17 +108,8 @@ package
 			for each (var door:Door in doors.members ) {
 				add(door.emitter);
 			}
-			var portal:Portal = new Portal(150, 50, 1);			
-			portals.add(portal);
-		
-			var portal2:Portal = new Portal(250, 180, 2);
-			portals.add(portal2);
-			portal2.connectToPortal(portal);
-			portal.connectToPortal(portal2);			
-				
+			
 			add(portals);
-			add(portal.emitter);
-			add(portal2.emitter);
 			
 			add(player);
 			
@@ -420,6 +411,12 @@ package
 			for each (var door:Door in level.doors)
 			{								
 				doors.add(door);				
+			}
+			
+			for each (var portal:Portal in level.portals)
+			{								
+				portals.add(portal);				
+				add(portal.emitter);
 			}
         }
         

@@ -11,13 +11,13 @@ package {
 	public class Portal extends FlxSprite 
 	{
         [Embed(source = "../assets/graphics/portal.png")] private var graphic:Class;
-        private var connectingPortalId:int; // Which portal is this portal connected to?
+        public var connectingPortalId:int; // Which portal is this portal connected to?
         private var connectingPortal:Portal; // Reference to that portal.
         private var portalId:int;
 		public var timeSincePortalUsed:Number = 0;
 		public var emitter:FlxEmitter;
 		
-        public function Portal(x:int, y:int, portalId:int) 
+        public function Portal(x:int, y:int, portalId:int, connectingId:int) 
 		{
 			super(x, y);
 			
@@ -26,6 +26,7 @@ package {
 			centerOffsets();
 			this.immovable = true;
 			this.portalId = portalId;
+			this.connectingPortalId = connectingId;
 			
 			emitter = new FlxEmitter(x + width / 2, y + height / 2, 50);
 			emitter.setXSpeed( -50, 50);

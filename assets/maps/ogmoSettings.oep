@@ -30,6 +30,12 @@
 				<number name="leverId" default="1" />
 			</values>	
 	</object>
+	<object name="portals" image="portal.png" width="10" height="32" hasNodes="true">	
+		<values>
+				<number name="portalId" required="true" unique="true" />
+				<number name="connectingId" required="true" unique="true" />
+			</values>	
+	</object>
 </objects>
 <layers>
 	<tiles name="level" gridSize="12" exportTileIDs="true"/>

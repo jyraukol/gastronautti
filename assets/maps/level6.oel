@@ -1,0 +1,9 @@
+<level messageBeforeLevel="" messageImageFileName="">
+  <width>320</width>
+  <height>240</height>
+  <objects>
+    <portals x="153" y="119" portalId="0" connectingId="1"/>
+    <portals x="248" y="125" portalId="1" connectingId="0"/>
+    <houses x="55" y="68"/>
+  </objects>
+</level>

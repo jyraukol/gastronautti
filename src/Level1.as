@@ -23,7 +23,7 @@ package
 		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel3:Class;
 		[Embed(source = "../assets/maps/level4.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4:Class;
 		[Embed(source = "../assets/maps/level5.oel", mimeType = "application/octet-stream")] public static const ogmoLevel5:Class;
-		
+		[Embed(source="../assets/maps/level6.oel", mimeType="application/octet-stream")] public static const ogmoLevel6:Class;
 		private var levelDataXML:Class;
 		private var mapCSV:Class;
 		
@@ -34,6 +34,7 @@ package
 		public var laserEmitters:Vector.<LaserEmitter>;
 		public var levers:Vector.<Lever>;
 		public var doors:Vector.<FlxSprite>; // Flxsprite for now
+		public var portals:Vector.<Portal>;
 		public var spaceShipPosition:Point;
 		
 		public var levelMessageDisplayed:Boolean = true;
@@ -54,6 +55,7 @@ package
 			laserEmitters = new Vector.<LaserEmitter>();
 			levers = new Vector.<Lever>();
 			doors = new Vector.<FlxSprite>();
+			portals = new Vector.<Portal>();
 			
 			Registry.level = this;
 		
@@ -87,6 +89,9 @@ package
 			} else if (Registry.levelIndex == 5)
 			{
 				createCSVFromXML(ogmoLevel5);
+			} else if (Registry.levelIndex == 6)
+			{
+				createCSVFromXML(ogmoLevel6);
 			}
 			
 		}
@@ -141,10 +146,22 @@ package
 					levers.push(new Lever(int(lever.@x), int(lever.@y), int(lever.@leverId) ));			
 				}
 				
-				// Levers
+				// Doors
 				for each (var door:Object in file.objects.doors) {
 					doors.push(new Door(int(door.@x), int(door.@y), int(door.@leverId), int(door.@height) ));			
 				}
+				
+				// Create all the portals first
+				for each (var portal:Object in file.objects.portals) {
+					portals.push(new Portal(int(portal.@x), int(portal.@y), int(portal.@portalId), int(portal.@connectingId) ));			
+				}
+				
+				// Connect the portals based on ids
+				for (var i:int = 0; i < portals.length ; i++) 
+				{
+					portals[i].connectToPortal(portals[portals[i].connectingPortalId]);
+				}
+				
 				
 			}
 		}
