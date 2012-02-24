@@ -17,7 +17,7 @@ package
 		[Embed(source = "../assets/graphics/boss.png")] private var bossImage:Class;
 		[Embed(source = "../assets/graphics/transmissionBackground.png")] private var transmissionBackground:Class;
 		
-		private var player:Gastronaut;
+		public var player:Gastronaut;
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
 		private var messageOverlay:FlxSprite;
@@ -36,6 +36,7 @@ package
 		private var laserEmitters:FlxGroup = new FlxGroup();
 		private var levers:FlxGroup = new FlxGroup();
 		private var doors:FlxGroup = new FlxGroup();
+		private var portals:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
@@ -107,6 +108,17 @@ package
 			for each (var door:Door in doors.members ) {
 				add(door.emitter);
 			}
+			var portal:Portal = new Portal(150, 50, 1);			
+			portals.add(portal);
+			
+			var portal2:Portal = new Portal(250, 180, 2);
+			portals.add(portal2);
+			portal2.connectToPortal(portal);
+			portal.connectToPortal(portal2);			
+			
+			
+			add(portals);
+			
 			add(player);
 			
 			add(fuelCans);
