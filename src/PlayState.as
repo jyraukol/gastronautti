@@ -208,6 +208,7 @@ package
 				FlxG.overlap(player, levers, pullLever);
 				
 				FlxG.overlap(player, laserEmitters, playerHitLaser);
+				FlxG.overlap(player, portals, playerEnteredPortal);
 				
 				
 				if (foodNum == 0)
@@ -377,6 +378,10 @@ package
 					
 				}
 			}			
+		}
+		
+		private function playerEnteredPortal(player:Gastronaut, portal:Portal):void {
+			portal.goThroughPortal();
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void

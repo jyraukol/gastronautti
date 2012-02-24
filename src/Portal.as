@@ -12,6 +12,7 @@ package {
         private var connectingPortalId:int; // Which portal is this portal connected to?
         private var connectingPortal:Portal; // Reference to that portal.
         private var portalId:int;
+		public var timeSincePortalUsed:Number = 0;
 		
         public function Portal(x:int, y:int, portalId:int) 
 		{
@@ -28,8 +29,19 @@ package {
         }
         
         public function goThroughPortal():void {
-			Registry.playState.player.x = connectingPortal.x;
-            Registry.playState.player.y = connectingPortal.y;
+			if (timeSincePortalUsed > 3) {
+				Registry.playState.player.x = connectingPortal.x;
+				Registry.playState.player.y = connectingPortal.y;
+				timeSincePortalUsed = 0;
+				connectingPortal.timeSincePortalUsed = 0;
+			}
+			
+		}
+		
+		override public function update():void 
+		{
+			timeSincePortalUsed += FlxG.elapsed;
+			super.update();
 		}
     }
 }
