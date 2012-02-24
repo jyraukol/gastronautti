@@ -110,14 +110,15 @@ package
 			}
 			var portal:Portal = new Portal(150, 50, 1);			
 			portals.add(portal);
-			
+		
 			var portal2:Portal = new Portal(250, 180, 2);
 			portals.add(portal2);
 			portal2.connectToPortal(portal);
 			portal.connectToPortal(portal2);			
-			
-			
+				
 			add(portals);
+			add(portal.emitter);
+			add(portal2.emitter);
 			
 			add(player);
 			
@@ -341,10 +342,7 @@ package
 		{
 			player.fuel += fuelcan.fuelAmount;
 			
-			//fuelPickupText.x = fuelcan.x;
-			//fuelPickupText.y = fuelcan.y -10;
 			add(new FlashingText(20, "+" + fuelcan.fuelAmount + " Fuel!", 3.5));
-			//fuelPickupText.visible = true;
 			if (player.fuel > 100)
 			{
 				player.fuel = 100;
@@ -381,7 +379,11 @@ package
 		}
 		
 		private function playerEnteredPortal(player:Gastronaut, portal:Portal):void {
-			portal.goThroughPortal();
+			if (portal.canPortalBeUsed())
+			{
+				portal.goThroughPortal();
+				portal.emitter.start(true, 1);
+			}			
 		}
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
