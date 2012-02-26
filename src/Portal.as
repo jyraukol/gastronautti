@@ -35,11 +35,11 @@ package {
 			for (var i:int = 0; i < emitter.maxSize; i++) 
 			{
 				whitePixel = new FlxParticle();
-				whitePixel.makeGraphic(2, 2, 0xFF0AD1842);
+				whitePixel.makeGraphic(2, 2, 0xFFFFFFFF);
 				whitePixel.visible = false; //Make sure the particle doesn't show up at (0, 0)
 				emitter.add(whitePixel);
 				whitePixel = new FlxParticle();
-				whitePixel.makeGraphic(1, 1, 0xFF02C472);
+				whitePixel.makeGraphic(1, 1, 0xFFC1CDDB);
 				whitePixel.visible = false;				
 				emitter.add(whitePixel);
 			}			

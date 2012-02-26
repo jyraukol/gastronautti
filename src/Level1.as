@@ -16,7 +16,8 @@ package
 	 */
 	public class Level1 extends FlxGroup 
 	{
-		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;		
+		[Embed(source = "../assets/graphics/block2.png")] public static var mapTilesPNG:Class;
+		// We'll use this empty csv mapfile to init an empty and then fill it from the xml-files
 		[Embed(source="../assets/maps/mapCSV_Group1_Map1.csv", mimeType="application/octet-stream")] public static var map1CSV:Class;						
 		[Embed(source = "../assets/maps/level1.oel", mimeType = "application/octet-stream")] public static const ogmoLevel1:Class;
 		[Embed(source = "../assets/maps/level2.oel", mimeType = "application/octet-stream")] public static const ogmoLevel2:Class;
