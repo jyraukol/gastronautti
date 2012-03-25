@@ -22,7 +22,7 @@ package
 		private var bar:FlxSprite;		
 		private var messageOverlay:FlxSprite;
 		
-		private var foodText:FlxText;
+		private var moneyText:FlxText;
 		private var foodNum:int;
 		private var thankText:FlxText;
 		private var restartText:FlxText;
@@ -67,9 +67,9 @@ package
 			
 			foodNum = spaceHouses.length;
             
-            // Is this really needed, the graphics tell you how much food is left
-			//foodText = new FlxText(260, 2, 60, "Food " + foodNum);
-			//foodText.setFormat(null, 8, 0xff000000);
+            
+			moneyText = new FlxText(260, 0, 50, "Money " + Registry.money);
+			moneyText.setFormat(null, 8, 0xff000000);
 			
             // This was used when players fuel reached 0, but now the player dies and restart is automatic
 			restartText = new FlashingText(20, "R to restart", 0);
@@ -118,7 +118,7 @@ package
 			var fuelText:FlxText = new FlxText(2, 0, 50, "Fuel:");
 			fuelText.setFormat(null, 8, 0xff000000);
 			add(fuelText);
-			//add(foodText);
+			add(moneyText);
 			
 			thankText = new FlxText(0, 0, 75, "");
 			thankText.alignment = "center"; 
@@ -310,11 +310,12 @@ package
 			if (!house.foodDeliveredHere)
 			{
 				foodNum -= 1;
-				//foodText.text = "Food " + foodNum;
 				house.thankYou();
 				thankText.x = house.x - 22;
 				thankText.y = house.y - 15;
 				thankText.visible = true;
+				Registry.money += 10;
+				moneyText.text = "Money " + Registry.money;
 			}
 			
 		}

@@ -18,6 +18,7 @@ package
 		public static var levelScores:Array = new Array();
 		public static var levelNumber:uint = 6; // save the number of levels the game has
 		public static var transmissionStarField:StarField = new StarField(0, 3);
+		public static var money:int = 0;
 		
 		public function Registry() 
 		{
