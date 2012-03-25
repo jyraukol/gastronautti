@@ -214,7 +214,12 @@ package
 		}
 		
 		private function autoPilot():void {			
-			play("fly");			
+			play("fly");
+			if (velocity.x < 0) {
+				facing = LEFT;
+			} else {
+				facing = RIGHT;
+			}
 		}
 		
 	}
