@@ -7,6 +7,7 @@ package
 	import org.flixel.FlxObject;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxText;
 	import org.flixel.FlxTilemap;
 	import flash.utils.ByteArray;
 	import XML;
@@ -31,6 +32,7 @@ package
 		public var LevelData:XML;
 		public var map:FlxTilemap;
 		public var houses:Vector.<SpaceHouse>;
+		public var houseTexts:Vector.<FlxText>;
 		public var fuelCans:Vector.<FuelCan>;
 		public var laserEmitters:Vector.<LaserEmitter>;
 		public var levers:Vector.<Lever>;
@@ -52,6 +54,7 @@ package
 			
 			
 			houses = new Vector.<SpaceHouse>();
+			houseTexts = new Vector.<FlxText>();
 			fuelCans = new Vector.<FuelCan>();
 			laserEmitters = new Vector.<LaserEmitter>();
 			levers = new Vector.<Lever>();
@@ -129,12 +132,14 @@ package
 				
 				// Houses
 				for each (var house:Object in file.objects.houses) {									
-					houses.push(new SpaceHouse(int(house.@x), int(house.@y)));			
+					var tempHouse:SpaceHouse = new SpaceHouse(int(house.@x), int(house.@y));
+					houses.push(tempHouse);
+					houseTexts.push(new FlxText(tempHouse.x + tempHouse.width / 2 - 2, tempHouse.y - 10, 30, tempHouse.tipTimer.toString()));
 				}
 				
 				// Fuelcans
 				for each (var can:Object in file.objects.fuelCans) {									
-					fuelCans.push(new FuelCan(int(can.@x), int(can.@y)));			
+					fuelCans.push(new FuelCan(int(can.@x), int(can.@y)));
 				}
 				
 				// Lasers

@@ -13,6 +13,7 @@ package
 		[Embed(source = "../assets/graphics/spacehouse2.png")] private var housePNG:Class;
 		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] private var foodDeliverSound:Class;
 		public var foodDeliveredHere:Boolean = false;
+		public var tipTimer:Number;
 		
 		
 		public function SpaceHouse(x:int, y:int) 
@@ -23,14 +24,23 @@ package
 			addAnimation("open", [0], 0, false);
 			addAnimation("closed", [1], 0, false);
 			
+			tipTimer = FlxG.random() * 10;
+			tipTimer = Math.round(tipTimer);
 			play("open");
 			
 		}
-		
+	
+		override public function update():void 
+		{
+			super.update();
+			
+			tipTimer -= FlxG.elapsed;
+		}
 		public function thankYou():void
 		{
 			foodDeliveredHere = true;
 			FlxG.play(foodDeliverSound);
+			Registry.money += tipTimer;
 			play("closed");
 		}
 	}

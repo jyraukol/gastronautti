@@ -30,6 +30,7 @@ package
 		
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
+		private var tipTexts:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
 		private var starField:StarField;
 		private var fuelCans:FlxGroup = new FlxGroup();
@@ -100,6 +101,7 @@ package
 			Registry.topBarHeight = bar.height;
 						
 			add(spaceHouses);
+			add(tipTexts);
 			add(spaceShip);
 						
 			add(laserEmitters);
@@ -202,7 +204,14 @@ package
 				FlxG.overlap(player, laserEmitters, playerHitLaser);
 				FlxG.overlap(player, portals, playerEnteredPortal);
 				
-				
+				for each (var tipText:FlxText in level.houseTexts)
+				{
+					tipText.text = (Number(tipText.text) - FlxG.elapsed).toFixed(2);
+					if (Number(tipText.text) < 0) {
+						tipText.text = "0.00";
+					}
+				}
+			
 				if (foodNum == 0)
 				{
 					FlxG.overlap(player, spaceShip, levelClear);
@@ -217,15 +226,7 @@ package
 					}
 				}
 				
-				/*if (fuelPickupText.visible)
-				{
-					fuelPickupText.alpha -= 0.01;
-					if (fuelPickupText.alpha <= 0)
-					{
-						fuelPickupText.visible = false;
-						fuelPickupText.alpha = 1;
-					}
-				}*/
+				
 				
 				if (player.fuel < 25)
 				{
@@ -391,6 +392,11 @@ package
             for each (var house:SpaceHouse in level.houses)
 			{
 				spaceHouses.add(house);
+			}
+			
+			for each (var tipText:FlxText in level.houseTexts)
+			{
+				tipTexts.add(tipText);
 			}
 			
 			for each (var can:FuelCan in level.fuelCans)
