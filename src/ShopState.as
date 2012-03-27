@@ -5,6 +5,7 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxG;
 	import org.flixel.FlxText;
+	import org.flixel.plugin.photonstorm.FlxBar;
 	
 	/**
 	 * ...
@@ -13,6 +14,9 @@ package
 	public class ShopState extends FlxState 
 	{
 		private var starField:StarField;
+		private var currentSelection:int = 0;
+		private var refuelText:FlxText;
+		private var continueText:FlxText;
 		
 		public function ShopState() 
 		{
@@ -24,25 +28,39 @@ package
 			instructions2 = new FlxText(0, 18, FlxG.width, "Shop!");
 			instructions2.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions2);
-			
-			// Show a fuel bar sample
-			var bar:FlxSprite = new FlxSprite(FlxG.width / 2, instructions2.y + 40);
-			bar.makeGraphic(80, 10, 0xff00FF40);
-			bar.x = FlxG.width / 2 - bar.width / 2;
+					
+			var bar:FlxBar = new FlxBar(FlxG.width / 2 - 40, instructions2.y + 16, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, Registry, "fuel");
 			add(bar);
 			
-			var instructions3:FlxText;
-			instructions3 = new FlxText(0, bar.y + 10, FlxG.width, "Watch your fuel meter!");
-			instructions3.setFormat(null, 8, 0xFFFFFFFF, "center");
-			add(instructions3);
+			
+			refuelText = new FlxText(0, bar.y + 16, FlxG.width, "Refuel: 15 Gigazoids");
+			refuelText.setFormat(null, 8, 0xFFFFFFFF, "center");
+			add(refuelText);
 						
-			var instructions4:FlxText;
-			instructions4 = new FlashingText(FlxG.height - 25, "Enter to start", 0);			
-			add(instructions4); 
+			continueText:FlxText;
+			continueText = new FlxText(0, FlxG.height - 25, FlxG.width, "Continue");			
+			continueText.setFormat(null, 8, 0xFFFFFFFF, "center");
+			add(continueText); 
 		}
 		
 		override public function update():void
 		{    
+			if (currentSelection == 0) {
+				continueText.color = 0xFFFFFFFF;
+				refuelText.color = 0xFF80FF80;
+			} else if (currentSelection == 1) {
+				refuelText.color = 0xFFFFFFFF;
+				continueText.color = 0xFF80FF80;
+			}
+			
+			if (FlxG.keys.justPressed("DOWN")) {
+				moveSelectionDown();
+			}
+			
+			if (FlxG.keys.justPressed("UP")) {
+				moveSelectionUp();
+			}
+			
 			if (FlxG.keys.pressed("ENTER")) 
 			{
 				FlxG.flash(0xffffffff, 0.75);
@@ -50,6 +68,22 @@ package
 			}
 			
 			super.update();		
+		}
+		
+		private function moveSelectionDown():void {
+			currentSelection++;
+			
+			if (currentSelection > 1) {
+				currentSelection = 0;
+			}
+		}
+		
+		private function moveSelectionUp():void {
+			currentSelection--;
+			
+			if (currentSelection < 0) {
+				currentSelection = 1;
+			}
 		}
 		
 		private function onFade():void

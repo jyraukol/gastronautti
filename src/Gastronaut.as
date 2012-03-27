@@ -19,7 +19,7 @@ package
 		[Embed(source = "../assets/sounds/rocket.mp3")] private var rocketSoundClass:Class;
 		[Embed(source = "../assets/sounds/landing.mp3")] private var landingSound:Class;
 		
-		public var fuel:Number = 100.0;
+		public var fuel:Number;
 		private var XSPEED:int = 50;
 		private var XSPEEDONGROUND:int = 30;
 		private var MAXXSPEED:int = 50;
@@ -63,6 +63,8 @@ package
 			} else {
 				this.hasGravity = false;
 			}
+			
+			this.fuel = Registry.fuel;
 		}
 		
 		override public function update():void 
@@ -202,6 +204,8 @@ package
 			if (isTouching(WALL)) {
 				play("idle");
 			}
+			
+			Registry.fuel = this.fuel;
 		}
 		
 		public function setSpeed(xSpeed:int, ySpeed:int):void {
