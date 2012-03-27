@@ -81,7 +81,7 @@ package
 			} else 
 			{
 				Registry.levelIndex++;
-				FlxG.switchState(new PlayState);
+				FlxG.switchState(new ShopState);
 			}
 			
 		}
