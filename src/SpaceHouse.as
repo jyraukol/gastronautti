@@ -34,7 +34,9 @@ package
 		{
 			super.update();
 			
-			tipTimer -= FlxG.elapsed;
+			if (!foodDeliveredHere && tipTimer > 0) {
+				tipTimer -= FlxG.elapsed;
+			}
 		}
 		public function thankYou():void
 		{
