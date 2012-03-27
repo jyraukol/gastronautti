@@ -69,7 +69,7 @@ package
 			foodNum = spaceHouses.length;
             
             
-			moneyText = new FlxText(260, 0, 50, "Money " + Registry.money);
+			moneyText = new FlxText(200, 0, 150, "Money " + Registry.money);
 			moneyText.setFormat(null, 8, 0xff000000);
 			
             // This was used when players fuel reached 0, but now the player dies and restart is automatic
@@ -206,7 +206,14 @@ package
 				
 				for each (var tipText:FlxText in level.houseTexts)
 				{
-					tipText.text = (Number(tipText.text) - FlxG.elapsed).toFixed(2);
+					if (FlxG.overlap(player, tipText)) {
+						tipText.alive = false;
+					}
+					
+					if (tipText.alive) {
+						tipText.text = (Number(tipText.text) - FlxG.elapsed).toFixed(2);
+					}
+					
 					if (Number(tipText.text) < 0) {
 						tipText.text = "0.00";
 					}
@@ -396,6 +403,7 @@ package
 			
 			for each (var tipText:FlxText in level.houseTexts)
 			{
+				tipText.solid = true;
 				tipTexts.add(tipText);
 			}
 			
