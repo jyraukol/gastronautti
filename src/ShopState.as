@@ -17,6 +17,7 @@ package
 		private var currentSelection:int = 0;
 		private var refuelText:FlxText;
 		private var continueText:FlxText;
+		private var moneyText:FlxText;
 		
 		public function ShopState() 
 		{
@@ -24,12 +25,16 @@ package
 			starField = new StarField(0, 2);
 			add(starField);
 			
-			var instructions2:FlxText;
-			instructions2 = new FlxText(0, 18, FlxG.width, "Shop!");
-			instructions2.setFormat(null, 8, 0xFFFFFFFF, "center");
-			add(instructions2);
+			var shopText:FlxText;
+			shopText = new FlxText(0, 18, FlxG.width, "Shop!");
+			shopText.setFormat(null, 8, 0xFFFFFFFF, "center");
+			add(shopText);
+						
+			moneyText = new FlxText(0, shopText.y + 16, FlxG.width, "Gigazoids: " + Registry.money);
+			moneyText.setFormat(null, 8, 0xFFFFFFFF, "center");
+			add(moneyText);
 					
-			var bar:FlxBar = new FlxBar(FlxG.width / 2 - 40, instructions2.y + 16, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, Registry, "fuel");
+			var bar:FlxBar = new FlxBar(FlxG.width / 2 - 40, moneyText.y + 16, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, Registry, "fuel");
 			add(bar);
 			
 			
@@ -64,8 +69,7 @@ package
 			if (FlxG.keys.justPressed("ENTER")) 
 			{
 				if (currentSelection == 0) {
-					Registry.money -= 15;
-					Registry.fuel = 100.0;
+					purchaseFuel();					
 				}
 				else if (currentSelection == 1) {
 					FlxG.flash(0xffffffff, 0.75);
@@ -91,6 +95,15 @@ package
 			if (currentSelection < 0) {
 				currentSelection = 1;
 			}
+		}
+		
+		private function purchaseFuel():void {
+			if (Registry.money >= 15 && Registry.fuel < 100.0) {
+				Registry.money -= 15;
+				Registry.fuel = 100.0;
+				moneyText.text = "Gigazoids " + Registry.money;
+			}
+			
 		}
 		
 		private function onFade():void
