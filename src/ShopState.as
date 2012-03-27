@@ -61,10 +61,17 @@ package
 				moveSelectionUp();
 			}
 			
-			if (FlxG.keys.pressed("ENTER")) 
+			if (FlxG.keys.justPressed("ENTER")) 
 			{
-				FlxG.flash(0xffffffff, 0.75);
-				FlxG.fade(0xff000000, 1, onFade);
+				if (currentSelection == 0) {
+					Registry.money -= 15;
+					Registry.fuel = 100.0;
+				}
+				else if (currentSelection == 1) {
+					FlxG.flash(0xffffffff, 0.75);
+					FlxG.fade(0xff000000, 1, onFade);
+				}
+				
 			}
 			
 			super.update();		
