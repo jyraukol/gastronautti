@@ -216,6 +216,7 @@ package
 					
 					if (Number(tipText.text) < 0) {
 						tipText.text = "0.00";
+						tipText.color = 0xFFFF0000;
 					}
 				}
 			

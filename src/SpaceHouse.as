@@ -42,7 +42,11 @@ package
 		{
 			foodDeliveredHere = true;
 			FlxG.play(foodDeliverSound);
-			Registry.money += tipTimer;
+			if (tipTimer > 0)
+			{
+				Registry.money += 10;
+			}
+			
 			play("closed");
 		}
 	}
