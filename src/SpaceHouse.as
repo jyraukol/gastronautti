@@ -24,7 +24,7 @@ package
 			addAnimation("open", [0], 0, false);
 			addAnimation("closed", [1], 0, false);
 			
-			tipTimer = FlxG.random() * 10;
+			tipTimer = FlxG.random() * 10 + 10;
 			tipTimer = Math.round(tipTimer);
 			play("open");
 			
