@@ -131,10 +131,12 @@ package
 				
 				
 				// Houses
-				for each (var house:Object in file.objects.houses) {									
-					var tempHouse:SpaceHouse = new SpaceHouse(int(house.@x), int(house.@y));
+				var houseNumber:int = 0;
+				for each (var house:Object in file.objects.houses) {					
+					var tempHouse:SpaceHouse = new SpaceHouse(int(house.@x), int(house.@y), houseNumber);
 					houses.push(tempHouse);
 					houseTexts.push(new FlxText(tempHouse.x, tempHouse.y, 30, tempHouse.tipTimer.toString()));
+					houseNumber++;
 				}
 				
 				// Fuelcans

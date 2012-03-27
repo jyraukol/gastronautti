@@ -14,11 +14,12 @@ package
 		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] private var foodDeliverSound:Class;
 		public var foodDeliveredHere:Boolean = false;
 		public var tipTimer:Number;
+		public var houseNumber:int;
 		
-		
-		public function SpaceHouse(x:int, y:int) 
+		public function SpaceHouse(x:int, y:int, houseNumber:int) 
 		{
 			super(x, y);
+			this.houseNumber = houseNumber;
 			loadGraphic(housePNG, true, false,32, 32);	
 			
 			addAnimation("open", [0], 0, false);
@@ -46,7 +47,7 @@ package
 			{
 				Registry.money += 10;
 			}
-			
+			Registry.money += 10;
 			play("closed");
 		}
 	}

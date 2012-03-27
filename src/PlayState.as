@@ -204,20 +204,19 @@ package
 				FlxG.overlap(player, laserEmitters, playerHitLaser);
 				FlxG.overlap(player, portals, playerEnteredPortal);
 				
+				var tipTextNumber:int = 0;
 				for each (var tipText:FlxText in level.houseTexts)
 				{
-					if (FlxG.overlap(player, tipText)) {
-						tipText.alive = false;
-					}
-					
+										
 					if (tipText.alive) {
-						tipText.text = (Number(tipText.text) - FlxG.elapsed).toFixed(2);
+						tipText.text = (level.houses[tipTextNumber].tipTimer).toFixed(2);
 					}
 					
-					if (Number(tipText.text) < 0) {
+					if (level.houses[tipTextNumber].tipTimer < 0) {
 						tipText.text = "0.00";
 						tipText.color = 0xFFFF0000;
 					}
+					tipTextNumber++;
 				}
 			
 				if (foodNum == 0)
@@ -323,7 +322,8 @@ package
 				thankText.x = house.x - 22;
 				thankText.y = house.y - 15;
 				thankText.visible = true;
-				Registry.money += 10;
+				
+				tipTexts.members[house.houseNumber].alive = false;
 				moneyText.text = "Money " + Registry.money;
 			}
 			
