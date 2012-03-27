@@ -135,7 +135,7 @@ package
 				for each (var house:Object in file.objects.houses) {					
 					var tempHouse:SpaceHouse = new SpaceHouse(int(house.@x), int(house.@y), houseNumber);
 					houses.push(tempHouse);
-					houseTexts.push(new FlxText(tempHouse.x, tempHouse.y, 30, tempHouse.tipTimer.toString()));
+					houseTexts.push(new FlxText(tempHouse.x, tempHouse.y - 16, 30, tempHouse.tipTimer.toString()));
 					houseNumber++;
 				}
 				

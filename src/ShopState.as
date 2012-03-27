@@ -21,7 +21,7 @@ package
 			add(starField);
 			
 			var instructions2:FlxText;
-			instructions2 = new FlxText(0, (FlxG.width / 2) - 20, FlxG.width, "Shop!");
+			instructions2 = new FlxText(0, 18, FlxG.width, "Shop!");
 			instructions2.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions2);
 			

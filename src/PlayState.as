@@ -403,10 +403,7 @@ package
 			}
 			
 			for each (var tipText:FlxText in level.houseTexts)
-			{
-				tipText.solid = true;
-				tipText.offset.y = 16;
-				tipText.offset.x = -16;
+			{				
 				tipTexts.add(tipText);
 			}
 			
