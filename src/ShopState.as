@@ -90,9 +90,9 @@ package
 				if (currentSelection == 0) {
 					purchaseFuel();					
 				} else if (currentSelection == 1) {
-					trace("Bought speed upgrade");
+					purchaseSpeedUpgrade();
 				} else if (currentSelection == 2) {
-					trace("Bought fuel consumption upgrade");
+					purchaseFuelUpgrade();
 				}
 				else if (currentSelection == 3) {
 					FlxG.flash(0xffffffff, 0.75);
@@ -124,6 +124,24 @@ package
 			if (Registry.money >= 15 && Registry.fuel < 100.0) {
 				Registry.money -= 15;
 				Registry.fuel = 100.0;
+				moneyText.text = "Gigazoids " + Registry.money;
+			}
+			
+		}
+		
+		private function purchaseSpeedUpgrade():void {
+			if (Registry.money >= 100 ) {
+				Registry.money -= 100;
+				trace("Purchased speed upgrade");
+				moneyText.text = "Gigazoids " + Registry.money;
+			}
+			
+		}
+		
+		private function purchaseFuelUpgrade():void {
+			if (Registry.money >= 200 ) {
+				Registry.money -= 200;
+				trace("Purchased fuel consumption upgrade");
 				moneyText.text = "Gigazoids " + Registry.money;
 			}
 			
