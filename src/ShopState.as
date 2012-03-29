@@ -16,6 +16,8 @@ package
 		private var starField:StarField;
 		private var currentSelection:int = 0;
 		private var refuelText:FlxText;
+		private var upgradeSpeedText:FlxText;
+		private var upgradeFuelConsumption:FlxText;
 		private var continueText:FlxText;
 		private var moneyText:FlxText;
 		
@@ -36,12 +38,19 @@ package
 					
 			var bar:FlxBar = new FlxBar(FlxG.width / 2 - 40, moneyText.y + 16, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, Registry, "fuel");
 			add(bar);
-			
-			
+						
 			refuelText = new FlxText(0, bar.y + 16, FlxG.width, "Refuel: 15 Gigazoids");
 			refuelText.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(refuelText);
+			
+			upgradeSpeedText = new FlxText(0, refuelText.y + 16, FlxG.width, "Upgrade jetpack power: 100 Gigazoids");
+			upgradeSpeedText.setFormat(null, 8, 0xFFFFFFFF, "center");
+			add(upgradeSpeedText);
 						
+			upgradeFuelConsumption = new FlxText(0, upgradeSpeedText.y + 16, FlxG.width, "Less consuming motors: 200 Gigazoids");
+			upgradeFuelConsumption.setFormat(null, 8, 0xFFFFFFFF, "center");
+			add(upgradeFuelConsumption);
+			
 			continueText:FlxText;
 			continueText = new FlxText(0, FlxG.height - 25, FlxG.width, "Continue");			
 			continueText.setFormat(null, 8, 0xFFFFFFFF, "center");
@@ -53,9 +62,19 @@ package
 			if (currentSelection == 0) {
 				continueText.color = 0xFFFFFFFF;
 				refuelText.color = 0xFF80FF80;
+				upgradeSpeedText.color = 0xFFFFFFFF;
 			} else if (currentSelection == 1) {
 				refuelText.color = 0xFFFFFFFF;
+				upgradeSpeedText.color = 0xFF80FF80;
+				upgradeFuelConsumption.color = 0xFFFFFFFF;
+			} else if (currentSelection == 2) {
+				upgradeSpeedText.color = 0xFFFFFFFF;
+				upgradeFuelConsumption.color = 0xFF80FF80;
+				continueText.color = 0xFFFFFFFF;
+			} else if (currentSelection == 3) {
+				upgradeFuelConsumption.color = 0xFFFFFFFF;
 				continueText.color = 0xFF80FF80;
+				refuelText.color = 0xFFFFFFFF;
 			}
 			
 			if (FlxG.keys.justPressed("DOWN")) {
@@ -70,8 +89,12 @@ package
 			{
 				if (currentSelection == 0) {
 					purchaseFuel();					
+				} else if (currentSelection == 1) {
+					trace("Bought speed upgrade");
+				} else if (currentSelection == 2) {
+					trace("Bought fuel consumption upgrade");
 				}
-				else if (currentSelection == 1) {
+				else if (currentSelection == 3) {
 					FlxG.flash(0xffffffff, 0.75);
 					FlxG.fade(0xff000000, 1, onFade);
 				}
@@ -84,7 +107,7 @@ package
 		private function moveSelectionDown():void {
 			currentSelection++;
 			
-			if (currentSelection > 1) {
+			if (currentSelection > 3) {
 				currentSelection = 0;
 			}
 		}
@@ -93,7 +116,7 @@ package
 			currentSelection--;
 			
 			if (currentSelection < 0) {
-				currentSelection = 1;
+				currentSelection = 3;
 			}
 		}
 		
