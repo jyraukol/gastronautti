@@ -16,6 +16,8 @@ package
 		
 		public function MenuState() 
 		{
+			Registry.fuel = 100.0;
+			Registry.money = 0;
 			
 			starField = new StarField(0, 2);
 			add(starField);
