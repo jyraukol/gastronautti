@@ -20,6 +20,7 @@ package
 		private var upgradeFuelConsumption:FlxText;
 		private var continueText:FlxText;
 		private var moneyText:FlxText;
+		private var infoText:FlashingText;
 		
 		public function ShopState() 
 		{
@@ -50,6 +51,9 @@ package
 			upgradeFuelConsumption = new FlxText(0, upgradeSpeedText.y + 16, FlxG.width, "Less consuming motors: 200 Gigazoids");
 			upgradeFuelConsumption.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(upgradeFuelConsumption);
+			
+			infoText = new FlashingText(upgradeFuelConsumption.y + 26, "", 3);			
+			add(infoText);
 			
 			continueText:FlxText;
 			continueText = new FlxText(0, FlxG.height - 25, FlxG.width, "Continue");			
@@ -125,6 +129,13 @@ package
 				Registry.money -= 15;
 				Registry.fuel = 100.0;
 				moneyText.text = "Gigazoids " + Registry.money;
+				infoMessage("Full tank of fuel!");
+			} else {
+				if (Registry.fuel = 100.0) {
+					infoMessage("Your tank is already full!");
+				} else {
+					infoMessage("You need more Gigazoids!");
+				}				
 			}
 			
 		}
@@ -132,19 +143,27 @@ package
 		private function purchaseSpeedUpgrade():void {
 			if (Registry.money >= 100 ) {
 				Registry.money -= 100;
-				trace("Purchased speed upgrade");
+				infoMessage("Your jetpack is now more powerful!");
 				moneyText.text = "Gigazoids " + Registry.money;
-			}
-			
+			} else {
+				infoMessage("You need more Gigazoids!");
+			}			
 		}
 		
 		private function purchaseFuelUpgrade():void {
 			if (Registry.money >= 200 ) {
-				Registry.money -= 200;
-				trace("Purchased fuel consumption upgrade");
+				Registry.money -= 200;				
 				moneyText.text = "Gigazoids " + Registry.money;
+				infoMessage("Your jetpack spends less fuel!");
+			} else {
+				infoMessage("You need more Gigazoids!");
 			}
 			
+		}
+		
+		private function infoMessage(message:String):void {
+			infoText.text = message;
+			infoText.restartFlashing(5);
 		}
 		
 		private function onFade():void

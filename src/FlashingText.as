@@ -27,6 +27,14 @@ package
 			this.duration = duration;
 		}
 		
+		public function restartFlashing(duration:Number):void {
+			revive();
+			this.duration = duration;
+			alpha = 1;
+			fading = true;
+			flashCounter = 0;
+		}
+		
 		override public function update():void 
 		{
 			super.update();
