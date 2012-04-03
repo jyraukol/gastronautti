@@ -11,3 +11,4 @@
 - Tiptimerin h‰ivytys kun ruoka tuomitettu / aika loppuu.
 - Get ready! Go! - viesti levelin alkuun. Antaa pelaajalle hetken katsoa kentt‰‰ ja suunnitella.
 - Lis‰‰ vaan kentti‰!
+- Erilaisia thank you tekstej‰ riippuen siit‰ tuliko tilaus ajoissa.

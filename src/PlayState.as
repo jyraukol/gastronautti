@@ -212,9 +212,12 @@ package
 						tipText.text = (level.houses[tipTextNumber].tipTimer).toFixed(2);
 					}
 					
-					if (level.houses[tipTextNumber].tipTimer < 0) {
-						tipText.text = "0.00";
+					if (level.houses[tipTextNumber].tipTimer < 5 && tipText.color != 0xFFFF0000) {						
 						tipText.color = 0xFFFF0000;
+					}
+					if (level.houses[tipTextNumber].tipTimer < 0) {
+						tipText.alive = false;
+						tipText.visible = false;
 					}
 					tipTextNumber++;
 				}
@@ -324,6 +327,7 @@ package
 				thankText.visible = true;
 				
 				tipTexts.members[house.houseNumber].alive = false;
+				tipTexts.members[house.houseNumber].visible = false;
 				moneyText.text = "Money " + Registry.money;
 			}
 			
