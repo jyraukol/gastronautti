@@ -2,7 +2,12 @@
 - Jos pelaaja tippuu ulospelialueelta niin henki pois! DONE!
     * Paranna tätä vielä vähän, nyt se on ehkä vähän lame
 - Leverin ja oven, johon lever vaikuttaa lisäys ja yhteistoiminta. DONE!
-    * Partikkeliefektit oven ovautumiseen olis nice
+    * Partikkeliefektit oven ovautumiseen olis nice. DONE!
 - Mahdollisuus kontrolloida pelaajan nopeutta pelin sisältä, trace sen hetkisestä nopeudesta, pelitasapainon löytämiseen. DONE!
-- Satunnaisesti taustaruudulla lentelevät avaruussukkulat
-- Aloitusruutuun taustalle gastronautti lenteleen satunnaisesti
+- Satunnaisesti taustaruudulla lentelevät avaruussukkulat. DONE!
+- Aloitusruutuun taustalle gastronautti lenteleen satunnaisesti. DONE!
+- Kaupparuutuun infoteksti, joka kertoo, miten ostotapahtumissa kävi. "YOu don't have enough money for that / You purchased X"....
+- Talojen tiptimer asetettavaksi käsin leveleditorista, enemmän kontrollia asiaan, lienee hyvä.
+- Tiptimerin häivytys kun ruoka tuomitettu / aika loppuu.
+- Get ready! Go! - viesti levelin alkuun. Antaa pelaajalle hetken katsoa kenttää ja suunnitella.
+- Lisää vaan kenttiä!
