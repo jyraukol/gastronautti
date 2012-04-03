@@ -148,8 +148,16 @@ package
 		}
 		
 		private function onFade():void
-		{			
-			FlxG.switchState(new PlayState);
+		{	
+			if (Registry.levelIndex == Registry.levelNumber)
+			{
+				FlxG.switchState(new GameOverState);
+			} else 
+			{
+				Registry.levelIndex++;
+				FlxG.switchState(new PlayState);
+			}
+			
 		}
 		
 	}

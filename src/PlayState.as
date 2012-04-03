@@ -390,7 +390,7 @@ package
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
 		{
 			remove(starField);
-			FlxG.switchState(new ScoreState);
+			FlxG.switchState(new ShopState);
 		}
         
         // Function for reading each level object (houses, fuelcans...) from level
