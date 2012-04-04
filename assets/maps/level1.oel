@@ -177,8 +177,8 @@
   </level>
   <objects>
     <spaceShip x="272" y="211"/>
-    <houses x="42" y="192" tipTimer="10"/>
+    <houses x="42" y="192" tipTimer="11"/>
     <houses x="270" y="72" tipTimer="10"/>
-    <houses x="18" y="72" tipTimer="13"/>
+    <houses x="18" y="72" tipTimer="14"/>
   </objects>
 </level>
