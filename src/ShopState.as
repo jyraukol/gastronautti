@@ -131,7 +131,7 @@ package
 				moneyText.text = "Gigazoids " + Registry.money;
 				infoMessage("Full tank of fuel!");
 			} else {
-				if (Registry.fuel = 100.0) {
+				if (Registry.fuel == 100.0) {
 					infoMessage("Your tank is already full!");
 				} else {
 					infoMessage("You need more Gigazoids!");

@@ -12,7 +12,8 @@ package
 		public static var level:Level1;
 		public static var playState:PlayState;
 		public static var spaceShip:SpaceShip;
-		public static const thanksText:Array = new Array("Thanks!", "OMNOMNOM!", "Finally!", "Sweet!", "Pizza!");
+		public static const thanksText:Array = new Array("Thanks!", "OMNOMNOM!", "Great service dude!", "Sweet!", "Pizza!");
+		public static const notOnTimeText:Array = new Array("You are late!", "No tip for you!", "What took you so long?");
 		public static var topBarHeight:int;
 		public static var levelIndex:uint = 1;
 		public static var levelScores:Array = new Array();

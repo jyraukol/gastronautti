@@ -122,8 +122,7 @@ package
 			add(fuelText);
 			add(moneyText);
 			
-			thankText = new FlxText(0, 0, 75, "");
-			thankText.alignment = "center"; 
+			thankText = new FlxText(0, 0, 115, ""); 
 			resetThankText();
 			thankText.setFormat(null, 8, 0xFFFFFFFF);
 			thankText.visible = false;
@@ -309,10 +308,7 @@ package
 		private function resetThankText():void
 		{
 			thankText.visible = false;
-			thankText.alpha = 1;
-
-			var random:Number = Math.floor(Math.random() * Registry.thanksText.length);			
-			thankText.text = Registry.thanksText[random];
+			thankText.alpha = 1;			
 		}
 		
 		private function foodDelivered(player:FlxObject, houseObject:FlxObject):void
@@ -321,7 +317,7 @@ package
 			if (!house.foodDeliveredHere)
 			{
 				foodNum -= 1;
-				house.thankYou();
+				thankText.text = house.thankYou();
 				thankText.x = house.x - 22;
 				thankText.y = house.y - 15;
 				thankText.visible = true;

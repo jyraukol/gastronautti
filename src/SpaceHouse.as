@@ -39,7 +39,7 @@ package
 				tipTimer -= FlxG.elapsed;
 			}
 		}
-		public function thankYou():void
+		public function thankYou():String
 		{
 			foodDeliveredHere = true;
 			FlxG.play(foodDeliverSound);
@@ -49,6 +49,14 @@ package
 			}
 			Registry.money += 10;
 			play("closed");
+			var returnText:String;
+			if (tipTimer > 0) {				
+				returnText = Registry.thanksText[Math.floor(Math.random() * Registry.notOnTimeText.length)];
+			} else {				
+				returnText = Registry.notOnTimeText[Math.floor(Math.random() * Registry.notOnTimeText.length)];
+			}
+			
+			return returnText;
 		}
 	}
 
