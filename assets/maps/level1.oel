@@ -1,4 +1,4 @@
-<level messageBeforeLevel="Hey, new guy! Get on your space moped and deliver this food to a remote space station!"  messageImageFileName="">
+<level messageBeforeLevel="Hey, new guy! Get on your space moped and deliver this food to a remote space station!" messageImageFileName="">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
@@ -177,8 +177,8 @@
   </level>
   <objects>
     <spaceShip x="272" y="211"/>
-    <houses x="42" y="192"/>
-    <houses x="270" y="72"/>
-    <houses x="18" y="72"/>
+    <houses x="42" y="192" tipTimer="10"/>
+    <houses x="270" y="72" tipTimer="10"/>
+    <houses x="18" y="72" tipTimer="10"/>
   </objects>
 </level>

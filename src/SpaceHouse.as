@@ -16,7 +16,7 @@ package
 		public var tipTimer:Number;
 		public var houseNumber:int;
 		
-		public function SpaceHouse(x:int, y:int, houseNumber:int) 
+		public function SpaceHouse(x:int, y:int, houseNumber:int, tipTimer:int) 
 		{
 			super(x, y);
 			this.houseNumber = houseNumber;
@@ -25,8 +25,9 @@ package
 			addAnimation("open", [0], 0, false);
 			addAnimation("closed", [1], 0, false);
 			
-			tipTimer = FlxG.random() * 10 + 10;
-			tipTimer = Math.round(tipTimer);
+			//tipTimer = FlxG.random() * 10 + 10;
+			//tipTimer = Math.round(tipTimer);
+			this.tipTimer = tipTimer;
 			play("open");
 			
 		}

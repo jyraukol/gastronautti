@@ -9,7 +9,7 @@
 - Kaupparuutuun infoteksti, joka kertoo, miten ostotapahtumissa k‰vi. "YOu don't have enough money for that / You purchased X"....
 - Speed ja fuel upgrade oikeesti tekeen jotain...
 - Talojen tiptimer asetettavaksi k‰sin leveleditorista, enemm‰n kontrollia asiaan, lienee hyv‰.
-- Tiptimerin h‰ivytys kun ruoka tuomitettu / aika loppuu.
+- Tiptimerin h‰ivytys kun ruoka tuomitettu / aika loppuu. DONE!
 - Get ready! Go! - viesti levelin alkuun. Antaa pelaajalle hetken katsoa kentt‰‰ ja suunnitella.
 - Lis‰‰ vaan kentti‰!
-- Erilaisia thank you tekstej‰ riippuen siit‰ tuliko tilaus ajoissa.
+- Erilaisia thank you tekstej‰ riippuen siit‰ tuliko tilaus ajoissa. DONE! Partly....

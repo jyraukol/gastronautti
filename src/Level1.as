@@ -133,7 +133,7 @@ package
 				// Houses
 				var houseNumber:int = 0;
 				for each (var house:Object in file.objects.houses) {					
-					var tempHouse:SpaceHouse = new SpaceHouse(int(house.@x), int(house.@y), houseNumber);
+					var tempHouse:SpaceHouse = new SpaceHouse(int(house.@x), int(house.@y), houseNumber, int(house.@tipTimer));
 					houses.push(tempHouse);
 					houseTexts.push(new FlxText(tempHouse.x, tempHouse.y - 16, 30, tempHouse.tipTimer.toString()));
 					houseNumber++;

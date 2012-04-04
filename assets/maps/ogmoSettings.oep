@@ -16,7 +16,11 @@
 	<tileset name="tiles" image="block2.png" tileWidth="12" tileHeight="12" />
 </tilesets>
 <objects>
-	<object name="houses" image="spaceHouse2.png" tile="true" width="32" height="32" />
+	<object name="houses" image="spaceHouse2.png" tile="true" width="32" height="32">
+		<values>
+			<number name="tipTimer" default="10"/>
+		</values>
+	</object>
 	<object name="fuelCans" image="fuelCan.png" width="8" height="8" />
 	<object name="spaceShip" image="spaceMoped.png" width="32" height="16" limit="1" />
 	<object name="lasers" image="laserEmitter.png" width="21" height="8" />
