@@ -128,17 +128,9 @@
     <tile id="1" x="12" y="48"/>
     <tile id="1" x="0" y="48"/>
     <tile id="1" x="84" y="120"/>
-    <tile id="1" x="84" y="108"/>
-    <tile id="1" x="84" y="96"/>
-    <tile id="1" x="84" y="84"/>
-    <tile id="1" x="84" y="72"/>
     <tile id="1" x="84" y="60"/>
     <tile id="1" x="72" y="60"/>
     <tile id="1" x="72" y="48"/>
-    <tile id="1" x="72" y="72"/>
-    <tile id="1" x="72" y="84"/>
-    <tile id="1" x="72" y="96"/>
-    <tile id="1" x="72" y="108"/>
     <tile id="1" x="72" y="120"/>
     <tile id="1" x="60" y="120"/>
     <tile id="1" x="48" y="120"/>
@@ -147,28 +139,8 @@
     <tile id="1" x="12" y="120"/>
     <tile id="1" x="0" y="120"/>
     <tile id="1" x="0" y="108"/>
-    <tile id="1" x="12" y="108"/>
-    <tile id="1" x="24" y="108"/>
-    <tile id="1" x="36" y="108"/>
-    <tile id="1" x="48" y="108"/>
-    <tile id="1" x="60" y="108"/>
-    <tile id="1" x="60" y="96"/>
-    <tile id="1" x="48" y="96"/>
-    <tile id="1" x="36" y="96"/>
-    <tile id="1" x="24" y="96"/>
-    <tile id="1" x="12" y="96"/>
     <tile id="1" x="0" y="96"/>
     <tile id="1" x="0" y="84"/>
-    <tile id="1" x="12" y="84"/>
-    <tile id="1" x="24" y="84"/>
-    <tile id="1" x="36" y="84"/>
-    <tile id="1" x="48" y="84"/>
-    <tile id="1" x="60" y="84"/>
-    <tile id="1" x="60" y="72"/>
-    <tile id="1" x="48" y="72"/>
-    <tile id="1" x="36" y="72"/>
-    <tile id="1" x="24" y="72"/>
-    <tile id="1" x="12" y="72"/>
     <tile id="1" x="0" y="72"/>
     <tile id="1" x="0" y="60"/>
     <tile id="1" x="12" y="60"/>
@@ -274,14 +246,23 @@
     <tile id="7" x="120" y="108"/>
     <tile id="7" x="120" y="120"/>
     <tile id="5" x="120" y="132"/>
+    <tile id="3" x="84" y="108"/>
+    <tile id="2" x="72" y="108"/>
+    <tile id="2" x="60" y="108"/>
+    <tile id="2" x="48" y="108"/>
+    <tile id="2" x="36" y="108"/>
+    <tile id="2" x="24" y="108"/>
+    <tile id="2" x="12" y="108"/>
   </level>
   <objects>
     <portals x="18" y="15" portalId="0" connectingId="1"/>
     <portals x="307" y="16" portalId="1" connectingId="0"/>
     <spaceShip x="284" y="199"/>
-    <houses x="7" y="184"/>
+    <houses x="7" y="184" tipTimer="10"/>
     <doors x="71" y="144" height="71" leverId="1"/>
     <levers x="247" y="30" leverId="1"/>
     <lasers x="142" y="143"/>
+    <lasers x="59" y="71"/>
+    <fuelCans x="29" y="110"/>
   </objects>
 </level>

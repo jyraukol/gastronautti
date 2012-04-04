@@ -82,22 +82,6 @@
     <tile id="1" x="228" y="96"/>
     <tile id="1" x="216" y="96"/>
     <tile id="1" x="216" y="60"/>
-    <tile id="1" x="216" y="48"/>
-    <tile id="1" x="216" y="36"/>
-    <tile id="1" x="228" y="36"/>
-    <tile id="1" x="240" y="36"/>
-    <tile id="1" x="252" y="36"/>
-    <tile id="1" x="264" y="36"/>
-    <tile id="1" x="276" y="36"/>
-    <tile id="1" x="288" y="36"/>
-    <tile id="1" x="300" y="36"/>
-    <tile id="1" x="300" y="48"/>
-    <tile id="1" x="288" y="48"/>
-    <tile id="1" x="276" y="48"/>
-    <tile id="1" x="264" y="48"/>
-    <tile id="1" x="252" y="48"/>
-    <tile id="1" x="240" y="48"/>
-    <tile id="1" x="228" y="48"/>
     <tile id="1" x="228" y="60"/>
     <tile id="1" x="240" y="60"/>
     <tile id="1" x="252" y="60"/>
@@ -227,20 +211,9 @@
     <tile id="2" x="24" y="36"/>
     <tile id="2" x="12" y="36"/>
     <tile id="2" x="0" y="36"/>
-    <tile id="6" x="300" y="24"/>
     <tile id="7" x="300" y="12"/>
     <tile id="7" x="300" y="0"/>
-    <tile id="2" x="288" y="24"/>
-    <tile id="2" x="276" y="24"/>
-    <tile id="2" x="264" y="24"/>
-    <tile id="2" x="252" y="24"/>
-    <tile id="2" x="240" y="24"/>
-    <tile id="2" x="228" y="24"/>
-    <tile id="2" x="216" y="24"/>
-    <tile id="4" x="204" y="24"/>
     <tile id="5" x="204" y="96"/>
-    <tile id="7" x="204" y="36"/>
-    <tile id="7" x="204" y="48"/>
     <tile id="7" x="204" y="60"/>
     <tile id="7" x="204" y="72"/>
     <tile id="7" x="204" y="84"/>
@@ -285,11 +258,22 @@
     <tile id="3" x="204" y="144"/>
     <tile id="3" x="132" y="60"/>
     <tile id="2" x="120" y="60"/>
+    <tile id="7" x="300" y="24"/>
+    <tile id="7" x="300" y="36"/>
+    <tile id="6" x="300" y="48"/>
+    <tile id="2" x="288" y="48"/>
+    <tile id="2" x="276" y="48"/>
+    <tile id="2" x="264" y="48"/>
+    <tile id="2" x="252" y="48"/>
+    <tile id="2" x="240" y="48"/>
+    <tile id="2" x="228" y="48"/>
+    <tile id="2" x="216" y="48"/>
+    <tile id="4" x="204" y="48"/>
   </level>
   <objects>
     <spaceShip x="12" y="30"/>
-    <houses x="264" y="6"/>
-    <houses x="270" y="174"/>
-    <fuelCans x="12" y="192"/>
+    <houses x="248" y="28" tipTimer="10"/>
+    <houses x="9" y="171" tipTimer="10"/>
+    <fuelCans x="288" y="194"/>
   </objects>
 </level>
