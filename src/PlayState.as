@@ -392,7 +392,7 @@ package
 			remove(starField);
 			if (Registry.levelIndex == Registry.levelNumber)
 			{
-				FlxG.switchState(new GameOverState);
+				FlxG.switchState(new MenuState);
 			} else {
 				FlxG.switchState(new ShopState);
 			}
