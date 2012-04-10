@@ -170,14 +170,7 @@ package
 		
 		private function onFade():void
 		{	
-			if (Registry.levelIndex == Registry.levelNumber)
-			{
-				FlxG.switchState(new GameOverState);
-			} else 
-			{
-				Registry.levelIndex++;
-				FlxG.switchState(new PlayState);
-			}
+			Registry.loadNextLevel();
 			
 		}
 		

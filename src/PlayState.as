@@ -14,19 +14,19 @@ package
 		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
 		[Embed(source = "../assets/graphics/moon.png")] private var moonImage:Class;
 		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
-		[Embed(source = "../assets/graphics/boss.png")] private var bossImage:Class;
-		[Embed(source = "../assets/graphics/transmissionBackground.png")] private var transmissionBackground:Class;
+		
+		
 		
 		public var player:Gastronaut;
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
-		private var messageOverlay:FlxSprite;
+		
 		
 		private var moneyText:FlxText;
 		private var foodNum:int;
 		private var thankText:FlxText;
 		private var restartText:FlxText;
-		private var incomingTransmissionText:FlashingText;
+		
 		
 		
 		private var spaceHouses:FlxGroup = new FlxGroup();
@@ -42,14 +42,14 @@ package
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
 		
-		private var levelMessageObject:FlxBasic;
+		
 		
 		//private var fuelPickupText:FlxText;
 		
 		public var level:Level1;
 		public var stars:StarfieldFX;
-		private var levelMessage:FlxText;
-		private var boss:FlxSprite;
+		
+		
 		
 		private var deathTimer:Number = 0;		
 		
@@ -59,10 +59,14 @@ package
 		{
 			FlxG.bgColor = 0xff000000;
 			
-
-			level = new Level1();
-
-			
+			level = Registry.level;
+			if (level == null) {
+				level = new Level1();
+			}
+			startLevel();			
+		}
+		
+        private function startLevel():void {			
 			createLevelObjects();
 			Registry.playState = this;
 			
@@ -134,65 +138,13 @@ package
 			fuelLow.exists = false;
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
-			
-			messageOverlay = new FlxSprite(0, 0, transmissionBackground);			
-			add(messageOverlay);
-			add(Registry.transmissionStarField);
-			add(levelMessage = new FlxText(50, 50, 230, level.levelMessage));
-			boss = new FlxSprite(5, 180);
-			boss.loadGraphic(bossImage, true, false, 100, 50);
-			boss.addAnimation("speaking", [0, 1, 2, 0, 2, 1], 5, true);
-			boss.play("speaking");
-			
-			add(boss);
-			
-			
-			if (level.levelMessageObject.search("fuelcan") != -1) {					
-					levelMessageObject = new FuelCan(150, 100)
-					add(levelMessageObject);				
-			}
-			if (level.levelMessageObject.search("laser") != -1) {
-					levelMessageObject = new LaserEmitter(150, 100, 0, 0, 3, true);
-					(levelMessageObject as LaserEmitter).generateLaser();
-					add(levelMessageObject);					
-					
-			}
-			if (level.levelMessageObject.search("leverDoor") != -1) {				
-					levelMessageObject = new FlxGroup();
-					(levelMessageObject as FlxGroup).add(new Lever(130, 120, 1));
-					(levelMessageObject as FlxGroup).add(new Door(170, 120, 1, 32));					
-					add(levelMessageObject);										
-			}
-				
-			if (!level.levelMessageExists) {
-				levelMessage.visible = false;
-				messageOverlay.visible = false;
-				messageOverlay.active = false;
-				level.levelMessageDisplayed = true;
-				remove(levelMessageObject);
-				boss.exists = false;
-				remove(Registry.transmissionStarField);
-			} else {
-				add(incomingTransmissionText = new FlashingText(10, "Incoming transmission", -1));
-			}
-			
-			
 		}
-		        
+				
 		override public function update():void
 		{
 			
 			
-			if (!level.levelMessageDisplayed && (FlxG.keys.ENTER)) {
-				levelMessage.visible = false;
-				messageOverlay.exists = false;				
-				level.levelMessageDisplayed = true;	
-				remove(levelMessageObject);
-				boss.exists = false;
-				incomingTransmissionText.exists = false;
-				boss.exists = false;
-				remove(Registry.transmissionStarField);
-			} else {
+			super.update();
 									
 				FlxG.collide(player, level);
 				FlxG.collide(player, bar);
@@ -306,8 +258,8 @@ package
 				{
 					Registry.money += 100;
 				}
-			}
-			super.update();
+			
+			
 		}
 		
 		private function resetThankText():void
@@ -341,7 +293,7 @@ package
 		private function resetLevel():void 
 		{
 			
-			FlxG.switchState(new PlayState);
+			Registry.restartLevel();
 		}
 		
 		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
@@ -394,13 +346,9 @@ package
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
 		{
-			remove(starField);
-			if (Registry.levelIndex == Registry.levelNumber)
-			{
-				FlxG.switchState(new MenuState);
-			} else {
+			
 				FlxG.switchState(new ShopState);
-			}
+			
 			
 		}
         
@@ -446,5 +394,9 @@ package
 			}
         }
         
+		override public function destroy():void 
+		{			
+			super.destroy();			
+		}
 	}
 }

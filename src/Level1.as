@@ -61,7 +61,7 @@ package
 			doors = new Vector.<FlxSprite>();
 			portals = new Vector.<Portal>();
 			
-			Registry.level = this;
+			//Registry.level = this;
 		
 						
 					
