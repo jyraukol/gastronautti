@@ -9,6 +9,8 @@ package
 		
 		
 		public static var player:Gastronaut;
+		public static var playerXSpeedBoost:int = 0;
+		public static var playerYSpeedBoost:int = 0;
 		public static var level:Level1;
 		public static var playState:PlayState;
 		public static var spaceShip:SpaceShip;

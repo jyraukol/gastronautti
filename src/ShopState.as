@@ -144,6 +144,8 @@ package
 			if (Registry.money >= 100 ) {
 				Registry.money -= 100;
 				infoMessage("Your jetpack is now more powerful!");
+				Registry.playerXSpeedBoost += 5;
+				Registry.playerYSpeedBoost += 5;
 				moneyText.text = "Gigazoids " + Registry.money;
 			} else {
 				infoMessage("You need more Gigazoids!");

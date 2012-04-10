@@ -80,6 +80,7 @@ package
 			player = new Gastronaut(spaceShip.x - 10, 0);
 			player.y = spaceShip.y + spaceShip.height - player.height;
 			Registry.player = player;
+			player.setSpeed(Registry.playerXSpeedBoost, Registry.playerYSpeedBoost);
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
 			
 			starField = new StarField(0, 2);
@@ -300,6 +301,10 @@ package
 				if (FlxG.keys.O)
 				{
 					player.setSpeed(-2, -2);
+				}
+				if (FlxG.keys.T)
+				{
+					Registry.money += 100;
 				}
 			}
 			super.update();
