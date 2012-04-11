@@ -23,8 +23,7 @@ package
 		private var infoText:FlashingText;
 		
 		public function ShopState() 
-		{
-			
+		{			
 			starField = new StarField(0, 2);
 			add(starField);
 			

@@ -346,10 +346,12 @@ package
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
 		{
-			
-				FlxG.switchState(new ShopState);
-			
-			
+			if ( Registry.levelIndex <= Registry.levelNumber)
+			{
+				FlxG.switchState(new ShopState);		
+			} else {
+				FlxG.switchState(new MenuState);
+			}
 		}
         
         // Function for reading each level object (houses, fuelcans...) from level

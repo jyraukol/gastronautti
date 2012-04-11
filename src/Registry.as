@@ -18,7 +18,7 @@ package
 		public static const thanksText:Array = new Array("Thanks!", "OMNOMNOM!", "Great service dude!", "Sweet!", "Pizza!");
 		public static const notOnTimeText:Array = new Array("You are late!", "No tip for you!", "What took you so long?");
 		public static var topBarHeight:int;
-		public static var levelIndex:uint = 1;
+		public static var levelIndex:uint = 4;
 		public static var levelScores:Array = new Array();
 		public static var levelNumber:uint = 6; // save the number of levels the game has
 		public static var transmissionStarField:StarField = new StarField(0, 3);
