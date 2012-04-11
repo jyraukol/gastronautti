@@ -398,7 +398,7 @@ package
         
 		override public function destroy():void 
 		{			
-			super.destroy();			
+			//super.destroy();			
 		}
 	}
 }
