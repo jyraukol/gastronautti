@@ -15,20 +15,15 @@ package
 		[Embed(source = "../assets/graphics/moon.png")] private var moonImage:Class;
 		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		
-		
-		
 		public var player:Gastronaut;
 		private var fuelBar:FlxBar;
 		private var bar:FlxSprite;		
-		
 		
 		private var moneyText:FlxText;
 		private var foodNum:int;
 		private var thankText:FlxText;
 		private var restartText:FlxText;
-		
-		
-		
+				
 		private var spaceHouses:FlxGroup = new FlxGroup();
 		private var tipTexts:FlxGroup = new FlxGroup();
 		private var spaceShip:FlxSprite;
@@ -41,20 +36,13 @@ package
 		private var fuelLow:ExclamationMark;
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
-		
-		
-		
+				
 		//private var fuelPickupText:FlxText;
 		
-		public var level:Level1;
-		public var stars:StarfieldFX;
-		
-		
+		public var level:Level1;		
 		
 		private var deathTimer:Number = 0;		
-		
-		
-		
+				
 		override public function create():void
 		{
 			FlxG.bgColor = 0xff000000;
@@ -138,6 +126,8 @@ package
 			fuelLow.exists = false;
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
+			
+			add(new TextBox());
 		}
 				
 		override public function update():void
