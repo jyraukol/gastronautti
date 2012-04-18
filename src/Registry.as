@@ -24,6 +24,7 @@ package
 		public static var transmissionStarField:StarField = new StarField(0, 3);
 		public static var money:int;
 		public static var fuel:Number;
+		public static var fuelConsumption:Number = 0.2;
 		public static var level:Level1;
 		
 		public function Registry() 

@@ -27,7 +27,7 @@ package
 		private var YSPEED:int = 100;		
 		private var MAXYSPEED:int = 200;
 		
-		private var FUELCONSUMPTION:Number = 0.2;
+		private var fuelConsumption:Number = 0.2;
 		private var outOfFuel:Boolean = false;
 		private var flying:Boolean = false;
 		private var rocketSound:FlxSound = new FlxSound();
@@ -65,6 +65,7 @@ package
 			}
 			
 			this.fuel = Registry.fuel;
+			this.fuelConsumption = Registry.fuelConsumption;
 		}
 		
 		override public function update():void 
@@ -141,7 +142,7 @@ package
 			if (FlxG.keys.UP)
 			{	
 				flying = true;
-				fuel -= FUELCONSUMPTION;
+				fuel -= fuelConsumption;
 				
 				if (!rocketSound.active)
 				{

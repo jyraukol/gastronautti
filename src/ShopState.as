@@ -152,10 +152,25 @@ package
 		}
 		
 		private function purchaseFuelUpgrade():void {
-			if (Registry.money >= 200 ) {
-				Registry.money -= 200;				
-				moneyText.text = "Gigazoids " + Registry.money;
-				infoMessage("Your jetpack spends less fuel!");
+			if (Registry.money >= 200 ) {								
+				var upgradeable:Boolean = false;
+				
+				if (Registry.fuelConsumption >= 0.2) {
+					Registry.fuelConsumption -= 0.1;
+					upgradeable = true;					
+				} else if (Registry.fuelConsumption >= 0.06) {
+					Registry.fuelConsumption -= 0.04;
+					upgradeable = true;					
+				}
+				
+				if (upgradeable) {
+					infoMessage("Your jetpack spends less fuel!");
+					Registry.money -= 200;
+					moneyText.text = "Gigazoids " + Registry.money;
+				} else {
+					infoMessage("Your jetpack cannot be upgraded any more!");
+				}
+				
 			} else {
 				infoMessage("You need more Gigazoids!");
 			}
