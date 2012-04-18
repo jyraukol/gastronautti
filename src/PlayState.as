@@ -293,7 +293,8 @@ package
 		private function resetLevel():void 
 		{
 			
-			Registry.restartLevel();
+			remove(starField);
+			FlxG.switchState(new PlayState);
 		}
 		
 		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
