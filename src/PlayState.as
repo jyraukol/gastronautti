@@ -264,7 +264,8 @@ package
 			if (!house.foodDeliveredHere)
 			{
 				foodNum -= 1;
-				thankText.text = house.thankYou();
+				add(new FlashingText(23, house.thankYou(), 3.5));
+				/*thankText.text = house.thankYou();
 				thankText.x = house.x - 22;
 				thankText.y = house.y - 15;
 				if (thankText.x < 10) {
@@ -272,7 +273,7 @@ package
 				} else if (thankText.x + thankText.width > FlxG.width) {
 					thankText.x -= thankText.x + thankText.width - FlxG.width;
 				}
-				thankText.visible = true;
+				thankText.visible = true; */
 				
 				tipTexts.members[house.houseNumber].alive = false;
 				tipTexts.members[house.houseNumber].visible = false;
