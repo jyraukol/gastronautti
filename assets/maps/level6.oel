@@ -258,7 +258,7 @@
     <portals x="18" y="15" portalId="0" connectingId="1"/>
     <portals x="307" y="16" portalId="1" connectingId="0"/>
     <spaceShip x="284" y="199"/>
-    <houses x="7" y="184" tipTimer="10"/>
+    <houses x="7" y="184" tipTimer="25"/>
     <doors x="71" y="144" height="71" leverId="1"/>
     <levers x="247" y="30" leverId="1"/>
     <lasers x="142" y="143"/>

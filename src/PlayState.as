@@ -127,7 +127,7 @@ package
 			add(fuelLow);
 			//FlxG.playMusic(bgmusic, 1);
 			
-			add(new TextBox());
+			//add(new TextBox());
 		}
 				
 		override public function update():void
@@ -267,6 +267,11 @@ package
 				thankText.text = house.thankYou();
 				thankText.x = house.x - 22;
 				thankText.y = house.y - 15;
+				if (thankText.x < 10) {
+					thankText.x += 10;
+				} else if (thankText.x + thankText.width > FlxG.width) {
+					thankText.x -= thankText.x + thankText.width - FlxG.width;
+				}
 				thankText.visible = true;
 				
 				tipTexts.members[house.houseNumber].alive = false;
