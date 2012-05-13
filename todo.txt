@@ -16,3 +16,5 @@
 - Thank you textille ja tiptimer tekstille musta tausta, että teksti näkyy aina selvästi...
 	* Jos jompikumpi on liian reunassa niin siirretään keskemmälle
 - Korjaa heti, vaikka messageruutu on näkösällä niin level objektit päivittyy siellä taustalla, tiptimerit juoksee ja sillain, KORJATTU!
+- Restartti ei palauta tipTimereita
+- Korjaa tiptimereiden päällekkäisyys vaan muokkaamalla kenttiä niin, että talojen yläpuolella ei ole tilejä
