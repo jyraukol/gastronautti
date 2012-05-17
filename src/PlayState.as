@@ -217,8 +217,9 @@ package
 						if (deathTimer <= FlxG.elapsed)
 						{
 							FlxG.timeScale = 1.0;
+							Registry.fuel = Registry.fuelAtStartOfLevel;
 							// Restart
-							FlxG.flash(0xff000000, 1, resetLevel);
+							FlxG.flash(0xff000000, 1, Registry.restartLevel);
 							
 						}
 					}
@@ -226,8 +227,7 @@ package
 				
 				if (FlxG.keys.R)
 				{
-					remove(starField);
-					FlxG.switchState(new PlayState);
+					Registry.restartLevel();
 				}
 				
 				if (FlxG.keys.N)
@@ -286,13 +286,6 @@ package
 			remove(starField);
 		}
 		
-		private function resetLevel():void 
-		{
-			
-			remove(starField);
-			FlxG.switchState(new PlayState);
-		}
-		
 		private function fuelPickUp(player:Gastronaut, fuelcan:FuelCan):void
 		{
 			player.fuel += fuelcan.fuelAmount;
@@ -317,7 +310,7 @@ package
             // Player hit active laser, reset
 			player.visible = false;
 			player.moves = false;
-			FlxG.shake(0.05, 0.05, resetLevel);
+			FlxG.shake(0.05, 0.05, Registry.restartLevel);
 		}
 		
 		private function pullLever(player:Gastronaut, lever:Lever):void {

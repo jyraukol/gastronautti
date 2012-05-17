@@ -18,7 +18,7 @@ package
 		{
 			Registry.fuel = 100.0;
 			Registry.money = 0;
-			Registry.levelIndex = 1;
+			Registry.levelIndex = 0;
 			
 			starField = new StarField(0, 2);
 			add(starField);
