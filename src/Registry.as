@@ -40,7 +40,7 @@ package
 		
 		public static function loadNextLevel():void {
 			fuelAtStartOfLevel = fuel;
-			if (Registry.levelIndex > Registry.levelNumber)
+			if (Registry.levelIndex == Registry.levelNumber)
 			{
 				FlxG.switchState(new MenuState);
 			} else 

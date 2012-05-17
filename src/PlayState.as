@@ -265,15 +265,7 @@ package
 			{
 				foodNum -= 1;
 				add(new FlashingText(23, house.thankYou(), 3.5));
-				/*thankText.text = house.thankYou();
-				thankText.x = house.x - 22;
-				thankText.y = house.y - 15;
-				if (thankText.x < 10) {
-					thankText.x += 10;
-				} else if (thankText.x + thankText.width > FlxG.width) {
-					thankText.x -= thankText.x + thankText.width - FlxG.width;
-				}
-				thankText.visible = true; */
+	
 				
 				tipTexts.members[house.houseNumber].alive = false;
 				tipTexts.members[house.houseNumber].visible = false;
@@ -336,7 +328,7 @@ package
 		
 		private function levelClear(player:Gastronaut, ship:FlxSprite):void
 		{
-			if ( Registry.levelIndex <= Registry.levelNumber)
+			if ( Registry.levelIndex < Registry.levelNumber)
 			{
 				FlxG.switchState(new ShopState);		
 			} else {
