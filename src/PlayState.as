@@ -13,7 +13,7 @@ package
 		[Embed(source = "../assets/graphics/barBackground.png")] private var hudBackground:Class;
 		[Embed(source = "../assets/graphics/exclamation.png")] private var exclamationImage:Class;
 		[Embed(source = "../assets/graphics/moon.png")] private var moonImage:Class;
-		[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
+		//[Embed(source = "../assets/music/CD2.mp3")] private var bgmusic:Class; // Music from http://soundcloud.com/juniorkobbe
 		
 		public var player:Gastronaut;
 		private var fuelBar:FlxBar;
@@ -125,7 +125,7 @@ package
 			fuelLow = new ExclamationMark(fuelBar.x + fuelBar.width + 10, fuelBar.y);
 			fuelLow.exists = false;
 			add(fuelLow);
-			//FlxG.playMusic(bgmusic, 1);
+			
 			
 			//add(new TextBox());
 		}

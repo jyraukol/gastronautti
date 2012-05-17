@@ -13,7 +13,7 @@ package
 	public class MenuState extends FlxState 
 	{
 		private var starField:StarField;
-		
+		[Embed(source = "../assets/music/FoxSynergy - Solar Powered Boy.mp3")] private var bgmusic:Class; //http://opengameart.org/content/solar-powered-boy
 		public function MenuState() 
 		{
 			Registry.fuel = 100.0;
@@ -48,8 +48,15 @@ package
 			var instructions4:FlxText;
 			instructions4 = new FlashingText(FlxG.height - 25, "Enter to start", 0);			
 			add(instructions4); 
+			
+			
 		}
 		
+		override public function create():void 
+		{
+			super.create();
+			FlxG.playMusic(bgmusic);
+		}
 		override public function update():void
 		{    
 			if (FlxG.keys.pressed("ENTER")) 
