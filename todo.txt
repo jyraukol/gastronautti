@@ -1,20 +1,20 @@
 - PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
-- Jos pelaaja tippuu ulospelialueelta niin henki pois! DONE!
-    * Paranna t‰t‰ viel‰ v‰h‰n, nyt se on ehk‰ v‰h‰n lame
+- Pelaajan putoaminen pelialueelta, onko t‰m‰ hyv‰ vai huono?
+- Get ready! Go! - viesti levelin alkuun. Antaa pelaajalle hetken katsoa kentt‰‰ ja suunnitella.
+- Lis‰‰ vaan kentti‰!
 - Leverin ja oven, johon lever vaikuttaa lis‰ys ja yhteistoiminta. DONE!
     * Partikkeliefektit oven ovautumiseen olis nice. DONE!
 - Mahdollisuus kontrolloida pelaajan nopeutta pelin sis‰lt‰, trace sen hetkisest‰ nopeudesta, pelitasapainon lˆyt‰miseen. DONE!
 - Satunnaisesti taustaruudulla lentelev‰t avaruussukkulat. DONE!
 - Aloitusruutuun taustalle gastronautti lenteleen satunnaisesti. DONE!
-- Kaupparuutuun infoteksti, joka kertoo, miten ostotapahtumissa k‰vi. "YOu don't have enough money for that / You purchased X"....
-- Speed ja fuel upgrade oikeesti tekeen jotain...
 - Talojen tiptimer asetettavaksi k‰sin leveleditorista, enemm‰n kontrollia asiaan, lienee hyv‰. DONE!
 - Tiptimerin h‰ivytys kun ruoka tuomitettu / aika loppuu. DONE!
-- Get ready! Go! - viesti levelin alkuun. Antaa pelaajalle hetken katsoa kentt‰‰ ja suunnitella.
-- Lis‰‰ vaan kentti‰!
+- Speed ja fuel upgrade oikeesti tekeen jotain... DONE!
 - Erilaisia thank you tekstej‰ riippuen siit‰ tuliko tilaus ajoissa. DONE! Partly....
-- Thank you textille ja tiptimer tekstille musta tausta, ett‰ teksti n‰kyy aina selv‰sti...
+- Thank you textille ja tiptimer tekstille musta tausta, ett‰ teksti n‰kyy aina selv‰sti... DONE! 
+	* Korjattu tekem‰ll‰ kent‰t vaan niin, ettei tekstej‰ blokkaa mik‰‰n.
 	* Jos jompikumpi on liian reunassa niin siirret‰‰n keskemm‰lle
-- Korjaa heti, vaikka messageruutu on n‰kˆs‰ll‰ niin level objektit p‰ivittyy siell‰ taustalla, tiptimerit juoksee ja sillain, KORJATTU!
-- Restartti ei palauta tipTimereita
-- Korjaa tiptimereiden p‰‰llekk‰isyys vaan muokkaamalla kentti‰ niin, ett‰ talojen yl‰puolella ei ole tilej‰
+- Korjaa heti, vaikka messageruutu on n‰kˆs‰ll‰ niin level objektit p‰ivittyy siell‰ taustalla, tiptimerit juoksee ja sillain, DONE!	
+- Restartti ei palauta tipTimereita DONE!
+- Korjaa tiptimereiden p‰‰llekk‰isyys vaan muokkaamalla kentti‰ niin, ett‰ talojen yl‰puolella ei ole tilej‰ DONE!
+- Kaupparuutuun infoteksti, joka kertoo, miten ostotapahtumissa k‰vi. "YOu don't have enough money for that / You purchased X".... DONE!
