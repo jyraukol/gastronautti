@@ -1,4 +1,5 @@
 - PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
+- Shopissa valintojen klikkaamiseen ‰‰niefekti, nyt on bling jos osto onnistuu, joku tˆr‰hdys jos ei osto onnistu
 - Pelaajan putoaminen pelialueelta, onko t‰m‰ hyv‰ vai huono?
 - Get ready! Go! - viesti levelin alkuun. Antaa pelaajalle hetken katsoa kentt‰‰ ja suunnitella.
 - Lis‰‰ vaan kentti‰!

@@ -89,7 +89,7 @@ package
 			}
 			
 			if (FlxG.keys.justPressed("ENTER")) 
-			{
+			{				
 				if (currentSelection == 0) {
 					purchaseFuel();					
 				} else if (currentSelection == 1) {
@@ -98,6 +98,7 @@ package
 					purchaseFuelUpgrade();
 				}
 				else if (currentSelection == 3) {
+					FlxG.play(Registry.blingSound);
 					FlxG.flash(0xffffffff, 0.75);
 					FlxG.fade(0xff000000, 1, onFade);
 				}
@@ -125,6 +126,7 @@ package
 		
 		private function purchaseFuel():void {
 			if (Registry.money >= 15 && Registry.fuel < 100.0) {
+				FlxG.play(Registry.blingSound);
 				Registry.money -= 15;
 				Registry.fuel = 100.0;
 				moneyText.text = "Gigazoids " + Registry.money;
@@ -141,6 +143,7 @@ package
 		
 		private function purchaseSpeedUpgrade():void {
 			if (Registry.money >= 100 ) {
+				FlxG.play(Registry.blingSound);
 				Registry.money -= 100;
 				infoMessage("Your jetpack is now more powerful!");
 				Registry.playerXSpeedBoost += 5;
@@ -164,6 +167,7 @@ package
 				}
 				
 				if (upgradeable) {
+					FlxG.play(Registry.blingSound);
 					infoMessage("Your jetpack spends less fuel!");
 					Registry.money -= 200;
 					moneyText.text = "Gigazoids " + Registry.money;

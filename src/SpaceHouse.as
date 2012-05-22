@@ -10,8 +10,7 @@ package
 	 */
 	public class SpaceHouse extends FlxSprite 
 	{
-		[Embed(source = "../assets/graphics/spacehouse2.png")] private var housePNG:Class;
-		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] private var foodDeliverSound:Class;
+		[Embed(source = "../assets/graphics/spacehouse2.png")] private var housePNG:Class;		
 		public var foodDeliveredHere:Boolean = false;
 		public var tipTimer:Number;
 		public var houseNumber:int;
@@ -43,7 +42,7 @@ package
 		public function thankYou():String
 		{
 			foodDeliveredHere = true;
-			FlxG.play(foodDeliverSound);
+			FlxG.play(Registry.blingSound);
 			if (tipTimer > 0)
 			{
 				Registry.money += 10;
