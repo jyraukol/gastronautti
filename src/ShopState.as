@@ -21,6 +21,7 @@ package
 		private var continueText:FlxText;
 		private var moneyText:FlxText;
 		private var infoText:FlashingText;
+		[Embed(source = "../assets/sounds/bluup.mp3")] private var bluupSound:Class;
 		
 		public function ShopState() 
 		{			
@@ -82,10 +83,12 @@ package
 			
 			if (FlxG.keys.justPressed("DOWN")) {
 				moveSelectionDown();
+				FlxG.play(Registry.selectionSound);
 			}
 			
 			if (FlxG.keys.justPressed("UP")) {
 				moveSelectionUp();
+				FlxG.play(Registry.selectionSound);
 			}
 			
 			if (FlxG.keys.justPressed("ENTER")) 
@@ -98,7 +101,7 @@ package
 					purchaseFuelUpgrade();
 				}
 				else if (currentSelection == 3) {
-					FlxG.play(Registry.blingSound);
+					playSound(true);
 					FlxG.flash(0xffffffff, 0.75);
 					FlxG.fade(0xff000000, 1, onFade);
 				}
@@ -126,7 +129,7 @@ package
 		
 		private function purchaseFuel():void {
 			if (Registry.money >= 15 && Registry.fuel < 100.0) {
-				FlxG.play(Registry.blingSound);
+				playSound(true);
 				Registry.money -= 15;
 				Registry.fuel = 100.0;
 				moneyText.text = "Gigazoids " + Registry.money;
@@ -136,14 +139,15 @@ package
 					infoMessage("Your tank is already full!");
 				} else {
 					infoMessage("You need more Gigazoids!");
-				}				
+				}	
+				playSound(false);
 			}
 			
 		}
 		
 		private function purchaseSpeedUpgrade():void {
 			if (Registry.money >= 100 ) {
-				FlxG.play(Registry.blingSound);
+				playSound(true);
 				Registry.money -= 100;
 				infoMessage("Your jetpack is now more powerful!");
 				Registry.playerXSpeedBoost += 5;
@@ -151,6 +155,7 @@ package
 				moneyText.text = "Gigazoids " + Registry.money;
 			} else {
 				infoMessage("You need more Gigazoids!");
+				playSound(false);
 			}			
 		}
 		
@@ -167,16 +172,18 @@ package
 				}
 				
 				if (upgradeable) {
-					FlxG.play(Registry.blingSound);
+					playSound(true);
 					infoMessage("Your jetpack spends less fuel!");
 					Registry.money -= 200;
 					moneyText.text = "Gigazoids " + Registry.money;
 				} else {
 					infoMessage("Your jetpack cannot be upgraded any more!");
+					playSound(false);
 				}
 				
 			} else {
 				infoMessage("You need more Gigazoids!");
+				playSound(false);
 			}
 			
 		}
@@ -190,6 +197,14 @@ package
 		{	
 			Registry.loadNextLevel();
 			
+		}
+		
+		private function playSound(success:Boolean):void {
+			if (success) {
+				FlxG.play(Registry.blingSound);
+			} else {
+				FlxG.play(bluupSound);
+			}
 		}
 		
 	}

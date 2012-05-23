@@ -9,6 +9,7 @@ package
 	{
 		
 		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] public static var blingSound:Class;
+		[Embed(source = "../assets/sounds/selection.mp3")] public static var selectionSound:Class;
 		public static var player:Gastronaut;
 		public static var playerXSpeedBoost:int = 0;
 		public static var playerYSpeedBoost:int = 0;
