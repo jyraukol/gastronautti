@@ -14,6 +14,8 @@ package
 	{
 		private var starField:StarField;
 		[Embed(source = "../assets/music/FoxSynergy - Solar Powered Boy.mp3")] private var bgmusic:Class; //http://opengameart.org/content/solar-powered-boy
+		[Embed(source = "../assets/graphics/gastronautTitle.png")] private var titleGraphic:Class;
+		
 		public function MenuState() 
 		{
 			Registry.fuel = 100.0;
@@ -24,9 +26,13 @@ package
 			add(starField);
 			
 			add(new Gastronaut(FlxG.width / 2, FlxG.height / 2, true));
-			var title:FlxText
-			title = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "Gastronaut");
-			title.setFormat(null, 16, 0xFFFFFFFF, "center");
+			//var title:FlxText
+			//title = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "Gastronaut");
+			//title.setFormat(null, 16, 0xFFFFFFFF, "center");
+			var title:FlxSprite = new FlxSprite();
+			title.loadGraphic(titleGraphic);
+			title.x = FlxG.width / 2 - title.width / 2;
+			title.y = 30;
 			this.add(title);
 						
 			var instructions2:FlxText;
