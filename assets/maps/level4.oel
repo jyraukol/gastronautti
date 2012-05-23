@@ -290,12 +290,12 @@
   </level>
   <objects>
     <spaceShip x="286" y="114"/>
-    <houses x="16" y="27" tipTimer="10"/>
+    <houses x="16" y="27" tipTimer="12"/>
     <houses x="196" y="195" tipTimer="20"/>
     <fuelCans x="5" y="122"/>
     <lasers x="36" y="71"/>
     <lasers x="210" y="84"/>
     <lasers x="146" y="168"/>
-    <houses x="29" y="173" tipTimer="10"/>
+    <houses x="29" y="173" tipTimer="15"/>
   </objects>
 </level>
