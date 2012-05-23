@@ -1,5 +1,4 @@
 - PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
-- Shopissa valintojen klikkaamiseen ääniefekti, nyt on bling jos osto onnistuu, joku törähdys jos ei osto onnistu
 - Kentän restarttaus niin, että pelaaja pääsee takaisin shoppiin. Jos ei ostanut esim bensaa ja totee että olis tarvinnut
 - Ääniefektiä laserin osumaan
 - Pelaajan putoaminen pelialueelta, onko tämä hyvä vai huono?
@@ -21,3 +20,4 @@
 - Restartti ei palauta tipTimereita DONE!
 - Korjaa tiptimereiden päällekkäisyys vaan muokkaamalla kenttiä niin, että talojen yläpuolella ei ole tilejä DONE!
 - Kaupparuutuun infoteksti, joka kertoo, miten ostotapahtumissa kävi. "YOu don't have enough money for that / You purchased X".... DONE!
+- Shopissa valintojen klikkaamiseen ääniefekti, nyt on bling jos osto onnistuu, joku törähdys jos ei osto onnistu DONE!

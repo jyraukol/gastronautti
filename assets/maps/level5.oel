@@ -115,8 +115,6 @@
     <tile id="1" x="204" y="180"/>
     <tile id="1" x="216" y="180"/>
     <tile id="1" x="228" y="180"/>
-    <tile id="1" x="228" y="168"/>
-    <tile id="1" x="228" y="156"/>
     <tile id="1" x="228" y="144"/>
     <tile id="1" x="216" y="144"/>
     <tile id="1" x="204" y="144"/>
@@ -223,12 +221,14 @@
     <tile id="3" x="144" y="72"/>
     <tile id="5" x="72" y="144"/>
     <tile id="4" x="72" y="132"/>
+    <tile id="3" x="228" y="168"/>
   </level>
   <objects>
     <spaceShip x="6" y="211"/>
-    <levers x="207" y="163" leverId="1"/>
-    <doors x="145" y="192" height="37" leverId="1"/>
-    <houses x="279" y="195" tipTimer="10"/>
+    <levers x="220" y="163" leverId="1"/>
+    <doors x="63" y="191" height="37" leverId="1"/>
+    <houses x="243" y="194" tipTimer="25"/>
     <fuelCans x="228" y="38"/>
+    <houses x="89" y="50" tipTimer="10"/>
   </objects>
 </level>
