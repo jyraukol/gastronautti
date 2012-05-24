@@ -37,7 +37,7 @@ package
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
 				
-		//private var fuelPickupText:FlxText;
+		
 		
 		public var level:Level1;		
 		
@@ -300,8 +300,13 @@ package
 			}
             
             // Player hit active laser, reset
+			if (player.visible) {
+				FlxG.play(Registry.explosionSound);
+			}
+				
 			player.visible = false;
-			player.moves = false;
+			player.moves = false;			
+			
 			FlxG.shake(0.05, 0.05, Registry.restartLevel);
 		}
 		

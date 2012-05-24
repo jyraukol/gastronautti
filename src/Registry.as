@@ -10,6 +10,8 @@ package
 		
 		[Embed(source = "../assets/sounds/foodDeliverSound.mp3")] public static var blingSound:Class;
 		[Embed(source = "../assets/sounds/selection.mp3")] public static var selectionSound:Class;
+		[Embed(source = "../assets/sounds/explosion.mp3")] public static var explosionSound:Class;
+		
 		public static var player:Gastronaut;
 		public static var playerXSpeedBoost:int = 0;
 		public static var playerYSpeedBoost:int = 0;
@@ -35,6 +37,7 @@ package
 		}
 		
 		public static function restartLevel():void {
+			Registry.fuel = fuelAtStartOfLevel;
 			Registry.level = new Level1();
 			FlxG.switchState(new PlayState);
 		}
