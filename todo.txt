@@ -1,3 +1,4 @@
+- Bensamittarin animointi, olis hieno
 - PlayStaten resetointi vaan laittamalla kaikki peliobjektit alkuarvoihinsa, ei uutta staten luontia
 - Kentän restarttaus niin, että pelaaja pääsee takaisin shoppiin. Jos ei ostanut esim bensaa ja totee että olis tarvinnut
 - Ääniefektiä laserin osumaan
