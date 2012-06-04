@@ -37,7 +37,9 @@ package
 		private var laserEmitter:LaserEmitter;
 		private var moon:FlxSprite;
 				
-		
+		private var introScreenRunning:Boolean = true;
+		private var introScreenText:FlashingText;
+		private var overlay:FlxSprite;
 		
 		public var level:Level1;		
 		
@@ -128,7 +130,13 @@ package
 			fuelLow.exists = false;
 			add(fuelLow);
 			
-			
+			overlay = new FlxSprite(0, 0, null);
+			overlay.makeGraphic(FlxG.width, FlxG.height, 0xff000000);
+			overlay.alpha = 0.55;
+			add(overlay);
+			introScreenText = new FlashingText(80, "Get Ready!", 3.5, 0xFFFFFFFF);
+			introScreenText.setFormat(null, 24);		
+			add(introScreenText);
 			//add(new TextBox());
 		}
 				
@@ -136,8 +144,22 @@ package
 		{
 			
 			
-			super.update();
-									
+			if (introScreenRunning) {
+				fuelBar.update();
+				
+				
+				//introScreenText.x = FlxG.width / 2;
+				//introScreenText.y = FlxG.height / 2;
+				if (!introScreenText.alive) {
+					introScreenRunning = false;
+					remove(overlay);
+					remove(introScreenText);
+				}
+				introScreenText.update();
+			}
+			
+			else if (!introScreenRunning) {
+				super.update();
 				FlxG.collide(player, level);
 				FlxG.collide(player, bar);
 				FlxG.collide(player, doors);
@@ -250,7 +272,7 @@ package
 				{
 					Registry.money += 100;
 				}
-			
+			}
 			
 		}
 		

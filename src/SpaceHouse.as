@@ -27,6 +27,7 @@ package
 			//tipTimer = FlxG.random() * 10 + 10;
 			//tipTimer = Math.round(tipTimer);
 			this.tipTimer = tipTimer;
+			this.tipTimer += 0.00;
 			play("open");
 			
 		}

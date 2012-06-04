@@ -137,7 +137,7 @@ package
 				for each (var house:Object in file.objects.houses) {					
 					tempHouse = new SpaceHouse(int(house.@x), int(house.@y), houseNumber, int(house.@tipTimer));
 					houses.push(tempHouse);
-					tipText = new FlxText(tempHouse.x, tempHouse.y - 16, 35, tempHouse.tipTimer.toString());
+					tipText = new FlxText(tempHouse.x, tempHouse.y - 16, 35, tempHouse.tipTimer.toFixed(2));
 					tipText.color = 0xFF00FF00;
 					houseTexts.push(tipText);
 					houseNumber++;
