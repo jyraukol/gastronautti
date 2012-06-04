@@ -73,7 +73,9 @@ package
 			player.y = spaceShip.y + spaceShip.height - player.height;
 			Registry.player = player;
 			player.setSpeed(Registry.playerXSpeedBoost, Registry.playerYSpeedBoost);
+			
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
+			fuelBar.createGradientBar([0xFF000000], [0xffFF0000, 0xffFF8B17, 0xffFFFF00], 1, 180, false);
 			
 			starField = new StarField(0, 2);
 			add(starField);

@@ -5,6 +5,7 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxG;
 	import org.flixel.FlxText;
+	import org.flixel.plugin.photonstorm.FlxGradient;
 	
 	/**
 	 * ...
@@ -41,13 +42,15 @@ package
 			add(instructions2);
 			
 			// Show a fuel bar sample
-			var bar:FlxSprite = new FlxSprite(FlxG.width / 2, instructions2.y + 40);
-			bar.makeGraphic(80, 10, 0xff00FF40);
-			bar.x = FlxG.width / 2 - bar.width / 2;
-			add(bar);
+			//var bar:FlxSprite = new FlxSprite(FlxG.width / 2, instructions2.y + 40);
+			//bar.makeGraphic(80, 10, 0xff00FF40);
+			var gradient1:FlxSprite = FlxGradient.createGradientFlxSprite(80, 10, [0xffFF0000, 0xffFF8B17, 0xffFFFF00], 1, 180 );
+			gradient1.x = FlxG.width / 2 - gradient1.width / 2;
+			gradient1.y = instructions2.y + 40;
+			add(gradient1);
 			
 			var instructions3:FlxText;
-			instructions3 = new FlxText(0, bar.y + 10, FlxG.width, "Watch your fuel meter!");
+			instructions3 = new FlxText(0, gradient1.y + 10, FlxG.width, "Watch your fuel meter!");
 			instructions3.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions3);
 						
