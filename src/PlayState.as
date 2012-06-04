@@ -77,7 +77,8 @@ package
 			player.setSpeed(Registry.playerXSpeedBoost, Registry.playerYSpeedBoost);
 			
 			fuelBar = new FlxBar(46, 2, FlxBar.FILL_LEFT_TO_RIGHT, 80, 10, player, "fuel");
-			fuelBar.createGradientBar([0xFF000000], [0xffFF0000, 0xffFF8B17, 0xffFFFF00], 1, 180, false);
+			fuelBar.createGradientBar([0xFF000000], [0xffFF0000, 0xffFF8B17, 0xffFFFF00], 1, 180, true, 0xff000000);
+			
 			
 			starField = new StarField(0, 2);
 			add(starField);
@@ -141,16 +142,11 @@ package
 		}
 				
 		override public function update():void
-		{
-			
-			
+		{					
 			if (introScreenRunning) {
 				fuelBar.update();
 				
-				
-				//introScreenText.x = FlxG.width / 2;
-				//introScreenText.y = FlxG.height / 2;
-				if (!introScreenText.alive) {
+				if (!introScreenText.alive || FlxG.keys.any()) {
 					introScreenRunning = false;
 					remove(overlay);
 					remove(introScreenText);
