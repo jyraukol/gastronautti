@@ -26,6 +26,8 @@ package
 		public static var levelNumber:uint = 6; // save the number of levels the game has
 		public static var transmissionStarField:StarField = new StarField(0, 3);
 		public static var money:int;
+		public static var baseDeliveryAmount:int = 15;
+		public static var tipAmount:int = 15;
 		public static var fuel:Number;
 		public static var fuelAtStartOfLevel:Number;
 		public static var fuelConsumption:Number = 0.2;

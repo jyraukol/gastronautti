@@ -46,9 +46,9 @@ package
 			FlxG.play(Registry.blingSound);
 			if (tipTimer > 0)
 			{
-				Registry.money += 10;
+				Registry.money += Registry.tipAmount;
 			}
-			Registry.money += 10;
+			Registry.money += Registry.baseDeliveryAmount;
 			play("closed");
 			var returnText:String;
 			if (tipTimer > 0) {				

@@ -34,8 +34,7 @@ package
 		private var doors:FlxGroup = new FlxGroup();
 		private var portals:FlxGroup = new FlxGroup();
 		private var fuelLow:ExclamationMark;
-		private var laserEmitter:LaserEmitter;
-		private var moon:FlxSprite;
+		private var laserEmitter:LaserEmitter;		
 				
 		private var introScreenRunning:Boolean = true;
 		private var introScreenText:FlashingText;
@@ -81,10 +80,7 @@ package
 			
 			
 			starField = new StarField(0, 2);
-			add(starField);
-			moon = new FlxSprite(280, 50, moonImage);
-			moon.velocity.x = -0.3;
-			add(moon);
+			add(starField);		
 			add(new BackgroundEntities());
 			add(level);
 			
@@ -302,7 +298,7 @@ package
 		{
 			player.fuel += fuelcan.fuelAmount;
 			
-			add(new FlashingText(20, "+" + fuelcan.fuelAmount + " Fuel!", 3.5));
+			add(new FlashingText(20, "Extra Fuel!", 3.5));
 			if (player.fuel > 100)
 			{
 				player.fuel = 100;
