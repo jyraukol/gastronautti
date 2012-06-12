@@ -4,7 +4,7 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="bin\Testi.swf" />
+    <movie path="bin\Gastronaut.swf" />
     <movie fps="60" />
     <movie width="800" />
     <movie height="600" />
