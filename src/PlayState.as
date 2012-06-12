@@ -144,6 +144,9 @@ package
 				
 				if (!introScreenText.alive || FlxG.keys.any()) {
 					introScreenRunning = false;
+					var goText:FlashingText = new FlashingText(80, "GO!", 1.5);
+					goText.setFormat(null, 24);
+					add(goText);
 					remove(overlay);
 					remove(introScreenText);
 				}
