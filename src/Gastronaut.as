@@ -35,9 +35,9 @@ package
 		// Automation variables
 		private var automated:Boolean;
 		private var automationStarted:Boolean = false;
+		private var flyPath:Boolean;
 		
-		
-		public function Gastronaut(x:int, y:int, automated:Boolean = false) 
+		public function Gastronaut(x:int, y:int, automated:Boolean = false, flyPath:Boolean = false ) 
 		{
 			super(x, y);
 			loadGraphic(playerPNG, true, true, 16, 16);
@@ -53,6 +53,7 @@ package
 				FlxG.addPlugin(new FlxControl);
 			}
 			this.automated = automated;
+			this.flyPath = flyPath;
 			if (!automated)
 			{
 				FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES);
@@ -74,7 +75,7 @@ package
 			
 			if (automated ) {
 				
-				if (!automationStarted)
+				if (!automationStarted && flyPath)
 				{
 					var automatedPath:FlxPath = new FlxPath();					
 					automatedPath.add(80, 30);

@@ -26,7 +26,7 @@ package
 			starField = new StarField(0, 2);
 			add(starField);
 			
-			add(new Gastronaut(FlxG.width / 2, FlxG.height / 2, true));
+			add(new Gastronaut(FlxG.width / 2, FlxG.height / 2, true, true));
 			//var title:FlxText
 			//title = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "Gastronaut");
 			//title.setFormat(null, 16, 0xFFFFFFFF, "center");

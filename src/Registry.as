@@ -35,7 +35,7 @@ package
 		
 		public function Registry() 
 		{
-			//FlxG.playMusic(bgmusic, 1);
+			
 		}
 		
 		public static function restartLevel():void {

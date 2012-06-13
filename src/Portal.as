@@ -12,7 +12,7 @@ package {
 	{
         [Embed(source = "../assets/graphics/portal.png")] private var graphic:Class;
         public var connectingPortalId:int; // Which portal is this portal connected to?
-        private var connectingPortal:Portal; // Reference to that portal.
+        public var connectingPortal:Portal; // Reference to that portal.
         private var portalId:int;
 		public var timeSincePortalUsed:Number = 0;
 		public var emitter:FlxEmitter;

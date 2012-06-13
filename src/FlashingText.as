@@ -14,8 +14,9 @@ package
 		private var flashInterval:int = 1;
 		private var flashCounter:Number = 0;
 		private var fading:Boolean = true;
+		private var shouldIEvenFlash:Boolean;
 		
-		public function FlashingText(y:int, text:String, duration:Number, color:uint = 0xFFFFFFFF, x:int = 0, centered:Boolean = true) 
+		public function FlashingText(y:int, text:String, duration:Number, color:uint = 0xFFFFFFFF, x:int = 0, centered:Boolean = true, shouldIEvenFlash:Boolean = true ) 
 		{
 			super(x, y, FlxG.width, text);			
 			setFormat(null, 8, color);
@@ -25,6 +26,7 @@ package
 			}
 			
 			this.duration = duration;
+			this.shouldIEvenFlash = shouldIEvenFlash;
 		}
 		
 		public function restartFlashing(duration:Number):void {
@@ -35,23 +37,30 @@ package
 			flashCounter = 0;
 		}
 		
+		public function enlarge(size:int):void
+		{
+			setFormat(null, size, color);
+		}
 		override public function update():void 
 		{
 			super.update();
 			
-			if (fading)
+			if (shouldIEvenFlash)
 			{
-				alpha -= FlxG.elapsed;
-			} else
-			{
-				alpha += FlxG.elapsed;
-			}
-			
-			flashCounter += FlxG.elapsed;
-			if (flashCounter > flashInterval) 
-			{
-				fading = !fading;
-				flashCounter = 0;
+				if (fading)
+				{
+					alpha -= FlxG.elapsed;
+				} else
+				{
+					alpha += FlxG.elapsed;
+				}
+				
+				flashCounter += FlxG.elapsed;
+				if (flashCounter > flashInterval) 
+				{
+					fading = !fading;
+					flashCounter = 0;
+				}
 			}
 			
 			if (duration > 0)
