@@ -1,4 +1,4 @@
-<level messageBeforeLevel="The cake was a lie? Crazy scientists, get to transportation labs asap!" messageImageFileName="portal">
+<level messageBeforeLevel="The cake was a lie? I don't understand this order, but get to the research labs fast!" messageImageFileName="portal">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
