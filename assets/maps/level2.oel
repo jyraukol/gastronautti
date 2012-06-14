@@ -280,6 +280,7 @@
     <tile id="1" x="312" y="156"/>
     <tile id="2" x="228" y="120"/>
     <tile id="3" x="216" y="72"/>
+    <tile id="3" x="12" y="36"/>
   </level>
   <objects>
     <spaceShip x="282" y="210"/>

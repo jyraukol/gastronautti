@@ -24,6 +24,7 @@ package
 		[Embed(source = "../assets/maps/level2.oel", mimeType = "application/octet-stream")] public static const ogmoLevel2:Class;
 		[Embed(source = "../assets/maps/level3.oel", mimeType = "application/octet-stream")] public static const ogmoLevel3:Class;
 		[Embed(source = "../assets/maps/level4.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4:Class;
+		[Embed(source = "../assets/maps/level4_2.oel", mimeType = "application/octet-stream")] public static const ogmoLevel4_2:Class;
 		[Embed(source = "../assets/maps/level5.oel", mimeType = "application/octet-stream")] public static const ogmoLevel5:Class;
 		[Embed(source="../assets/maps/level6.oel", mimeType="application/octet-stream")] public static const ogmoLevel6:Class;
 		private var levelDataXML:Class;
@@ -49,9 +50,7 @@ package
 		{
 			super();
 			
-			
 			this.mapCSV = map1CSV;
-			
 			
 			houses = new Vector.<SpaceHouse>();
 			houseTexts = new Vector.<FlxText>();
@@ -60,11 +59,7 @@ package
 			levers = new Vector.<Lever>();
 			doors = new Vector.<FlxSprite>();
 			portals = new Vector.<Portal>();
-			
-			//Registry.level = this;
 		
-						
-					
 			loadLevel();
 		}
 		
@@ -90,10 +85,13 @@ package
 			}  else if (Registry.levelIndex == 4)
 			{
 				createCSVFromXML(ogmoLevel4);
-			} else if (Registry.levelIndex == 5)
+			}  else if (Registry.levelIndex == 5)
+			{
+				createCSVFromXML(ogmoLevel4_2);
+			} else if (Registry.levelIndex == 6)
 			{
 				createCSVFromXML(ogmoLevel5);
-			} else if (Registry.levelIndex == 6)
+			} else if (Registry.levelIndex == 7)
 			{
 				createCSVFromXML(ogmoLevel6);
 			}

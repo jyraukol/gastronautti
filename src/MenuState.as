@@ -66,6 +66,7 @@ package
 			super.create();
 			FlxG.playMusic(bgmusic);
 		}
+		
 		override public function update():void
 		{    
 			if (FlxG.keys.pressed("ENTER")) 
