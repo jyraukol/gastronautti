@@ -1,4 +1,4 @@
-<level messageBeforeLevel="There is a fuel can in this level. Pick it up for extra fuel!" messageImageFileName="fuelcan">
+<level messageBeforeLevel="If you happen to see any fuel cans around, pick them up for free fuel!" messageImageFileName="fuelcan">
   <width>320</width>
   <height>240</height>
   <level set="tiles">

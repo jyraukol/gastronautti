@@ -285,6 +285,6 @@
   <objects>
     <spaceShip x="282" y="210"/>
     <houses x="36" y="150" tipTimer="10"/>
-    <houses x="239" y="100" tipTimer="10"/>
+    <houses x="239" y="100" tipTimer="12"/>
   </objects>
 </level>

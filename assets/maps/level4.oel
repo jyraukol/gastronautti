@@ -1,4 +1,4 @@
-<level messageBeforeLevel="Yikes, laser emitters on this level! Don't get hit!" messageImageFileName="laser">
+<level messageBeforeLevel="Curses! Another delivery guy was fried by these laser emitters. Don't you get hit or I'll fire you!" messageImageFileName="laser">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
