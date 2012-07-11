@@ -1,4 +1,4 @@
-<level messageBeforeLevel="This level has a crazy plasma forcefield! You have to shut it down first!" messageImageFileName="leverDoor">
+<level messageBeforeLevel="You know about the plasma forcefields, right? You have to shut them down if you want to pass!" messageImageFileName="leverDoor">
   <width>320</width>
   <height>240</height>
   <level set="tiles">
