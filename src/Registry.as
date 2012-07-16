@@ -48,7 +48,7 @@ package
 			fuelAtStartOfLevel = fuel;
 			if (Registry.levelIndex == Registry.levelNumber)
 			{
-				FlxG.switchState(new MenuState);
+				FlxG.switchState(new GameEndState);
 			} else 
 			{				
 				Registry.levelIndex++;

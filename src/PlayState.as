@@ -61,7 +61,6 @@ package
 			
 			foodNum = spaceHouses.length;
             
-            
 			moneyText = new FlxText(200, 0, 150, "Money " + Registry.money);
 			moneyText.setFormat(null, 8, 0xff000000);
 			
@@ -356,7 +355,7 @@ package
 			{
 				FlxG.switchState(new ShopState);		
 			} else {
-				FlxG.switchState(new MenuState);
+				FlxG.switchState(new GameEndState);
 			}
 		}
         
